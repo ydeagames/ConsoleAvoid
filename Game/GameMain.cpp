@@ -86,6 +86,8 @@ void RenderGame(void)
 	//std::string str = "x=" + std::to_string(static_cast<int>(point.x)) + ", " + "y=" + std::to_string(static_cast<int>(point.y));
 	//DrawStringToHandle(10, 25, str.c_str(), ATTR_WHITE, &g_font);
 
+	DrawBox(5, 5, 95, 95, ATTR_WHITE, false);
+
 	if (InputManager::GetInstance().key->GetButton('W') || InputManager::GetInstance().key->GetButton(VK_UP))
 		DrawStringToHandle(15, 35, L"‚ ‚¢‚¤ª‚¦¨‚¨", ATTR_WHITE, &g_font);
 	if (InputManager::GetInstance().key->GetButton('S') || InputManager::GetInstance().key->GetButton(VK_DOWN))
@@ -94,6 +96,8 @@ void RenderGame(void)
 		DrawStringToHandle(10, 40, L"©", ATTR_WHITE, &g_font);
 	if (InputManager::GetInstance().key->GetButton('D') || InputManager::GetInstance().key->GetButton(VK_RIGHT))
 		DrawStringToHandle(20, 40, L"¨", ATTR_WHITE, &g_font);
+
+	DrawBox(10, 10, 90, 90, ATTR_WHITE, false);
 
 	if (InputManager::GetInstance().key->GetButtonDown('Z'))
 	{

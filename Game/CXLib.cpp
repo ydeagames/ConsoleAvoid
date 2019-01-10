@@ -66,7 +66,7 @@ void DrawBox(float x1, float y1, float x2, float y2, Attributes Color, int FillF
 	SHORT cy2 = WorldToConsoleY(y2);
 
 	// 文字の長さ
-	int str_len = std::max(1, (int)wcslen(Str));
+	int str_len = std::max((int)sizeof(WCHAR), (int)wcslen(Str));
 
 	// Yループ
 	SHORT ix, iy;
@@ -94,7 +94,7 @@ void DrawOval(float x, float y, float rx, float ry, Attributes Color, int FillFl
 	float cryf = WorldToConsoleYF(ry);
 
 	// 文字の長さ
-	int str_len = std::max(1, (int)wcslen(Str));
+	int str_len = std::max((int)sizeof(WCHAR), (int)wcslen(Str));
 
 	// Yループ
 	SHORT ix, iy;
