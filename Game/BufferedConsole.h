@@ -21,8 +21,8 @@ public:
 
 public:
 	void Clear();
-	int DrawCharacter(COORD dwWriteCoord, WORD wAttribute, WORD wCharacter);
-	void DrawString(COORD dwWriteCoord, WORD wAttribute, LPCWSTR lpCharacter, DWORD nLength = -1);
-	void DrawStringLines(COORD dwWriteCoord, WORD wAttribute, LPCWSTR lpCharacter);
+	int DrawCharacter(COORD dwWriteCoord, Color textColor, WORD wCharacter);
+	void DrawString(COORD dwWriteCoord, Color textColor, LPCWSTR lpCharacter, DWORD nLength = -1);
+	void DrawStringLines(COORD dwWriteCoord, Color textColor, LPCWSTR lpCharacter);
 	void Flush();
 };

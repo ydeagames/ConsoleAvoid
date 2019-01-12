@@ -31,7 +31,7 @@ void ScreenContext::Clear()
 		buffer[i] = default_pixel;
 }
 
-int ScreenContext::DrawCharacter(COORD dwWriteCoord, WORD wAttribute, WORD wCharacter)
+int ScreenContext::DrawCharacter(COORD dwWriteCoord, Color textColor, WORD wCharacter)
 {
 	int width = ConsoleCharacter::GetCharacterWidthCJK(wCharacter);
 	if (bufferCoord.X <= dwWriteCoord.X && dwWriteCoord.X + width <= bufferSize.X)
@@ -41,7 +41,7 @@ int ScreenContext::DrawCharacter(COORD dwWriteCoord, WORD wAttribute, WORD wChar
 		for (int j = 0; j < width; j++)
 		{
 			auto& npixel = pixel[j];
-			npixel.Attributes = wAttribute;
+			npixel.Attributes = Attributes{ npixel.Attributes }.text(textColor);
 			if (j != 0)
 				npixel.Char.UnicodeChar = L' ';
 		}
@@ -49,7 +49,7 @@ int ScreenContext::DrawCharacter(COORD dwWriteCoord, WORD wAttribute, WORD wChar
 	return width;
 }
 
-void ScreenContext::DrawString(COORD dwWriteCoord, WORD wAttribute, LPCWSTR lpCharacter, DWORD nLength)
+void ScreenContext::DrawString(COORD dwWriteCoord, Color textColor, LPCWSTR lpCharacter, DWORD nLength)
 {
 	int length = static_cast<int>(nLength);
 	for (int i = 0, n = 0; length < 0 || i < length; i++)
@@ -58,12 +58,12 @@ void ScreenContext::DrawString(COORD dwWriteCoord, WORD wAttribute, LPCWSTR lpCh
 		if (chr == L'\n' || chr == L'\0')
 			break;
 		int xCoord = n + dwWriteCoord.X;
-		int width = DrawCharacter(COORD{ static_cast<SHORT>(xCoord), dwWriteCoord.Y }, wAttribute, chr);
+		int width = DrawCharacter(COORD{ static_cast<SHORT>(xCoord), dwWriteCoord.Y }, textColor, chr);
 		n += width;
 	}
 }
 
-void ScreenContext::DrawStringLines(COORD dwWriteCoord, WORD wAttribute, LPCWSTR lpCharacter)
+void ScreenContext::DrawStringLines(COORD dwWriteCoord, Color textColor, LPCWSTR lpCharacter)
 {
 	// 右下より左上なら
 	if (dwWriteCoord.X < bufferSize.X && dwWriteCoord.Y < bufferSize.Y)
@@ -77,7 +77,7 @@ void ScreenContext::DrawStringLines(COORD dwWriteCoord, WORD wAttribute, LPCWSTR
 
 			// 左と上にオーバーしすぎて見えなくなっていないかチェック
 			if (iy >= bufferCoord.Y)
-				DrawString(COORD{ dwWriteCoord.X, iy }, wAttribute, lpCharacter);
+				DrawString(COORD{ dwWriteCoord.X, iy }, textColor, lpCharacter);
 
 			// 改行がなければここで終了
 			if (enter == nullptr)
