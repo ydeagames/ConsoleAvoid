@@ -24,6 +24,8 @@
 
 // 最後の時刻
 static std::chrono::time_point<std::chrono::high_resolution_clock> last_time;
+// 最後の時刻
+static std::chrono::time_point<std::chrono::high_resolution_clock> start_time;
 // 1フレームの間隔
 static std::chrono::nanoseconds delta_clock;
 // 1フレームの秒
@@ -40,15 +42,20 @@ static const int FPS = 60;
 // 1フレーム
 static int ProcessMessage(void)
 {
+	static auto interval = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::seconds(1)) / FPS;
+
 	std::chrono::time_point<std::chrono::high_resolution_clock> now = std::chrono::high_resolution_clock::now();
 	delta_clock = now - last_time;
+
 	last_time = now;
 
 	delta_time = delta_clock.count() * 1e-9f;
 
-	static auto interval = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::seconds(1)) / FPS;
-	auto sleeptime = interval - delta_clock;
+	auto processingtime = now - start_time;
+	auto sleeptime = interval - processingtime;
 	Sleep(static_cast<DWORD>(std::max(0LL, std::chrono::duration_cast<std::chrono::milliseconds>(sleeptime).count())));
+
+	start_time = std::chrono::high_resolution_clock::now();
 
 	InputManager::GetInstance().Update();
 

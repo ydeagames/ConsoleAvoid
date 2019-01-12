@@ -2,29 +2,29 @@
 #include "ScreenManager.h"
 #include "ConsoleCharacter.h"
 
-void Screen::Draw(COORD coord, Color textColor)
+void Screen::Draw(COORD coord, Color backColor)
 {
-	auto& context = ScreenManager::GetInstance().GetContext();
-	if (context.GetBoundsMin().X <= coord.X && coord.X <= context.GetBoundsMax().X - 1 &&
-		context.GetBoundsMin().Y <= coord.Y && coord.Y <= context.GetBoundsMax().Y - 1)
+	static auto& context = ScreenManager::GetInstance().GetContext();
+	if (context.boundsMin.X <= coord.X && coord.X <= context.boundsMax.X - 1 &&
+		context.boundsMin.Y <= coord.Y && coord.Y <= context.boundsMax.Y - 1)
 	{
 		auto& pixel = context.Pixel(coord);
-		pixel.Attributes = Attributes{ pixel.Attributes }.back(textColor);
+		pixel.Attributes = Attributes::back(pixel.Attributes, backColor);
 	}
 }
 
 void Screen::DrawCharacter(COORD coord, Color textColor, WCHAR ch)
 {
-	auto& context = ScreenManager::GetInstance().GetContext();
+	static auto& context = ScreenManager::GetInstance().GetContext();
 	int width = ConsoleCharacter::GetCharacterWidthCJK(ch);
-	if (context.GetBoundsMin().X <= coord.X && coord.X <= context.GetBoundsMax().X - width)
+	if (context.boundsMin.X <= coord.X && coord.X <= context.boundsMax.X - width)
 	{
 		auto& pixel = context.Pixel(coord);
 		pixel.Char.UnicodeChar = ch;
 		for (int j = 0; j < width; j++)
 		{
 			auto& npixel = (&pixel)[j];
-			npixel.Attributes = Attributes{ npixel.Attributes }.text(textColor);
+			npixel.Attributes = Attributes::text(npixel.Attributes, textColor);
 			if (j != 0)
 				npixel.Char.UnicodeChar = L' ';
 		}
@@ -65,18 +65,18 @@ int Screen::GetDrawStringWidth(LPCWSTR chs)
 
 void Screen::DrawStringLines(COORD coord, Color textColor, LPCWSTR chs)
 {
-	auto& context = ScreenManager::GetInstance().GetContext();
+	static auto& context = ScreenManager::GetInstance().GetContext();
 	// 右下より左上なら
-	if (coord.X < context.GetBoundsMax().X && coord.Y < context.GetBoundsMax().Y)
+	if (coord.X < context.boundsMax.X && coord.Y < context.boundsMax.Y)
 	{
 		// Yループ
-		for (SHORT iy = coord.Y; iy < context.GetBoundsMax().Y; iy++)
+		for (SHORT iy = coord.Y; iy < context.boundsMax.Y; iy++)
 		{
 			// 改行までの距離
 			const WCHAR* enter = wcschr(chs, '\n');
 
 			// 左と上にオーバーしすぎて見えなくなっていないかチェック
-			if (context.GetBoundsMin().Y <= iy)
+			if (context.boundsMin.Y <= iy)
 			{
 				DrawString(COORD{ coord.X, iy }, textColor, chs);
 			}

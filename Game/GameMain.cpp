@@ -81,8 +81,8 @@ void RenderGame(void)
 {
 	auto& context = ScreenManager::GetInstance().GetContext();
 
-	float right = ConsoleToWorldX(context.GetBoundsMax().X);
-	float bottom = ConsoleToWorldY(context.GetBoundsMax().Y);
+	float right = ConsoleToWorldX(context.boundsMax.X);
+	float bottom = ConsoleToWorldY(context.boundsMax.Y);
 	DrawStringToHandle(right - g_pos.x, bottom - g_pos.y, L"Pong Game!", Colors::Red, &g_font_pong);
 	for (int iy = 0; iy < 2; iy++)
 		for (int ix = 0; ix < 10; ix++)

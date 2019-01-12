@@ -7,7 +7,7 @@ ScreenManager::ScreenManager()
 
 void ScreenManager::UpdateContext()
 {
-	context = ScreenContext{ context.GetHandle(), context.DefaultPixel() };
+	context = ScreenContext{ context.handle, context.default_pixel };
 }
 
 bool ScreenManager::SetScreenSize(int width, int height)
@@ -25,22 +25,22 @@ bool ScreenManager::SetScreenSize(int width, int height)
 
 
 	// 画面のサイズ変更 ----------------------------------
-	if (newSize.X - context.GetSize().X > 0 || newSize.Y - context.GetSize().Y > 0)
+	if (newSize.X - context.boundsMax.X > 0 || newSize.Y - context.boundsMax.Y > 0)
 	{
 		// 拡大の場合 --------------------------------
-		if (!SetConsoleScreenBufferSize(context.GetHandle(), newSize))
+		if (!SetConsoleScreenBufferSize(context.handle, newSize))
 			return false;
 
-		if (!SetConsoleWindowInfo(context.GetHandle(), true, &newRect))
+		if (!SetConsoleWindowInfo(context.handle, true, &newRect))
 			return false;
 	}
 	else
 	{
 		// 縮小の場合 --------------------------------
-		if (!SetConsoleWindowInfo(context.GetHandle(), true, &newRect))
+		if (!SetConsoleWindowInfo(context.handle, true, &newRect))
 			return false;
 
-		if (!SetConsoleScreenBufferSize(context.GetHandle(), newSize))
+		if (!SetConsoleScreenBufferSize(context.handle, newSize))
 			return false;
 	}
 
@@ -56,7 +56,7 @@ bool ScreenManager::SetWindowSize(int width, int height)
 	CONSOLE_FONT_INFOEX fontInfo = { sizeof(CONSOLE_FONT_INFOEX) };    // フォント情報
 
 	// 現在使用中のフォントの取得
-	GetCurrentConsoleFontEx(context.GetHandle(), false, &fontInfo);
+	GetCurrentConsoleFontEx(context.handle, false, &fontInfo);
 
 	// コンソールサイズ
 	return SetScreenSize(width / fontInfo.dwFontSize.X, height / fontInfo.dwFontSize.Y);
@@ -68,13 +68,13 @@ void ScreenManager::SetFontSize(int width, int height)
 	CONSOLE_FONT_INFOEX fontInfo = { sizeof(CONSOLE_FONT_INFOEX) };    // フォント情報
 
 	// 現在使用中のフォントの取得
-	GetCurrentConsoleFontEx(context.GetHandle(), false, &fontInfo);
+	GetCurrentConsoleFontEx(context.handle, false, &fontInfo);
 
 	// フォントサイズの設定
 	fontInfo.dwFontSize = COORD{ static_cast<SHORT>(width), static_cast<SHORT>(height) };
 
 	// フォントの更新
-	SetCurrentConsoleFontEx(context.GetHandle(), false, &fontInfo);
+	SetCurrentConsoleFontEx(context.handle, false, &fontInfo);
 
 	// コンテキスト更新
 	UpdateContext();
@@ -86,7 +86,7 @@ void ScreenManager::SetPixelSize(int width, int height)
 	CONSOLE_FONT_INFOEX fontInfo = { sizeof(CONSOLE_FONT_INFOEX) };    // フォント情報
 
 	// 現在使用中のフォントの取得
-	GetCurrentConsoleFontEx(context.GetHandle(), false, &fontInfo);
+	GetCurrentConsoleFontEx(context.handle, false, &fontInfo);
 
 	// フォントサイズの設定
 	COORD oldFontSize = fontInfo.dwFontSize;
@@ -95,36 +95,36 @@ void ScreenManager::SetPixelSize(int width, int height)
 	fontInfo.dwFontSize = COORD{ static_cast<SHORT>(width), static_cast<SHORT>(height) };
 
 	// フォントの更新
-	SetCurrentConsoleFontEx(context.GetHandle(), false, &fontInfo);
+	SetCurrentConsoleFontEx(context.handle, false, &fontInfo);
 
 	// コンソールサイズ
 	SetScreenSize(
-		context.GetSize().X * fontInfo.dwFontSize.X / oldFontSize.X,
-		context.GetSize().Y * fontInfo.dwFontSize.Y / oldFontSize.Y);
+		context.boundsMax.X * fontInfo.dwFontSize.X / oldFontSize.X,
+		context.boundsMax.Y * fontInfo.dwFontSize.Y / oldFontSize.Y);
 }
 
 void ScreenManager::SetDefaultText(WCHAR ch)
 {
-	auto& pixel = context.DefaultPixel();
+	auto& pixel = context.default_pixel;
 	pixel.Char.UnicodeChar = ch;
 }
 
 void ScreenManager::SetDefaultBackground(Color background)
 {
-	auto& pixel = context.DefaultPixel();
+	auto& pixel = context.default_pixel;
 	pixel.Attributes = Attributes{ pixel.Attributes }.back(background);
 }
 
 void ScreenManager::SetDefaultForeground(Color foreground)
 {
-	auto& pixel = context.DefaultPixel();
+	auto& pixel = context.default_pixel;
 	pixel.Attributes = Attributes{ pixel.Attributes }.text(foreground);
 }
 
 void ScreenManager::SetBackground(Color color)
 {
 	// 属性設定
-	SetConsoleTextAttribute(context.GetHandle(), Attributes{ context.GetAttributes() }.back(color));
+	SetConsoleTextAttribute(context.handle, Attributes{ context.attributes }.back(color));
 
 	// コンテキスト更新
 	UpdateContext();
@@ -133,7 +133,7 @@ void ScreenManager::SetBackground(Color color)
 void ScreenManager::SetForeground(Color color)
 {
 	// 属性設定
-	SetConsoleTextAttribute(context.GetHandle(), Attributes{ context.GetAttributes() }.text(color));
+	SetConsoleTextAttribute(context.handle, Attributes{ context.attributes }.text(color));
 
 	// コンテキスト更新
 	UpdateContext();
@@ -145,7 +145,7 @@ void ScreenManager::SetCursorVisibility(bool isVisible)
 	CONSOLE_CURSOR_INFO cursorInfo;    // カーソル情報
 
 	// カーソルの表示状態の変更
-	GetConsoleCursorInfo(context.GetHandle(), &cursorInfo);
+	GetConsoleCursorInfo(context.handle, &cursorInfo);
 	cursorInfo.bVisible = isVisible;
-	SetConsoleCursorInfo(context.GetHandle(), &cursorInfo);
+	SetConsoleCursorInfo(context.handle, &cursorInfo);
 }
