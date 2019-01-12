@@ -151,26 +151,29 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Game\BufferedConsole.h" />
+    <ClInclude Include="Game\Color.h" />
     <ClInclude Include="Game\Console.h" />
+    <ClInclude Include="Game\ConsoleCharacter.h" />
     <ClInclude Include="Game\CXFont.h" />
     <ClInclude Include="Game\CXLib.h" />
     <ClInclude Include="Game\Game.h" />
     <ClInclude Include="Game\GameMain.h" />
     <ClInclude Include="Game\Input.h" />
-    <ClInclude Include="Game\InputManager.h" />
     <ClInclude Include="Game\MathUtils.h" />
     <ClInclude Include="Game\pch.h" />
+    <ClInclude Include="Game\ScreenManager.h" />
     <ClInclude Include="Game\Singleton.h" />
     <ClInclude Include="Game\Vec2.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Color.cpp" />
+    <ClCompile Include="Game\ConsoleCharacter.cpp" />
     <ClCompile Include="Game\BufferedConsole.cpp" />
     <ClCompile Include="Game\Console.cpp" />
     <ClCompile Include="Game\CXFont.cpp" />
     <ClCompile Include="Game\CXLib.cpp" />
     <ClCompile Include="Game\GameMain.cpp" />
     <ClCompile Include="Game\Input.cpp" />
-    <ClCompile Include="Game\InputManager.cpp" />
     <ClCompile Include="Game\Main.cpp" />
     <ClCompile Include="Game\MathUtils.cpp" />
     <ClCompile Include="Game\pch.cpp">
@@ -183,6 +186,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pch.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="Game\ScreenManager.cpp" />
     <ClCompile Include="Game\Singleton.cpp" />
     <ClCompile Include="Game\Vec2.cpp" />
   </ItemGroup>

@@ -14,7 +14,7 @@
 #include "Console.h"
 #include "GameMain.h"
 #include "BufferedConsole.h"
-#include "InputManager.h"
+#include "ScreenManager.h"
 #include "Input.h"
 #include "MathUtils.h"
 
@@ -51,7 +51,9 @@ static int ProcessMessage(void)
 // 裏画面切り替え
 static int ScreenFlip(void)
 {
-	BufferedConsole_Flush();
+	auto& context = ScreenManager::GetInstance().GetContext();
+
+	context.Flush();
 
 	return true;
 }
@@ -75,7 +77,7 @@ int main(void)
 	SetScreenSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	SetCursorVisibility(CURSOR_INVISIBLE);
 
-	BufferedConsole_Initialize();
+	auto& context = ScreenManager::GetInstance().GetContext();
 
 	/*
 	// スピードテスト (デバッグ)
@@ -94,7 +96,7 @@ int main(void)
 		RenderGame();			// ゲームの描画処理
 
 		ScreenFlip();			// 裏画面の内容を表画面に反映
-		Clear();				// 裏画面の消去
+		context.Clear();		// 裏画面の消去
 	}
 
 	FinalizeGame();				// ゲームの終了処理

@@ -1,12 +1,13 @@
 #include "CXLib.h"
 #include "Game.h"
 #include "BufferedConsole.h"
+#include "ScreenManager.h"
 #include <string.h>
 #include <math.h>
 #include "MathUtils.h"
 
 // 白色塗りつぶし
-const Attributes ATTR_WHITE = { COLOR_BLACK, COLOR_WHITE };
+const Attributes ATTR_WHITE = { Colors::White, Colors::Black };
 
 // ワールド座標をコンソール座標に変換
 float WorldToConsoleXF(float world_x, float size)
@@ -23,13 +24,13 @@ float WorldToConsoleYF(float world_y, float size)
 // ワールド座標をコンソール座標に変換
 SHORT WorldToConsoleX(float world_x, float size)
 {
-	return (SHORT)WorldToConsoleXF(world_x, size);
+	return (SHORT)floorf(WorldToConsoleXF(world_x, size));
 }
 
 // ワールド座標をコンソール座標に変換
 SHORT WorldToConsoleY(float world_y, float size)
 {
-	return (SHORT)WorldToConsoleYF(world_y, size);
+	return (SHORT)floorf(WorldToConsoleYF(world_y, size));
 }
 
 // コンソール座標をワールド座標に変換
@@ -59,6 +60,8 @@ float ConsoleToWorldY(SHORT screen_y, float size)
 // 矩形描画関数
 void DrawBox(float x1, float y1, float x2, float y2, Attributes Color, int FillFlag, const WCHAR* Str)
 {
+	auto& context = ScreenManager::GetInstance().GetContext();
+
 	// ワールド座標をコンソール座標に変換
 	SHORT cx1 = WorldToConsoleX(x1);
 	SHORT cy1 = WorldToConsoleY(y1);
@@ -77,7 +80,7 @@ void DrawBox(float x1, float y1, float x2, float y2, Attributes Color, int FillF
 		{
 			// 塗りつぶし時、または縁の場合描画
 			if (FillFlag || (ix == cx1 || ix == cx2) || (iy == cy1 || iy == cy2))
-				Print({ ix, iy }, Color, Str);
+				context.DrawString({ ix, iy }, Color, Str);
 		}
 	}
 }
@@ -85,6 +88,8 @@ void DrawBox(float x1, float y1, float x2, float y2, Attributes Color, int FillF
 // 楕円描画関数
 void DrawOval(float x, float y, float rx, float ry, Attributes Color, int FillFlag, const WCHAR* Str)
 {
+	auto& context = ScreenManager::GetInstance().GetContext();
+
 	// ワールド座標をコンソール座標に変換
 	SHORT cx = WorldToConsoleX(x);
 	SHORT cy = WorldToConsoleY(y);
@@ -106,7 +111,7 @@ void DrawOval(float x, float y, float rx, float ry, Attributes Color, int FillFl
 			// 塗りつぶし時、または縁の場合描画
 			float p = (ix*ix) / (crxf*crxf) + (iy*iy) / (cryf*cryf) - 1;
 			if (FillFlag ? p <= .08f : -.25f < p && p < .08f)
-				Print({ cx + ix, cy + iy }, Color, Str);
+				context.DrawString({ cx + ix, cy + iy }, Color, Str);
 		}
 	}
 }
@@ -121,6 +126,8 @@ void DrawCircle(float x, float y, float r, Attributes Color, int FillFlag, const
 // 線描画関数
 void DrawLine(float x1, float y1, float x2, float y2, Attributes Color, const WCHAR* Str)
 {
+	auto& context = ScreenManager::GetInstance().GetContext();
+
 	// ワールド座標をコンソール座標に変換
 	int cx1 = (int)WorldToConsoleX(x1);
 	int cy1 = (int)WorldToConsoleY(y1);
@@ -153,7 +160,7 @@ void DrawLine(float x1, float y1, float x2, float y2, Attributes Color, const WC
 		for (x = cx1; x != cx2; x += incx)
 		{
 			// 描画
-			Print({ steep ? y : x, steep ? x : y }, Color, Str);
+			context.DrawString({ steep ? y : x, steep ? x : y }, Color, Str);
 
 			// ズレを修正&チェック
 			if ((error -= deltay) < 0)

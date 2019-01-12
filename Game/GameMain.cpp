@@ -45,7 +45,7 @@ void InitializeGame(void)
 {
 	g_font_pong = CreateFontToHandle(CXFontType::CXFONT_PONG, 12);
 	g_font = CreateFontToHandle(CXFontType::CXFONT_DEFAULT, 1);
-	g_pos = { -100, 10 };
+	g_pos = { 10, 10 };
 }
 
 //----------------------------------------------------------------------
@@ -86,10 +86,12 @@ void RenderGame(void)
 	//std::string str = "x=" + std::to_string(static_cast<int>(point.x)) + ", " + "y=" + std::to_string(static_cast<int>(point.y));
 	//DrawStringToHandle(10, 25, str.c_str(), ATTR_WHITE, &g_font);
 
-	DrawBox(5, 5, 95, 95, ATTR_WHITE, false);
+	//DrawBox(5, 5, 95, 95, ATTR_WHITE, false);
+
+	DrawStringToHandle(g_pos.x, g_pos.y, L"‚ su\nshi‚¢‚¤\nsus\nhiª‚¦ª‚¨„«‚©", ATTR_WHITE, &g_font);
 
 	if (InputManager::GetInstance().key->GetButton('W') || InputManager::GetInstance().key->GetButton(VK_UP))
-		DrawStringToHandle(15, 35, L"‚ ‚¢‚¤ª‚¦¨‚¨", ATTR_WHITE, &g_font);
+		DrawStringToHandle(15, 35, L"ª", ATTR_WHITE, &g_font);
 	if (InputManager::GetInstance().key->GetButton('S') || InputManager::GetInstance().key->GetButton(VK_DOWN))
 		DrawStringToHandle(15, 45, L"«", ATTR_WHITE, &g_font);
 	if (InputManager::GetInstance().key->GetButton('A') || InputManager::GetInstance().key->GetButton(VK_LEFT))
@@ -97,18 +99,7 @@ void RenderGame(void)
 	if (InputManager::GetInstance().key->GetButton('D') || InputManager::GetInstance().key->GetButton(VK_RIGHT))
 		DrawStringToHandle(20, 40, L"¨", ATTR_WHITE, &g_font);
 
-	DrawBox(10, 10, 90, 90, ATTR_WHITE, false);
-
-	if (InputManager::GetInstance().key->GetButtonDown('Z'))
-	{
-		SetBackColor(ConsoleColor::COLOR_BLACK);
-		ClearScreen();
-	}
-	if (InputManager::GetInstance().key->GetButtonDown('X'))
-	{
-		SetBackColor(ConsoleColor::COLOR_WHITE);
-		ClearScreen();
-	}
+	//DrawBox(10, 10, 90, 90, ATTR_WHITE, false);
 }
 
 //----------------------------------------------------------------------

@@ -13,6 +13,7 @@
 #include "CXFont.h"
 #include "CXLib.h"
 #include "MathUtils.h"
+#include "ScreenManager.h"
 #include <string.h>
 
 // 列挙型の定義 ============================================================
@@ -112,7 +113,9 @@ static char GetPixel(int x, int y)
 // 文字列描画関数
 void DrawString(float x, float y, const WCHAR* String, Attributes Color)
 {
-	Print({ WorldToConsoleX(x), WorldToConsoleY(y) }, Color, String);
+	auto& context = ScreenManager::GetInstance().GetContext();
+
+	context.DrawStringLines({ WorldToConsoleX(x), WorldToConsoleY(y) }, Color, String);
 }
 
 // フォントハンドルを使用した文字列の描画幅(ワールド座標)を取得する
@@ -179,6 +182,8 @@ float GetDrawStringWidthToHandle(const WCHAR* String, const CXFont* FontHandle)
 // フォントハンドルを使用して文字列を描画する
 void DrawStringToHandle(float x, float y, const WCHAR* String, Attributes Color, const CXFont* FontHandle, const WCHAR* Str)
 {
+	auto& context = ScreenManager::GetInstance().GetContext();
+
 	switch (FontHandle->type)
 	{
 	default:
@@ -242,7 +247,7 @@ void DrawStringToHandle(float x, float y, const WCHAR* String, Attributes Color,
 					{
 						// ピクセルが1だったら描画
 						if (GetPixel(sprite->x + (int)(ConsoleToWorldX(ix) * size), sprite->y + (int)(ConsoleToWorldY(iy) * size)) == '1')
-							Print({ WorldToConsoleX(font_x / size + x) + ix, WorldToConsoleY(font_y / size + y) + iy }, Color, Str);
+							context.DrawString({ WorldToConsoleX(font_x / size + x) + ix, WorldToConsoleY(font_y / size + y) + iy }, Color, Str);
 					}
 				}
 				// フォント左上のX座標を進める

@@ -37,7 +37,7 @@ typedef struct {
 CXFont CreateFontToHandle(CXFontType Font, int Size);
 
 // 文字列描画関数
-void DrawString(float x, float y, const WCHAR* String, Attributes Color = DEFAULT_ATTR);
+void DrawString(float x, float y, const WCHAR* String, Attributes Color = { Colors::White, Colors::Black });
 
 // フォントハンドルを使用した文字列の描画幅(ワールド座標)を取得する
 float GetDrawStringWidthToHandle(const WCHAR* String, const CXFont* FontHandle);

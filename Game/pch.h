@@ -15,6 +15,7 @@
 #include <ctime>
 #include <conio.h>
 #include <typeindex>
+#include <cwchar>
 
 #include <cmath>
 #include <limits>
