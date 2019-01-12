@@ -1,13 +1,8 @@
 #include "CXLib.h"
 #include "Game.h"
-#include "BufferedConsole.h"
+#include "Screen.h"
 #include "ScreenManager.h"
-#include <string.h>
-#include <math.h>
 #include "MathUtils.h"
-
-// 白色塗りつぶし
-const Attributes ATTR_WHITE = { Colors::White, Colors::Black };
 
 // ワールド座標をコンソール座標に変換
 float WorldToConsoleXF(float world_x, float size)
@@ -58,38 +53,31 @@ float ConsoleToWorldY(SHORT screen_y, float size)
 }
 
 // 矩形描画関数
-void DrawBox(float x1, float y1, float x2, float y2, Attributes Color, int FillFlag, const WCHAR* Str)
+void DrawBox(float x1, float y1, float x2, float y2, Color Color, int FillFlag)
 {
-	auto& context = ScreenManager::GetInstance().GetContext();
-
 	// ワールド座標をコンソール座標に変換
 	SHORT cx1 = WorldToConsoleX(x1);
 	SHORT cy1 = WorldToConsoleY(y1);
 	SHORT cx2 = WorldToConsoleX(x2);
 	SHORT cy2 = WorldToConsoleY(y2);
 
-	// 文字の長さ
-	int str_len = std::max((int)sizeof(WCHAR), (int)wcslen(Str));
-
 	// Yループ
 	SHORT ix, iy;
 	for (iy = cy1; iy <= cy2; iy++)
 	{
 		// Xループ
-		for (ix = cx1; ix <= cx2; ix += str_len)
+		for (ix = cx1; ix <= cx2; ix++)
 		{
 			// 塗りつぶし時、または縁の場合描画
 			if (FillFlag || (ix == cx1 || ix == cx2) || (iy == cy1 || iy == cy2))
-				context.DrawString({ ix, iy }, Color, Str);
+				Screen::Draw({ ix, iy }, Color);
 		}
 	}
 }
 
 // 楕円描画関数
-void DrawOval(float x, float y, float rx, float ry, Attributes Color, int FillFlag, const WCHAR* Str)
+void DrawOval(float x, float y, float rx, float ry, Color Color, int FillFlag)
 {
-	auto& context = ScreenManager::GetInstance().GetContext();
-
 	// ワールド座標をコンソール座標に変換
 	SHORT cx = WorldToConsoleX(x);
 	SHORT cy = WorldToConsoleY(y);
@@ -98,36 +86,31 @@ void DrawOval(float x, float y, float rx, float ry, Attributes Color, int FillFl
 	float crxf = WorldToConsoleXF(rx);
 	float cryf = WorldToConsoleYF(ry);
 
-	// 文字の長さ
-	int str_len = std::max((int)sizeof(WCHAR), (int)wcslen(Str));
-
 	// Yループ
 	SHORT ix, iy;
 	for (iy = -cry; iy <= cry; iy++)
 	{
 		// Xループ
-		for (ix = -crx; ix <= crx; ix += str_len)
+		for (ix = -crx; ix <= crx; ix++)
 		{
 			// 塗りつぶし時、または縁の場合描画
 			float p = (ix*ix) / (crxf*crxf) + (iy*iy) / (cryf*cryf) - 1;
 			if (FillFlag ? p <= .08f : -.25f < p && p < .08f)
-				context.DrawString({ cx + ix, cy + iy }, Color, Str);
+				Screen::Draw({ cx + ix, cy + iy }, Color);
 		}
 	}
 }
 
 // 円描画関数
-void DrawCircle(float x, float y, float r, Attributes Color, int FillFlag, const WCHAR* Str)
+void DrawCircle(float x, float y, float r, Color Color, int FillFlag)
 {
 	// 楕円描画
-	DrawOval(x, y, r, r, Color, FillFlag, Str);
+	DrawOval(x, y, r, r, Color, FillFlag);
 }
 
 // 線描画関数
-void DrawLine(float x1, float y1, float x2, float y2, Attributes Color, const WCHAR* Str)
+void DrawLine(float x1, float y1, float x2, float y2, Color Color)
 {
-	auto& context = ScreenManager::GetInstance().GetContext();
-
 	// ワールド座標をコンソール座標に変換
 	int cx1 = (int)WorldToConsoleX(x1);
 	int cy1 = (int)WorldToConsoleY(y1);
@@ -160,7 +143,7 @@ void DrawLine(float x1, float y1, float x2, float y2, Attributes Color, const WC
 		for (x = cx1; x != cx2; x += incx)
 		{
 			// 描画
-			context.DrawString({ steep ? y : x, steep ? x : y }, Color, Str);
+			Screen::Draw({ steep ? y : x, steep ? x : y }, Color);
 
 			// ズレを修正&チェック
 			if ((error -= deltay) < 0)
@@ -173,7 +156,7 @@ void DrawLine(float x1, float y1, float x2, float y2, Attributes Color, const WC
 }
 
 // 破線を描画
-void DrawDashedLine(float x1, float y1, float x2, float y2, Attributes color, float length, const WCHAR* Str)
+void DrawDashedLine(float x1, float y1, float x2, float y2, Color color, float length)
 {
 	// 差
 	float vx = x2 - x1;
@@ -197,7 +180,7 @@ void DrawDashedLine(float x1, float y1, float x2, float y2, Attributes color, fl
 	for (i = 0; i < count; i += 2)
 	{
 		// 線を描画
-		DrawLine(x, y, (x + dx), (y + dy), color, Str);
+		DrawLine(x, y, (x + dx), (y + dy), color);
 		// 座標を更新
 		x += dx * 2;
 		y += dy * 2;
@@ -206,6 +189,6 @@ void DrawDashedLine(float x1, float y1, float x2, float y2, Attributes color, fl
 	// 最後、偶数で終わったら
 	if (count % 2 == 0)
 	{
-		DrawLine(x, y, x2, y2, color, Str);
+		DrawLine(x, y, x2, y2, color);
 	}
 }

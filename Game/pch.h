@@ -18,6 +18,7 @@
 #include <cwchar>
 
 #include <cmath>
+#include <chrono>
 #include <limits>
 #include <utility>
 #include <random>

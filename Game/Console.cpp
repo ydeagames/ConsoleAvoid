@@ -35,14 +35,14 @@ struct tag_ScreenInfo
 	COORD  screenSize;        // 画面サイズ
 	WORD   textAttributes;    // 文字の前景色属性と背景色属性
 };
-typedef struct tag_ScreenInfo ScreenContext;
+typedef struct tag_ScreenInfo Screen;
 
 
 
 
 // 非公開関数のプロトタイプ宣言  /__/__/__/__/__/__/__/__/__/__/__/__/__/__/
 //______________________________/_____/_____/_____/_____/_____/_____/_____/
-ScreenContext GetCurrentConsoleScreenInfo(void);    // コンソール画面の初期化
+Screen GetCurrentConsoleScreenInfo(void);    // コンソール画面の初期化
 void ResizeScreen(SHORT dx, SHORT dy);           // 画面のサイズ変更
 int  Clamp(int num, int min, int max);           // 指定された範囲内の数値を返す
 void ExitWithMessage(const char* message);       // 強制終了(メッセージ付き)
@@ -52,7 +52,7 @@ void ExitWithMessage(const char* message);       // 強制終了(メッセージ付き)
 
 // ファイルスコープ変数の宣言    /__/__/__/__/__/__/__/__/__/__/__/__/__/__/
 //______________________________/_____/_____/_____/_____/_____/_____/_____/
-static ScreenContext s_screenInfo = GetCurrentConsoleScreenInfo();    // 画面に関連する情報
+static Screen s_screenInfo = GetCurrentConsoleScreenInfo();    // 画面に関連する情報
 
 
 
@@ -211,7 +211,7 @@ void SetCursorVisibility(CursorVisibility cursorState)
 //! @param[in] cursorPositionY カーソルのY座標
 //!
 //! @return なし
-//===================================================================
+//===============================================================Cons====
 void SetCursorPosition(int cursorPositionX, int cursorPositionY)
 {
 	// ローカル変数の宣言 --------------------------------
@@ -523,12 +523,12 @@ void SetBackColor(ConsoleColor backColor)
 //!
 //! @return 現在のコンソール画面に関する情報
 //===================================================================
-ScreenContext GetCurrentConsoleScreenInfo(void)
+Screen GetCurrentConsoleScreenInfo(void)
 {
 	// ローカル変数の宣言 --------------------------------
 	HANDLE                     hStdOutput = GetStdHandle(STD_OUTPUT_HANDLE);    // 標準出力デバイスのハンドル
 	CONSOLE_SCREEN_BUFFER_INFO screenBufferInfo;                                // スクリーンバッファに関する情報
-	ScreenContext                 screenInfo;                                      // コンソール画面に関する情報
+	Screen                 screenInfo;                                      // コンソール画面に関する情報
 	
 
 	// スクリーンバッファに関する情報の取得 --------------

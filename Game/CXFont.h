@@ -37,10 +37,10 @@ typedef struct {
 CXFont CreateFontToHandle(CXFontType Font, int Size);
 
 // 文字列描画関数
-void DrawString(float x, float y, const WCHAR* String, Attributes Color = { Colors::White, Colors::Black });
+void DrawString(float x, float y, const WCHAR* String, Color Color);
 
 // フォントハンドルを使用した文字列の描画幅(ワールド座標)を取得する
 float GetDrawStringWidthToHandle(const WCHAR* String, const CXFont* FontHandle);
 
 // フォントハンドルを使用して文字列を描画する
-void DrawStringToHandle(float x, float y, const WCHAR* String, Attributes Color, const CXFont* FontHandle, const WCHAR* Str = L" ");
+void DrawStringToHandle(float x, float y, const WCHAR* String, Color Color, const CXFont* FontHandle);
