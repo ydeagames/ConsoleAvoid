@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Game\FrameTimer.h" />
     <ClInclude Include="Game\Screen.h" />
     <ClInclude Include="Game\Color.h" />
     <ClInclude Include="Game\Console.h" />
@@ -164,11 +165,14 @@
     <ClInclude Include="Game\ScreenContext.h" />
     <ClInclude Include="Game\ScreenManager.h" />
     <ClInclude Include="Game\Singleton.h" />
+    <ClInclude Include="Game\String.h" />
+    <ClInclude Include="Game\Time.h" />
     <ClInclude Include="Game\Vec2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Color.cpp" />
     <ClCompile Include="Game\ConsoleCharacter.cpp" />
+    <ClCompile Include="Game\FrameTimer.cpp" />
     <ClCompile Include="Game\Screen.cpp" />
     <ClCompile Include="Game\Console.cpp" />
     <ClCompile Include="Game\CXFont.cpp" />
@@ -190,6 +194,8 @@
     <ClCompile Include="Game\ScreenContext.cpp" />
     <ClCompile Include="Game\ScreenManager.cpp" />
     <ClCompile Include="Game\Singleton.cpp" />
+    <ClCompile Include="Game\String.cpp" />
+    <ClCompile Include="Game\Time.cpp" />
     <ClCompile Include="Game\Vec2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

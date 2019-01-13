@@ -17,23 +17,14 @@
 #include "ScreenManager.h"
 #include "Input.h"
 #include "MathUtils.h"
+#include "Time.h"
 
 
 
 // グローバル変数定義 ======================================================
 
-// 最後の時刻
-static std::chrono::time_point<std::chrono::high_resolution_clock> last_time;
-// 最後の時刻
-static std::chrono::time_point<std::chrono::high_resolution_clock> start_time;
-// 1フレームの間隔
-static std::chrono::nanoseconds delta_clock;
-// 1フレームの秒
-float delta_time;
 // 終了リクエスト
 static bool exit_request = false;
-// FPS
-static const int FPS = 60;
 
 
 
@@ -42,23 +33,10 @@ static const int FPS = 60;
 // 1フレーム
 static int ProcessMessage(void)
 {
-	static auto interval = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::seconds(1)) / FPS;
-
-	std::chrono::time_point<std::chrono::high_resolution_clock> now = std::chrono::high_resolution_clock::now();
-	delta_clock = now - last_time;
-
-	last_time = now;
-
-	delta_time = delta_clock.count() * 1e-9f;
-
-	auto processingtime = now - start_time;
-	auto sleeptime = interval - processingtime;
-	Sleep(static_cast<DWORD>(std::max(0LL, std::chrono::duration_cast<std::chrono::milliseconds>(sleeptime).count())));
-
-	start_time = std::chrono::high_resolution_clock::now();
-
+	auto& time = Time::GetInstance();
+	time.Update();
+	time.WaitFrame();
 	InputManager::GetInstance().Update();
-
 	return exit_request;
 }
 
@@ -87,7 +65,7 @@ void ExitGame(void)
 int main(void)
 {
 	// 初期状態の画面モードの設定
-	ScreenManager::GetInstance().SetFontSize(SCREEN_FONT_SIZE/2, SCREEN_FONT_SIZE);
+	ScreenManager::GetInstance().SetFontSize(SCREEN_FONT_SIZE / 2, SCREEN_FONT_SIZE);
 	ScreenManager::GetInstance().SetScreenSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	ScreenManager::GetInstance().SetCursorVisibility(CURSOR_INVISIBLE);
 

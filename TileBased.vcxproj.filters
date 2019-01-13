@@ -59,6 +59,15 @@
     <ClInclude Include="Game\Screen.h">
       <Filter>ゲーム</Filter>
     </ClInclude>
+    <ClInclude Include="Game\String.h">
+      <Filter>ゲーム</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\FrameTimer.h">
+      <Filter>ゲーム</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Time.h">
+      <Filter>ゲーム</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Color.cpp">
@@ -104,6 +113,15 @@
       <Filter>ゲーム</Filter>
     </ClCompile>
     <ClCompile Include="Game\Screen.cpp">
+      <Filter>ゲーム</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\String.cpp">
+      <Filter>ゲーム</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\FrameTimer.cpp">
+      <Filter>ゲーム</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Time.cpp">
       <Filter>ゲーム</Filter>
     </ClCompile>
   </ItemGroup>

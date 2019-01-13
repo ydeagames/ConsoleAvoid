@@ -18,6 +18,9 @@
 #include "Vec2.h"
 #include "ScreenManager.h"
 #include "Screen.h"
+#include "Time.h"
+#include "FrameTimer.h"
+#include "String.h"
 
 // íËêîÇÃíËã` ==============================================================
 
@@ -33,6 +36,7 @@ bool g_paused;
 int g_pause_select;
 
 Vec2 g_pos;
+FrameTimer fps;
 
 // ä÷êîÇÃíËã` ==============================================================
 
@@ -59,7 +63,9 @@ void InitializeGame(void)
 //----------------------------------------------------------------------
 void UpdateGame(void)
 {
-	float speed = 10 * delta_time;
+	fps.Update();
+
+	float speed = 10 * Time::deltaTime;
 	if (InputManager::GetInstance().key->GetButton('W') || InputManager::GetInstance().key->GetButton(VK_UP))
 		g_pos += Vec2::up * speed;
 	if (InputManager::GetInstance().key->GetButton('S') || InputManager::GetInstance().key->GetButton(VK_DOWN))
@@ -107,6 +113,15 @@ void RenderGame(void)
 		DrawStringToHandle(20, 40, L"Å®", Colors::White, &g_font);
 
 	//DrawBox(10, 10, 90, 90, ATTR_WHITE, false);
+
+	auto& time = Time::GetInstance();
+	Screen::DrawString(COORD{ 1, 1 }, Colors::White,
+		String::Format(L"FPS: %5.2f ( %lld / %lld )",
+			fps.GetFrameRate(),
+			std::chrono::duration_cast<std::chrono::milliseconds>(time.delta_processing).count(),
+			std::chrono::duration_cast<std::chrono::milliseconds>(time.delta_frame).count()
+		)
+	);
 }
 
 //----------------------------------------------------------------------
