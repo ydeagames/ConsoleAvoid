@@ -40,6 +40,14 @@ public:
 	constexpr Vector2(int x, int y)
 		: Vector2(static_cast<float>(x), static_cast<float>(y)) {}
 
+	// <Console Extensions>
+	constexpr Vector2(SHORT x, SHORT y)
+		: Vector2(static_cast<float>(x), static_cast<float>(y)) {}
+
+	// <Console Extensions>
+	constexpr Vector2(COORD coord)
+		: Vector2(static_cast<float>(coord.X), static_cast<float>(coord.Y)) {}
+
 	// <ベクトル作成>
 	constexpr Vector2()
 		: Vector2(0, 0) {}
@@ -50,6 +58,15 @@ public:
 
 	// <整数Y>
 	constexpr inline int Y() const { return static_cast<int>(y); }
+
+	// <Console Extensions>
+	constexpr operator COORD() const { return COORD{ static_cast<SHORT>(x), static_cast<SHORT>(y) }; }
+
+	// <Console Extensions>
+	constexpr inline SHORT Xs() const { return static_cast<SHORT>(x); }
+
+	// <Console Extensions>
+	constexpr inline SHORT Ys() const { return static_cast<SHORT>(y); }
 
 	// <X成分ベクトル>
 	constexpr inline Vector2 VecX() const { return { x, 0.f }; }

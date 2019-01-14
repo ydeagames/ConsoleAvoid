@@ -68,6 +68,9 @@
     <ClInclude Include="Game\MathUtils.h">
       <Filter>ゲーム</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Matrix.h">
+      <Filter>ゲーム</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Color.cpp">
@@ -122,6 +125,9 @@
       <Filter>ゲーム</Filter>
     </ClCompile>
     <ClCompile Include="Game\MathUtils.cpp">
+      <Filter>ゲーム</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Matrix.cpp">
       <Filter>ゲーム</Filter>
     </ClCompile>
   </ItemGroup>

@@ -27,6 +27,8 @@
 
 // グローバル変数の定義 ====================================================
 
+using namespace CXLib;
+
 // <フォント> ----------------------------------------------------------
 CXFont g_font_pong;
 CXFont g_font;
@@ -87,12 +89,13 @@ void RenderGame(void)
 {
 	auto& context = ScreenManager::GetInstance().GetContext();
 
-	float right = ConsoleToWorldX(context.boundsMax.X);
-	float bottom = ConsoleToWorldY(context.boundsMax.Y);
-	DrawStringToHandle(right - g_pos.x, bottom - g_pos.y, L"Pong Game!", Colors::Red, &g_font_pong);
+	Vector2 boundsMax = Vector2{ context.boundsMax } * ConsoleToScreen;
+	DrawStringToHandle(boundsMax - g_pos, L"Pong Game!", Colors::Red, &g_font_pong);
 	for (int iy = 0; iy < 2; iy++)
 		for (int ix = 0; ix < 10; ix++)
-			DrawCircle(g_pos.x + ix * 10, g_pos.y + iy * 10, 5, Colors::Blue, true);
+			DrawCircle(g_pos + Vector2{ ix, iy }*10, 5, Colors::Blue, true);
+	DrawDashedLine(Vector2::zero, Vector2{ context.boundsMax } * ConsoleToScreen, Colors::Green, 8);
+	//DrawLine(Vector2::zero, Vector2{ context.boundsMax } * ConsoleToScreen, Colors::Green);
 
 	//POINT point;
 	//GetCursorPos(&point);
@@ -101,26 +104,25 @@ void RenderGame(void)
 
 	//DrawBox(5, 5, 95, 95, ATTR_WHITE, false);
 
-	DrawStringToHandle(g_pos.x, g_pos.y, L"あsu\nshiいう\nsus\nhi↑え↑お┃か", Colors::White, &g_font);
+	DrawStringToHandle(g_pos, L"あsu\nshiいう\nsus\nhi↑え↑お┃か", Colors::White, &g_font);
 
 	if (InputManager::GetInstance().key->GetButton('W') || InputManager::GetInstance().key->GetButton(VK_UP))
-		DrawStringToHandle(15, 35, L"↑", Colors::White, &g_font);
+		DrawStringToHandle(Vector2{ 15, 35 }, L"↑", Colors::White, &g_font);
 	if (InputManager::GetInstance().key->GetButton('S') || InputManager::GetInstance().key->GetButton(VK_DOWN))
-		DrawStringToHandle(15, 45, L"↓", Colors::White, &g_font);
+		DrawStringToHandle(Vector2{ 15, 45 }, L"↓", Colors::White, &g_font);
 	if (InputManager::GetInstance().key->GetButton('A') || InputManager::GetInstance().key->GetButton(VK_LEFT))
-		DrawStringToHandle(10, 40, L"←", Colors::White, &g_font);
+		DrawStringToHandle(Vector2{ 10, 40 }, L"←", Colors::White, &g_font);
 	if (InputManager::GetInstance().key->GetButton('D') || InputManager::GetInstance().key->GetButton(VK_RIGHT))
-		DrawStringToHandle(20, 40, L"→", Colors::White, &g_font);
+		DrawStringToHandle(Vector2{ 20, 40 }, L"→", Colors::White, &g_font);
 
 	//DrawBox(10, 10, 90, 90, ATTR_WHITE, false);
 
 	auto& time = Time::GetInstance();
-	//Screen::DrawString(COORD{ 1, 1 }, Colors::White,
+	auto sleeptime = std::max(std::chrono::nanoseconds::zero(), time.interval - time.delta_processing);
 	ScreenManager::GetInstance().SetTitle(
-		String::Format(L"FPS: %5.2f ( %2lld / %2lld )",
+		String::Format(L"FPS: %5.2f ( %2lld )",
 			fps.GetFrameRate(),
-			std::chrono::duration_cast<std::chrono::milliseconds>(time.delta_processing).count(),
-			std::chrono::duration_cast<std::chrono::milliseconds>(time.delta_frame).count()
+			std::chrono::duration_cast<std::chrono::milliseconds>(sleeptime).count()
 		)
 	);
 }

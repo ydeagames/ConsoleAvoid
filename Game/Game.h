@@ -9,9 +9,6 @@
 
 // <âÊñ > --------------------------------------------------------------
 
-#define SCREEN_RESOLUTION_X			(7.f / 4.f)																// ècâ°î‰ (â°)
-#define SCREEN_RESOLUTION_Y			(1.f)																	// ècâ°î‰ (èc)
-#define SCREEN_FONT_SIZE			(7)																		// ï∂éöÇÃëÂÇ´Ç≥[pt]
 
 
 
