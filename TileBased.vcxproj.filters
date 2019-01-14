@@ -38,9 +38,6 @@
     <ClInclude Include="Game\Input.h">
       <Filter>ゲーム</Filter>
     </ClInclude>
-    <ClInclude Include="Game\MathUtils.h">
-      <Filter>ゲーム</Filter>
-    </ClInclude>
     <ClInclude Include="Game\pch.h">
       <Filter>ゲーム</Filter>
     </ClInclude>
@@ -53,9 +50,6 @@
     <ClInclude Include="Game\Singleton.h">
       <Filter>ゲーム</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Vec2.h">
-      <Filter>ゲーム</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Screen.h">
       <Filter>ゲーム</Filter>
     </ClInclude>
@@ -66,6 +60,12 @@
       <Filter>ゲーム</Filter>
     </ClInclude>
     <ClInclude Include="Game\Time.h">
+      <Filter>ゲーム</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Vector2.h">
+      <Filter>ゲーム</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MathUtils.h">
       <Filter>ゲーム</Filter>
     </ClInclude>
   </ItemGroup>
@@ -94,9 +94,6 @@
     <ClCompile Include="Game\Main.cpp">
       <Filter>ゲーム</Filter>
     </ClCompile>
-    <ClCompile Include="Game\MathUtils.cpp">
-      <Filter>ゲーム</Filter>
-    </ClCompile>
     <ClCompile Include="Game\pch.cpp">
       <Filter>ゲーム</Filter>
     </ClCompile>
@@ -109,9 +106,6 @@
     <ClCompile Include="Game\Singleton.cpp">
       <Filter>ゲーム</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Vec2.cpp">
-      <Filter>ゲーム</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Screen.cpp">
       <Filter>ゲーム</Filter>
     </ClCompile>
@@ -122,6 +116,12 @@
       <Filter>ゲーム</Filter>
     </ClCompile>
     <ClCompile Include="Game\Time.cpp">
+      <Filter>ゲーム</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Vector2.cpp">
+      <Filter>ゲーム</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\MathUtils.cpp">
       <Filter>ゲーム</Filter>
     </ClCompile>
   </ItemGroup>

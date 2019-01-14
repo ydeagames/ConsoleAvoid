@@ -15,7 +15,7 @@
 #include "Input.h"
 #include "CXLib.h"
 #include "CXFont.h"
-#include "Vec2.h"
+#include "Vector2.h"
 #include "ScreenManager.h"
 #include "Screen.h"
 #include "Time.h"
@@ -35,7 +35,7 @@ CXFont g_font;
 bool g_paused;
 int g_pause_select;
 
-Vec2 g_pos;
+Vector2 g_pos;
 FrameTimer fps;
 
 // ŠÖ”‚Ì’è‹` ==============================================================
@@ -67,13 +67,13 @@ void UpdateGame(void)
 
 	float speed = 10 * Time::deltaTime;
 	if (InputManager::GetInstance().key->GetButton('W') || InputManager::GetInstance().key->GetButton(VK_UP))
-		g_pos += Vec2::up * speed;
+		g_pos += Vector2::up * speed;
 	if (InputManager::GetInstance().key->GetButton('S') || InputManager::GetInstance().key->GetButton(VK_DOWN))
-		g_pos += Vec2::down * speed;
+		g_pos += Vector2::down * speed;
 	if (InputManager::GetInstance().key->GetButton('A') || InputManager::GetInstance().key->GetButton(VK_LEFT))
-		g_pos += Vec2::left * speed;
+		g_pos += Vector2::left * speed;
 	if (InputManager::GetInstance().key->GetButton('D') || InputManager::GetInstance().key->GetButton(VK_RIGHT))
-		g_pos += Vec2::right * speed;
+		g_pos += Vector2::right * speed;
 }
 
 //----------------------------------------------------------------------

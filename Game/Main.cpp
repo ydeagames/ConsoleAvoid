@@ -70,7 +70,7 @@ int main(void)
 	//ScreenManager::GetInstance().SetPixelSize(14);
 	ScreenManager::GetInstance().SetFontSize(7);
 	ScreenManager::GetInstance().SetWindowSize(640, 480);
-	ScreenManager::GetInstance().SetCursorVisibility(CURSOR_INVISIBLE);
+	ScreenManager::GetInstance().SetCursorVisibility(false);
 	ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
 
 	auto& context = ScreenManager::GetInstance().GetContext();

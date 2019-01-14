@@ -135,8 +135,8 @@ void SetFontSize(int fontSize)
 
 
 	// フォントサイズの設定 ------------------------------
-	fontInfo.dwFontSize.X = (SHORT)fontSize / 2;
-	fontInfo.dwFontSize.Y = (SHORT)fontSize;
+	fontInfo.dwFontSize.X = static_cast<SHORT>(fontSize) / 2;
+	fontInfo.dwFontSize.Y = static_cast<SHORT>(fontSize);
 
 
 	// フォントの更新 ------------------------------------
@@ -169,7 +169,7 @@ int GetFontSize(void)
 
 
 	// フォントサイズの返却 ------------------------------
-	return (int)fontInfo.dwFontSize.Y;
+	return static_cast<int>(fontInfo.dwFontSize.Y);
 }
 
 
@@ -217,8 +217,8 @@ void SetCursorPosition(int cursorPositionX, int cursorPositionY)
 	// ローカル変数の宣言 --------------------------------
 	COORD  cursorPosition =    // カーソルの位置情報
 	{
-		(SHORT)cursorPositionX,    // X座標
-		(SHORT)cursorPositionY     // Y座標
+		static_cast<SHORT>(cursorPositionX),    // X座標
+		static_cast<SHORT>(cursorPositionY)     // Y座標
 	};
 
 

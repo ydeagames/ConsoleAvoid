@@ -151,6 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Game\FrameTimer.h" />
+    <ClInclude Include="Game\MathUtils.h" />
     <ClInclude Include="Game\Screen.h" />
     <ClInclude Include="Game\Color.h" />
     <ClInclude Include="Game\Console.h" />
@@ -160,19 +161,19 @@
     <ClInclude Include="Game\Game.h" />
     <ClInclude Include="Game\GameMain.h" />
     <ClInclude Include="Game\Input.h" />
-    <ClInclude Include="Game\MathUtils.h" />
     <ClInclude Include="Game\pch.h" />
     <ClInclude Include="Game\ScreenContext.h" />
     <ClInclude Include="Game\ScreenManager.h" />
     <ClInclude Include="Game\Singleton.h" />
     <ClInclude Include="Game\String.h" />
     <ClInclude Include="Game\Time.h" />
-    <ClInclude Include="Game\Vec2.h" />
+    <ClInclude Include="Game\Vector2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Color.cpp" />
     <ClCompile Include="Game\ConsoleCharacter.cpp" />
     <ClCompile Include="Game\FrameTimer.cpp" />
+    <ClCompile Include="Game\MathUtils.cpp" />
     <ClCompile Include="Game\Screen.cpp" />
     <ClCompile Include="Game\Console.cpp" />
     <ClCompile Include="Game\CXFont.cpp" />
@@ -180,7 +181,6 @@
     <ClCompile Include="Game\GameMain.cpp" />
     <ClCompile Include="Game\Input.cpp" />
     <ClCompile Include="Game\Main.cpp" />
-    <ClCompile Include="Game\MathUtils.cpp" />
     <ClCompile Include="Game\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pch.h</PrecompiledHeaderFile>
@@ -196,7 +196,7 @@
     <ClCompile Include="Game\Singleton.cpp" />
     <ClCompile Include="Game\String.cpp" />
     <ClCompile Include="Game\Time.cpp" />
-    <ClCompile Include="Game\Vec2.cpp" />
+    <ClCompile Include="Game\Vector2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

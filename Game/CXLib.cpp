@@ -2,7 +2,6 @@
 #include "Game.h"
 #include "Screen.h"
 #include "ScreenManager.h"
-#include "MathUtils.h"
 
 // ワールド座標をコンソール座標に変換
 float WorldToConsoleXF(float world_x, float size)
@@ -19,13 +18,13 @@ float WorldToConsoleYF(float world_y, float size)
 // ワールド座標をコンソール座標に変換
 SHORT WorldToConsoleX(float world_x, float size)
 {
-	return (SHORT)floorf(WorldToConsoleXF(world_x, size));
+	return static_cast<SHORT>(floorf(WorldToConsoleXF(world_x, size)));
 }
 
 // ワールド座標をコンソール座標に変換
 SHORT WorldToConsoleY(float world_y, float size)
 {
-	return (SHORT)floorf(WorldToConsoleYF(world_y, size));
+	return static_cast<SHORT>(floorf(WorldToConsoleYF(world_y, size)));
 }
 
 // コンソール座標をワールド座標に変換
@@ -43,13 +42,13 @@ float ConsoleToWorldYF(float screen_y, float size)
 // コンソール座標をワールド座標に変換
 float ConsoleToWorldX(SHORT screen_x, float size)
 {
-	return ConsoleToWorldXF((float)screen_x, size);
+	return ConsoleToWorldXF(static_cast<float>(screen_x), size);
 }
 
 // コンソール座標をワールド座標に変換
 float ConsoleToWorldY(SHORT screen_y, float size)
 {
-	return ConsoleToWorldYF((float)screen_y, size);
+	return ConsoleToWorldYF(static_cast<float>(screen_y), size);
 }
 
 // 矩形描画関数
@@ -112,10 +111,10 @@ void DrawCircle(float x, float y, float r, Color Color, int FillFlag)
 void DrawLine(float x1, float y1, float x2, float y2, Color Color)
 {
 	// ワールド座標をコンソール座標に変換
-	int cx1 = (int)WorldToConsoleX(x1);
-	int cy1 = (int)WorldToConsoleY(y1);
-	int cx2 = (int)WorldToConsoleX(x2);
-	int cy2 = (int)WorldToConsoleY(y2);
+	int cx1 = static_cast<int>(WorldToConsoleX(x1));
+	int cy1 = static_cast<int>(WorldToConsoleY(y1));
+	int cx2 = static_cast<int>(WorldToConsoleX(x2));
+	int cy2 = static_cast<int>(WorldToConsoleY(y2));
 
 	// 縦、横、どちらの比が大きいか
 	bool steep = std::abs(cy2 - cy1) > std::abs(cx2 - cx1);
@@ -169,7 +168,7 @@ void DrawDashedLine(float x1, float y1, float x2, float y2, Color color, float l
 	float dy = length*sinf(angle);
 
 	// 点線の数
-	int count = (int)(sqrtf(vx * vx + vy * vy) / length);
+	int count = static_cast<int>(sqrtf(vx * vx + vy * vy) / length);
 
 	// 初期座標
 	float x = x1;
