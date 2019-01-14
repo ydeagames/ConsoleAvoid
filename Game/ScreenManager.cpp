@@ -7,6 +7,16 @@ ScreenManager::ScreenManager()
 
 void ScreenManager::UpdateContext()
 {
+	// スクリーンバッファに関する情報
+	CONSOLE_SCREEN_BUFFER_INFO screenBufferInfo;
+
+	// スクリーンバッファに関する情報の取得
+	GetConsoleScreenBufferInfo(context.handle, &screenBufferInfo);
+
+	// スクリーンバッファ修正
+	SetConsoleScreenBufferSize(context.handle, COORD{ screenBufferInfo.srWindow.Right + 1, screenBufferInfo.srWindow.Bottom + 1 });
+
+	// コンテキスト更新
 	context = ScreenContext{ context.handle, context.default_pixel };
 }
 
@@ -17,17 +27,16 @@ bool ScreenManager::SetScreenSize(int width, int height)
 	// ウィンドウ矩形
 	SMALL_RECT newRect =
 	{
-		0,                         // 左
-		0,                         // 上
-		newSize.X - 1,    // 右
-		newSize.Y - 1     // 下
+		0,				// 左
+		0,				// 上
+		newSize.X - 1,	// 右
+		newSize.Y - 1	// 下
 	};
 
-
-	// 画面のサイズ変更 ----------------------------------
+	// 画面のサイズ変更
 	if (newSize.X - context.boundsMax.X > 0 || newSize.Y - context.boundsMax.Y > 0)
 	{
-		// 拡大の場合 --------------------------------
+		// 拡大の場合
 		if (!SetConsoleScreenBufferSize(context.handle, newSize))
 			return false;
 
@@ -36,7 +45,7 @@ bool ScreenManager::SetScreenSize(int width, int height)
 	}
 	else
 	{
-		// 縮小の場合 --------------------------------
+		// 縮小の場合
 		if (!SetConsoleWindowInfo(context.handle, true, &newRect))
 			return false;
 
@@ -62,7 +71,7 @@ bool ScreenManager::SetWindowSize(int width, int height)
 	return SetScreenSize(width / fontInfo.dwFontSize.X, height / fontInfo.dwFontSize.Y);
 }
 
-void ScreenManager::SetFontSize(int width, int height)
+void ScreenManager::SetFontSize(int size)
 {
 	// ローカル変数の宣言
 	CONSOLE_FONT_INFOEX fontInfo = { sizeof(CONSOLE_FONT_INFOEX) };    // フォント情報
@@ -71,7 +80,7 @@ void ScreenManager::SetFontSize(int width, int height)
 	GetCurrentConsoleFontEx(context.handle, false, &fontInfo);
 
 	// フォントサイズの設定
-	fontInfo.dwFontSize = COORD{ static_cast<SHORT>(width), static_cast<SHORT>(height) };
+	fontInfo.dwFontSize = COORD{ static_cast<SHORT>(size / PixelAspectRatio), static_cast<SHORT>(size) };
 
 	// フォントの更新
 	SetCurrentConsoleFontEx(context.handle, false, &fontInfo);
@@ -80,7 +89,7 @@ void ScreenManager::SetFontSize(int width, int height)
 	UpdateContext();
 }
 
-void ScreenManager::SetPixelSize(int width, int height)
+void ScreenManager::SetPixelSize(int size)
 {
 	// ローカル変数の宣言
 	CONSOLE_FONT_INFOEX fontInfo = { sizeof(CONSOLE_FONT_INFOEX) };    // フォント情報
@@ -92,7 +101,7 @@ void ScreenManager::SetPixelSize(int width, int height)
 	COORD oldFontSize = fontInfo.dwFontSize;
 
 	// フォントサイズの設定
-	fontInfo.dwFontSize = COORD{ static_cast<SHORT>(width), static_cast<SHORT>(height) };
+	fontInfo.dwFontSize = COORD{ static_cast<SHORT>(size / PixelAspectRatio), static_cast<SHORT>(size) };
 
 	// フォントの更新
 	SetCurrentConsoleFontEx(context.handle, false, &fontInfo);
@@ -148,4 +157,9 @@ void ScreenManager::SetCursorVisibility(bool isVisible)
 	GetConsoleCursorInfo(context.handle, &cursorInfo);
 	cursorInfo.bVisible = isVisible;
 	SetConsoleCursorInfo(context.handle, &cursorInfo);
+}
+
+void ScreenManager::SetTitle(LPCWSTR title)
+{
+	SetConsoleTitleW(title);
 }

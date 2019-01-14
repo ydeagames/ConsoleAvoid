@@ -1,4 +1,5 @@
 #include "Input.h"
+#include "ScreenManager.h"
 
 InputButton::InputButton(std::shared_ptr<Input> input, int button) :
 	input(input),
@@ -67,6 +68,9 @@ void KeyInput::Update()
 			{
 			case KEY_EVENT:
 				input_state[in.Event.KeyEvent.wVirtualKeyCode] = in.Event.KeyEvent.bKeyDown != 0;
+				break;
+			case WINDOW_BUFFER_SIZE_EVENT:
+				ScreenManager::GetInstance().UpdateContext();
 				break;
 			}
 		}

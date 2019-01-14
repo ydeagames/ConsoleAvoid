@@ -13,11 +13,6 @@ Time::Time(int FPS)
 	, timepoint_frame(timepoint_first)
 	, timepoint_processing(timepoint_first)
 {
-	//// ‰Šú‰»
-	//timepoint_first = std::chrono::high_resolution_clock::now();
-	//timepoint_frame = timepoint_first;
-	//timepoint_processing = timepoint_first;
-
 	// ¬”‰Šú‰»
 	time = 0;
 	deltaTime = 0;

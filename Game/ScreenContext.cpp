@@ -15,7 +15,6 @@ ScreenContext::ScreenContext(const HANDLE& hOut, CHAR_INFO default_pixel)
 	handle = handle;
 	boundsMax = screenBufferInfo.dwSize;
 	screenRegion = { boundsMin.X, boundsMin.Y, boundsMax.X - 1, boundsMax.Y - 1 };
-	screenSize = { screenBufferInfo.srWindow.Right + 1, screenBufferInfo.srWindow.Bottom + 1 };
 	attributes = screenBufferInfo.wAttributes;
 
 	buffer = std::vector<CHAR_INFO>(boundsMax.X * boundsMax.Y, default_pixel);
@@ -32,5 +31,5 @@ void ScreenContext::Clear()
 
 void ScreenContext::Flush()
 {
-	WriteConsoleOutput(handle, bufferPtr, boundsMax, boundsMin, &screenRegion);
+	WriteConsoleOutputW(handle, bufferPtr, boundsMax, boundsMin, &screenRegion);
 }

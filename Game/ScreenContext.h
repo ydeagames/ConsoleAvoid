@@ -12,7 +12,6 @@ public:
 
 private:
 	SMALL_RECT screenRegion;	  	// 描画領域
-	COORD screenSize;			  	// 画面サイズ
 	std::vector<CHAR_INFO> buffer;	// バッファ
 	CHAR_INFO* bufferPtr;		  	// バッファ
 

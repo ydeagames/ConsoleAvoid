@@ -10,6 +10,8 @@ void Screen::Draw(COORD coord, Color backColor)
 	{
 		auto& pixel = context.Pixel(coord);
 		pixel.Attributes = Attributes::back(pixel.Attributes, backColor);
+		//auto& pixel2 = context.bufferPtr[coord.X + coord.Y * context.boundsMax.X];
+		//pixel2.Attributes = (pixel2.Attributes & 0x0f) | ((backColor & 0xf) << 4);
 	}
 }
 

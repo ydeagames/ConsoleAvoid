@@ -115,8 +115,9 @@ void RenderGame(void)
 	//DrawBox(10, 10, 90, 90, ATTR_WHITE, false);
 
 	auto& time = Time::GetInstance();
-	Screen::DrawString(COORD{ 1, 1 }, Colors::White,
-		String::Format(L"FPS: %5.2f ( %lld / %lld )",
+	//Screen::DrawString(COORD{ 1, 1 }, Colors::White,
+	ScreenManager::GetInstance().SetTitle(
+		String::Format(L"FPS: %5.2f ( %2lld / %2lld )",
 			fps.GetFrameRate(),
 			std::chrono::duration_cast<std::chrono::milliseconds>(time.delta_processing).count(),
 			std::chrono::duration_cast<std::chrono::milliseconds>(time.delta_frame).count()

@@ -65,9 +65,13 @@ void ExitGame(void)
 int main(void)
 {
 	// èâä˙èÛë‘ÇÃâÊñ ÉÇÅ[ÉhÇÃê›íË
-	ScreenManager::GetInstance().SetFontSize(SCREEN_FONT_SIZE / 2, SCREEN_FONT_SIZE);
-	ScreenManager::GetInstance().SetScreenSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+	//ScreenManager::GetInstance().SetFontSize(SCREEN_FONT_SIZE);
+	//ScreenManager::GetInstance().SetScreenSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+	//ScreenManager::GetInstance().SetPixelSize(14);
+	ScreenManager::GetInstance().SetFontSize(7);
+	ScreenManager::GetInstance().SetWindowSize(640, 480);
 	ScreenManager::GetInstance().SetCursorVisibility(CURSOR_INVISIBLE);
+	ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
 
 	auto& context = ScreenManager::GetInstance().GetContext();
 
