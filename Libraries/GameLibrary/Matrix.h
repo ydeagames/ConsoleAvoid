@@ -121,17 +121,26 @@ public:
 	}
 
 public:
-	Matrix3 Inverse() const;
+	Matrix Inverse() const;
 
 public:
 	friend Vector2 operator*(const Vector2& v, const Matrix3& m);
 	friend Vector2& operator*=(Vector2& v, const Matrix3& m);
 
 public:
-	static Matrix3 CreateRotationX(float radians);
-	static Matrix3 CreateRotationY(float radians);
-	static Matrix3 CreateRotationZ(float radians);
+	static Matrix CreateRotationX(float radians);
+	static Matrix CreateRotationY(float radians);
+	static Matrix CreateRotationZ(float radians);
 
-	static Matrix3 CreateTranslation(const Vector2& translation);
-	static Matrix3 CreateScale(const Vector2& scale);
+	static Matrix CreateTranslation(const Vector2& translation);
+	static Matrix CreateScale(const Vector2& scale);
 };
+
+template<> Matrix3 Matrix3::Inverse() const;
+
+template<> static Matrix3 Matrix3::CreateRotationX(float radians);
+template<> static Matrix3 Matrix3::CreateRotationY(float radians);
+template<> static Matrix3 Matrix3::CreateRotationZ(float radians);
+
+template<> static Matrix3 Matrix3::CreateTranslation(const Vector2& translation);
+template<> static Matrix3 Matrix3::CreateScale(const Vector2& scale);

@@ -1,7 +1,7 @@
 #include "Matrix.h"
 #include "Vector2.h"
 
-Matrix3 Matrix3::Inverse() const
+template<> Matrix3 Matrix3::Inverse() const
 {
 	float det =
 		p[0][0] * p[1][1] * p[2][2] +
@@ -46,7 +46,7 @@ Vector2& operator*=(Vector2& v, const Matrix3& m)
 	return v;
 }
 
-Matrix3 Matrix3::CreateRotationX(float radians)
+template<> Matrix3 Matrix3::CreateRotationX(float radians)
 {
 	Matrix3 m = CreateIdentity();
 
@@ -59,7 +59,7 @@ Matrix3 Matrix3::CreateRotationX(float radians)
 	return m;
 }
 
-Matrix3 Matrix3::CreateRotationY(float radians)
+template<> Matrix3 Matrix3::CreateRotationY(float radians)
 {
 	Matrix3 m = CreateIdentity();
 
@@ -72,7 +72,7 @@ Matrix3 Matrix3::CreateRotationY(float radians)
 	return m;
 }
 
-Matrix3 Matrix3::CreateRotationZ(float radians)
+template<> Matrix3 Matrix3::CreateRotationZ(float radians)
 {
 	Matrix3 m = CreateIdentity();
 
@@ -85,7 +85,7 @@ Matrix3 Matrix3::CreateRotationZ(float radians)
 	return m;
 }
 
-Matrix3 Matrix3::CreateTranslation(const Vector2& translation)
+template<> Matrix3 Matrix3::CreateTranslation(const Vector2& translation)
 {
 	Matrix3 m = CreateIdentity();
 
@@ -95,7 +95,7 @@ Matrix3 Matrix3::CreateTranslation(const Vector2& translation)
 	return m;
 }
 
-Matrix3 Matrix3::CreateScale(const Vector2& scale)
+template<> Matrix3 Matrix3::CreateScale(const Vector2& scale)
 {
 	Matrix3 m = CreateIdentity();
 
