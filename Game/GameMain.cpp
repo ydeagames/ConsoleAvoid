@@ -57,14 +57,6 @@ void Game::Render(void)
 	for (int iy = 0; iy < 2; iy++)
 		for (int ix = 0; ix < 10; ix++)
 			DrawCircle(obj_pos + Vector2{ ix, iy }*10, 5, Colors::Blue, true);
-	//DrawLine(Vector2::zero, Vector2{ context.boundsMax } * ConsoleToScreen, Colors::Green);
-
-	//POINT point;
-	//GetCursorPos(&point);
-	//std::string str = "x=" + std::to_string(static_cast<int>(point.x)) + ", " + "y=" + std::to_string(static_cast<int>(point.y));
-	//DrawStringToHandle(10, 25, str.c_str(), ATTR_WHITE, &font);
-
-	//DrawBox(5, 5, 95, 95, ATTR_WHITE, false);
 
 	DrawStringToHandle(obj_pos, L"Ç†su\nshiÇ¢Ç§\nsus\nhiÅ™Ç¶Å™Ç®Ñ´Ç©", Colors::White, &font);
 	DrawDashedLine(Vector2::zero, Vector2{ context.boundsMax } * ConsoleToScreen, Colors::Green, 8);
@@ -77,8 +69,6 @@ void Game::Render(void)
 		DrawStringToHandle(Vector2{ 10, 40 }, L"Å©", Colors::White, &font);
 	if (InputManager::GetInstance().key->GetButton('D') || InputManager::GetInstance().key->GetButton(VK_RIGHT))
 		DrawStringToHandle(Vector2{ 20, 40 }, L"Å®", Colors::White, &font);
-
-	//DrawBox(10, 10, 90, 90, ATTR_WHITE, false);
 
 	auto& time = Time::GetInstance();
 	auto sleeptime = std::max(std::chrono::nanoseconds::zero(), time.interval - time.delta_processing);
