@@ -133,9 +133,9 @@ namespace CXLib
 			float font_w = 0;
 			// フォント左上のX座標
 			float font_x = 0;
+
 			// 文字ループ
-			const WCHAR* c;
-			for (c = String; *c != '\0'; c++)
+			for (const WCHAR* c = String; *c != '\0'; c++)
 			{
 				// スプライト
 				Sprite* sprite = NULL;
@@ -151,16 +151,13 @@ namespace CXLib
 				}
 
 				// スプライトを取得
+				for (int i = 0; i < NUM_FONTS; i++)
 				{
-					int i;
-					for (i = 0; i < NUM_FONTS; i++)
+					// 一致していたら取得
+					if (fonts[i].name == *c)
 					{
-						// 一致していたら取得
-						if (fonts[i].name == *c)
-						{
-							sprite = &fonts[i];
-							break;
-						}
+						sprite = &fonts[i];
+						break;
 					}
 				}
 
@@ -190,15 +187,18 @@ namespace CXLib
 		case CXFONT_PONG:
 			// サイズの比
 			float size = 7 / FontHandle->size;
-			// フォント左上のX座標
-			float font_x = 0;
-			// フォント左上のY座標
-			float font_y = 0;
+			// フォント左上の座標
+			Vector2 font_pos = {};
 			// フォントの最大高さ
 			float font_h = 0;
+
+			// 座標
+			Vector2 base_pos = pos * ScreenToConsole;
+			// サイズ
+			Vector2 base_size = Vector2::one / size * ScreenToConsole;
+
 			// 文字ループ
-			const WCHAR* c;
-			for (c = String; *c != '\0'; c++)
+			for (const WCHAR* c = String; *c != '\0'; c++)
 			{
 				// スプライト
 				Sprite* sprite = NULL;
@@ -207,46 +207,47 @@ namespace CXLib
 				if (*c == '\n')
 				{
 					// フォント左上のX座標をリセット
-					font_x = 0;
+					font_pos.x = 0;
 					// X座標を戻す
-					font_y += font_h + FONT_SPAN_HEIGHT;
+					font_pos.y += font_h + FONT_SPAN_HEIGHT;
 					// 最大高さのリセット
 					font_h = 0;
 					continue;
 				}
 
 				// スプライトを取得
+				for (int i = 0; i < NUM_FONTS; i++)
 				{
-					int i;
-					for (i = 0; i < NUM_FONTS; i++)
+					// 一致していたら取得
+					if (fonts[i].name == *c)
 					{
-						// 一致していたら取得
-						if (fonts[i].name == *c)
-						{
-							sprite = &fonts[i];
-							break;
-						}
+						sprite = &fonts[i];
+						break;
 					}
 				}
+
 				// スプライトがあれば
 				if (sprite != NULL)
 				{
+					COORD sprite_pos = font_pos * base_size + base_pos;
+					COORD sprite_size = Vector2{ sprite->w, sprite->h }*base_size;
+
 					// Yループ
-					SHORT ix, iy;
-					for (iy = 0; ConsoleToWorldYF(iy) < sprite->h / size; iy++)
+					for (SHORT iy = 0; iy < sprite_size.Y; iy++)
 					{
 						// Xループ
-						for (ix = 0; ConsoleToWorldXF(ix) < sprite->w / size; ix++)
+						for (SHORT ix = 0; ix < sprite_size.X; ix++)
 						{
 							// ピクセルが1だったら描画
-							if (GetPixel(sprite->x + (int)(ConsoleToWorldX(ix) * size), sprite->y + (int)(ConsoleToWorldY(iy) * size)) == '1')
-								Screen::Draw({ WorldToConsoleX(font_x / size + pos.x) + ix, WorldToConsoleY(font_y / size + pos.y) + iy }, Color);
+							if (GetPixel(sprite->x + static_cast<int>(ix / base_size.x), sprite->y + static_cast<int>(iy / base_size.y)) == '1')
+								Screen::Draw(COORD{ sprite_pos.X + ix, sprite_pos.Y + iy }, Color);
 						}
 					}
+
 					// フォント左上のX座標を進める
-					font_x += sprite->w + FONT_SPAN_WIDTH;
+					font_pos.x += sprite->w + FONT_SPAN_WIDTH;
 					// フォントの最大高さを更新
-					font_h = std::max(font_y, ConsoleToWorldY(sprite->h));
+					font_h = std::max(font_pos.y, sprite->h / base_size.x);
 				}
 			}
 			break;

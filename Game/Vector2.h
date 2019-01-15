@@ -60,7 +60,7 @@ public:
 	constexpr inline int Y() const { return static_cast<int>(y); }
 
 	// <Console Extensions>
-	constexpr operator COORD() const { return COORD{ static_cast<SHORT>(x), static_cast<SHORT>(y) }; }
+	constexpr operator COORD() const { return { static_cast<SHORT>(x), static_cast<SHORT>(y) }; }
 
 	// <Console Extensions>
 	constexpr inline SHORT Xs() const { return static_cast<SHORT>(x); }
