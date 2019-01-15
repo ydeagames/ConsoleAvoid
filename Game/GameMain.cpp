@@ -9,6 +9,7 @@
 #include "Time.h"
 #include "FrameTimer.h"
 #include "String.h"
+#include "SystemUtils.h"
 
 // ’è”‚Ì’è‹` ==============================================================
 
@@ -54,6 +55,9 @@ void InitializeGame(void)
 void UpdateGame(void)
 {
 	fps.Update();
+
+	if (InputManager::GetInstance().key->GetButton(VK_ESCAPE))
+		SystemUtils::ExitGame();
 
 	float speed = 10 * Time::deltaTime;
 	if (InputManager::GetInstance().key->GetButton('W') || InputManager::GetInstance().key->GetButton(VK_UP))

@@ -7,5 +7,5 @@ public:
 
 public:
 	// ƒQ[ƒ€‚ÌI—¹
-	void ExitGame(void);
+	static void ExitGame(void);
 };
