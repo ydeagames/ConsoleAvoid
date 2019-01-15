@@ -1,9 +1,4 @@
 #include "GameMain.h"
-#include "Screen.h"
-#include "ScreenManager.h"
-#include "Input.h"
-#include "Time.h"
-#include "SystemUtils.h"
 
 // 1フレーム
 static int ProcessMessage(void)
@@ -18,6 +13,11 @@ static int ProcessMessage(void)
 // プログラムのエントリーポイント
 int main(void)
 {
+#if defined(_DEBUG)
+	// メモリーリーク検出機構のセットアップ
+	SetUpMemoryLeakDetector();
+#endif
+
 	static auto& context = ScreenManager::GetInstance().GetContext();
 
 	// 初期状態の画面モードの設定

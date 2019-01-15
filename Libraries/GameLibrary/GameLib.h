@@ -1,0 +1,18 @@
+#pragma once
+
+#include "Color.h"
+#include "ConsoleCharacter.h"
+#include "CXFont.h"
+#include "CXLib.h"
+#include "FrameTimer.h"
+#include "Input.h"
+#include "MathUtils.h"
+#include "Matrix.h"
+#include "Screen.h"
+#include "ScreenContext.h"
+#include "ScreenManager.h"
+#include "Singleton.h"
+#include "String.h"
+#include "SystemUtils.h"
+#include "Time.h"
+#include "Vector2.h"

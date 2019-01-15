@@ -1,15 +1,4 @@
 #include "GameMain.h"
-#include "MathUtils.h"
-#include "Input.h"
-#include "CXLib.h"
-#include "CXFont.h"
-#include "Vector2.h"
-#include "ScreenManager.h"
-#include "Screen.h"
-#include "Time.h"
-#include "FrameTimer.h"
-#include "String.h"
-#include "SystemUtils.h"
 
 // <GameƒNƒ‰ƒX>
 

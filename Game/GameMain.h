@@ -7,9 +7,6 @@
 // @author êßçÏé“ñºÅ@YdeaGames
 
 #pragma once
-#include "FrameTimer.h"
-#include "CXFont.h"
-#include "Vector2.h"
 
 // <ÉQÅ[ÉÄ>
 class Game
