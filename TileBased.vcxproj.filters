@@ -26,9 +26,6 @@
     <ClInclude Include="Game\CXLib.h">
       <Filter>ゲーム</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Game.h">
-      <Filter>ゲーム</Filter>
-    </ClInclude>
     <ClInclude Include="Game\GameMain.h">
       <Filter>ゲーム</Filter>
     </ClInclude>
@@ -66,6 +63,9 @@
       <Filter>ゲーム</Filter>
     </ClInclude>
     <ClInclude Include="Game\Matrix.h">
+      <Filter>ゲーム</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\SystemUtils.h">
       <Filter>ゲーム</Filter>
     </ClInclude>
   </ItemGroup>
@@ -122,6 +122,9 @@
       <Filter>ゲーム</Filter>
     </ClCompile>
     <ClCompile Include="Game\Matrix.cpp">
+      <Filter>ゲーム</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\SystemUtils.cpp">
       <Filter>ゲーム</Filter>
     </ClCompile>
   </ItemGroup>

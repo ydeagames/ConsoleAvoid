@@ -1,16 +1,4 @@
-//__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
-//! @file   GameMain.cpp
-//!
-//! @brief  Pong Online! オリジナル課題
-//!
-//! @date   2018/06/13
-//!
-//! @author GF1 26 山口寛雅
-//__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/__/
-
-// ヘッダファイルの読み込み ================================================
 #include "GameMain.h"
-#include "Game.h"
 #include "MathUtils.h"
 #include "Input.h"
 #include "CXLib.h"
@@ -87,7 +75,7 @@ void UpdateGame(void)
 //----------------------------------------------------------------------
 void RenderGame(void)
 {
-	auto& context = ScreenManager::GetInstance().GetContext();
+	static auto& context = ScreenManager::GetInstance().GetContext();
 
 	Vector2 boundsMax = Vector2{ context.boundsMax } * ConsoleToScreen;
 	DrawStringToHandle(boundsMax - g_pos, L"Pong Game!", Colors::Red, &g_font_pong);

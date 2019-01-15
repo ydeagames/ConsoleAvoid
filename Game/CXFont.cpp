@@ -7,8 +7,8 @@ namespace CXLib
 {
 	namespace Atlas
 	{
-		constexpr auto TEXTURE_ATLAS_WIDTH = 60; 	// テクスチャアトラスの幅
-		constexpr auto TEXTURE_ATLAS_HEIGHT = 27;	// テクスチャアトラスの高さ
+		constexpr auto TEXTURE_ATLAS_WIDTH = 60; 			// テクスチャアトラスの幅
+		constexpr auto TEXTURE_ATLAS_HEIGHT = 27;			// テクスチャアトラスの高さ
 		constexpr Vector2 FONT_SPAN_SIZE = { 2.f, 2.f };	// 文字同士の横の空白
 
 		// スプライト

@@ -158,7 +158,6 @@
     <ClInclude Include="Game\ConsoleCharacter.h" />
     <ClInclude Include="Game\CXFont.h" />
     <ClInclude Include="Game\CXLib.h" />
-    <ClInclude Include="Game\Game.h" />
     <ClInclude Include="Game\GameMain.h" />
     <ClInclude Include="Game\Input.h" />
     <ClInclude Include="Game\pch.h" />
@@ -166,6 +165,7 @@
     <ClInclude Include="Game\ScreenManager.h" />
     <ClInclude Include="Game\Singleton.h" />
     <ClInclude Include="Game\String.h" />
+    <ClInclude Include="Game\SystemUtils.h" />
     <ClInclude Include="Game\Time.h" />
     <ClInclude Include="Game\Vector2.h" />
   </ItemGroup>
@@ -195,6 +195,7 @@
     <ClCompile Include="Game\ScreenManager.cpp" />
     <ClCompile Include="Game\Singleton.cpp" />
     <ClCompile Include="Game\String.cpp" />
+    <ClCompile Include="Game\SystemUtils.cpp" />
     <ClCompile Include="Game\Time.cpp" />
     <ClCompile Include="Game\Vector2.cpp" />
   </ItemGroup>
