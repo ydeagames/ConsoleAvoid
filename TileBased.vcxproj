@@ -155,7 +155,6 @@
     <ClInclude Include="Game\Matrix.h" />
     <ClInclude Include="Game\Screen.h" />
     <ClInclude Include="Game\Color.h" />
-    <ClInclude Include="Game\Console.h" />
     <ClInclude Include="Game\ConsoleCharacter.h" />
     <ClInclude Include="Game\CXFont.h" />
     <ClInclude Include="Game\CXLib.h" />
@@ -177,7 +176,6 @@
     <ClCompile Include="Game\MathUtils.cpp" />
     <ClCompile Include="Game\Matrix.cpp" />
     <ClCompile Include="Game\Screen.cpp" />
-    <ClCompile Include="Game\Console.cpp" />
     <ClCompile Include="Game\CXFont.cpp" />
     <ClCompile Include="Game\CXLib.cpp" />
     <ClCompile Include="Game\GameMain.cpp" />

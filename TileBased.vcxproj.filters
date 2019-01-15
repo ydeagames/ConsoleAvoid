@@ -17,9 +17,6 @@
     <ClInclude Include="Game\Color.h">
       <Filter>ゲーム</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Console.h">
-      <Filter>ゲーム</Filter>
-    </ClInclude>
     <ClInclude Include="Game\ConsoleCharacter.h">
       <Filter>ゲーム</Filter>
     </ClInclude>
@@ -74,9 +71,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Color.cpp">
-      <Filter>ゲーム</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Console.cpp">
       <Filter>ゲーム</Filter>
     </ClCompile>
     <ClCompile Include="Game\ConsoleCharacter.cpp">
