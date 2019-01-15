@@ -21,64 +21,82 @@
     <Filter Include="ライブラリ\ゲームライブラリ">
       <UniqueIdentifier>{401aa294-ac15-4a95-af25-96ca263f1b9a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ライブラリ\ゲームライブラリ\CXLib">
+      <UniqueIdentifier>{b3116443-77f5-40be-8dae-c0c2d669da2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ライブラリ\ゲームライブラリ\ConsoleScreen">
+      <UniqueIdentifier>{f9e29e65-3842-4a5f-9353-8e3aa1aafdac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ライブラリ\ゲームライブラリ\ConsoleController">
+      <UniqueIdentifier>{9999863f-a1b7-4075-be99-5bdc662bfbad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ライブラリ\ゲームライブラリ\ConsoleScreen\Dependencies">
+      <UniqueIdentifier>{b9fa93ed-f1b4-42fd-969a-95cdadcbc3d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ライブラリ\ゲームライブラリ\オブジェクト">
+      <UniqueIdentifier>{c520bd68-7696-4969-aabf-e9cae5e8494a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ライブラリ\ゲームライブラリ\ユーティリティ">
+      <UniqueIdentifier>{2d89f8cf-8314-4d80-93be-6a87c1ac0794}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameMain.h">
       <Filter>ゲーム</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\GameLibrary\Matrix.h">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\GameLibrary\Screen.h">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\GameLibrary\ScreenContext.h">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\GameLibrary\ScreenManager.h">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\GameLibrary\Singleton.h">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\GameLibrary\String.h">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\GameLibrary\SystemUtils.h">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\GameLibrary\Time.h">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\GameLibrary\Vector2.h">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\GameLibrary\ConsoleCharacter.h">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\GameLibrary\Color.h">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\GameLibrary\CXFont.h">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\GameLibrary\CXLib.h">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\GameLibrary\FrameTimer.h">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\GameLibrary\Input.h">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\GameLibrary\MathUtils.h">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\Utilities\MemoryLeakDetector.h">
       <Filter>ライブラリ\ユーティリティ</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\Dependencies\pch.h">
       <Filter>ライブラリ\依存関係</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\GameLibrary\CXLib.h">
+      <Filter>ライブラリ\ゲームライブラリ\CXLib</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\GameLibrary\CXFont.h">
+      <Filter>ライブラリ\ゲームライブラリ\CXLib</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\GameLibrary\ConsoleCharacter.h">
+      <Filter>ライブラリ\ゲームライブラリ\ConsoleScreen\Dependencies</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\GameLibrary\ScreenManager.h">
+      <Filter>ライブラリ\ゲームライブラリ\ConsoleScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\GameLibrary\Screen.h">
+      <Filter>ライブラリ\ゲームライブラリ\ConsoleScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\GameLibrary\ScreenContext.h">
+      <Filter>ライブラリ\ゲームライブラリ\ConsoleScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\GameLibrary\Color.h">
+      <Filter>ライブラリ\ゲームライブラリ\オブジェクト</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\GameLibrary\String.h">
+      <Filter>ライブラリ\ゲームライブラリ\オブジェクト</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\GameLibrary\Input.h">
+      <Filter>ライブラリ\ゲームライブラリ\ConsoleController</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\GameLibrary\Vector2.h">
+      <Filter>ライブラリ\ゲームライブラリ\オブジェクト</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\GameLibrary\Matrix.h">
+      <Filter>ライブラリ\ゲームライブラリ\オブジェクト</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\GameLibrary\FrameTimer.h">
+      <Filter>ライブラリ\ゲームライブラリ\ユーティリティ</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\GameLibrary\MathUtils.h">
+      <Filter>ライブラリ\ゲームライブラリ\ユーティリティ</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\GameLibrary\Singleton.h">
+      <Filter>ライブラリ\ゲームライブラリ\ユーティリティ</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\GameLibrary\SystemUtils.h">
+      <Filter>ライブラリ\ゲームライブラリ\ユーティリティ</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\GameLibrary\Time.h">
+      <Filter>ライブラリ\ゲームライブラリ\ユーティリティ</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\GameLibrary\GameLib.h">
       <Filter>ライブラリ\ゲームライブラリ</Filter>
@@ -91,56 +109,56 @@
     <ClCompile Include="Game\GameMain.cpp">
       <Filter>ゲーム</Filter>
     </ClCompile>
-    <ClCompile Include="Libraries\GameLibrary\Screen.cpp">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClCompile>
-    <ClCompile Include="Libraries\GameLibrary\ScreenContext.cpp">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClCompile>
-    <ClCompile Include="Libraries\GameLibrary\ScreenManager.cpp">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClCompile>
-    <ClCompile Include="Libraries\GameLibrary\Singleton.cpp">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClCompile>
-    <ClCompile Include="Libraries\GameLibrary\String.cpp">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClCompile>
-    <ClCompile Include="Libraries\GameLibrary\SystemUtils.cpp">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClCompile>
-    <ClCompile Include="Libraries\GameLibrary\Time.cpp">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClCompile>
-    <ClCompile Include="Libraries\GameLibrary\Vector2.cpp">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClCompile>
-    <ClCompile Include="Libraries\GameLibrary\Color.cpp">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClCompile>
-    <ClCompile Include="Libraries\GameLibrary\ConsoleCharacter.cpp">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClCompile>
-    <ClCompile Include="Libraries\GameLibrary\CXFont.cpp">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClCompile>
-    <ClCompile Include="Libraries\GameLibrary\CXLib.cpp">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClCompile>
-    <ClCompile Include="Libraries\GameLibrary\FrameTimer.cpp">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClCompile>
-    <ClCompile Include="Libraries\GameLibrary\Input.cpp">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClCompile>
-    <ClCompile Include="Libraries\GameLibrary\MathUtils.cpp">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClCompile>
-    <ClCompile Include="Libraries\GameLibrary\Matrix.cpp">
-      <Filter>ライブラリ\ゲームライブラリ</Filter>
-    </ClCompile>
     <ClCompile Include="Libraries\Dependencies\pch.cpp">
       <Filter>ライブラリ\依存関係</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\GameLibrary\CXFont.cpp">
+      <Filter>ライブラリ\ゲームライブラリ\CXLib</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\GameLibrary\CXLib.cpp">
+      <Filter>ライブラリ\ゲームライブラリ\CXLib</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\GameLibrary\ConsoleCharacter.cpp">
+      <Filter>ライブラリ\ゲームライブラリ\ConsoleScreen\Dependencies</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\GameLibrary\Screen.cpp">
+      <Filter>ライブラリ\ゲームライブラリ\ConsoleScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\GameLibrary\ScreenContext.cpp">
+      <Filter>ライブラリ\ゲームライブラリ\ConsoleScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\GameLibrary\ScreenManager.cpp">
+      <Filter>ライブラリ\ゲームライブラリ\ConsoleScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\GameLibrary\Color.cpp">
+      <Filter>ライブラリ\ゲームライブラリ\オブジェクト</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\GameLibrary\String.cpp">
+      <Filter>ライブラリ\ゲームライブラリ\オブジェクト</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\GameLibrary\Input.cpp">
+      <Filter>ライブラリ\ゲームライブラリ\ConsoleController</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\GameLibrary\Vector2.cpp">
+      <Filter>ライブラリ\ゲームライブラリ\オブジェクト</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\GameLibrary\Matrix.cpp">
+      <Filter>ライブラリ\ゲームライブラリ\オブジェクト</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\GameLibrary\FrameTimer.cpp">
+      <Filter>ライブラリ\ゲームライブラリ\ユーティリティ</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\GameLibrary\MathUtils.cpp">
+      <Filter>ライブラリ\ゲームライブラリ\ユーティリティ</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\GameLibrary\Singleton.cpp">
+      <Filter>ライブラリ\ゲームライブラリ\ユーティリティ</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\GameLibrary\SystemUtils.cpp">
+      <Filter>ライブラリ\ゲームライブラリ\ユーティリティ</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\GameLibrary\Time.cpp">
+      <Filter>ライブラリ\ゲームライブラリ\ユーティリティ</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
