@@ -1,16 +1,29 @@
-#pragma once
+// @file   GameMain.h
+//
+// @brief  ゲーム関連のヘッダファイル
+//
+// @date   日付　2019/1/15
+//
+// @author 制作者名　YdeaGames
 
+#pragma once
+#include "FrameTimer.h"
+#include "CXFont.h"
+#include "Vector2.h"
+
+// <ゲーム>
 class Game
 {
+private:
+	CXLib::CXFont font_pong;
+	CXLib::CXFont font;
+	Vector2 obj_pos;
+	FrameTimer fps;
+
+public:
+	Game();
+	~Game();
+
+	void Update(void);
+	void Render(void);
 };
-// ゲームの初期化処理
-void InitializeGame(void);
-
-// ゲームの更新処理
-void UpdateGame(void);
-
-// ゲームの描画処理
-void RenderGame(void);
-
-// ゲームの終了処理
-void FinalizeGame(void);

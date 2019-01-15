@@ -15,43 +15,38 @@ static int ProcessMessage(void)
 	return !SystemUtils::running;
 }
 
-// 裏画面切り替え
-static int ScreenFlip(void)
-{
-	static auto& context = ScreenManager::GetInstance().GetContext();
-
-	context.Flush();
-
-	return true;
-}
-
 // プログラムのエントリーポイント
 int main(void)
 {
+	static auto& context = ScreenManager::GetInstance().GetContext();
+
 	// 初期状態の画面モードの設定
-	//ScreenManager::GetInstance().SetFontSize(SCREEN_FONT_SIZE);
-	//ScreenManager::GetInstance().SetScreenSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-	//ScreenManager::GetInstance().SetPixelSize(14);
+
 	ScreenManager::GetInstance().SetFontSize(7);
 	ScreenManager::GetInstance().SetWindowSize(640, 480);
 	ScreenManager::GetInstance().SetCursorVisibility(false);
 	ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
 
-	static auto& context = ScreenManager::GetInstance().GetContext();
-
 	// ゲームの処理
-	InitializeGame();			// ゲームの初期化処理
+
+	// ゲームの初期化処理
+	Game* game = new Game;
 
 	while (!ProcessMessage())
 	{
-		UpdateGame();			// ゲームの更新処理
-		RenderGame();			// ゲームの描画処理
+		// ゲームの更新処理
+		game->Update();
+		// ゲームの描画処理
+		game->Render();
 
-		ScreenFlip();			// 裏画面の内容を表画面に反映
-		context.Clear();		// 裏画面の消去
+		// 裏画面の内容を表画面に反映
+		context.Flush();
+		// 裏画面の消去
+		context.Clear();
 	}
 
-	FinalizeGame();				// ゲームの終了処理
+	// ゲームの終了処理
+	delete game;
 
-	return 0;					// 正常終了
+	return 0;
 }
