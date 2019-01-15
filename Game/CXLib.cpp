@@ -5,54 +5,6 @@
 
 namespace CXLib
 {
-	// ワールド座標をコンソール座標に変換
-	float WorldToConsoleXF(float world_x, float size)
-	{
-		return world_x * (SCREEN_RESOLUTION_X * size);
-	}
-
-	// ワールド座標をコンソール座標に変換
-	float WorldToConsoleYF(float world_y, float size)
-	{
-		return world_y * (SCREEN_RESOLUTION_Y * size);
-	}
-
-	// ワールド座標をコンソール座標に変換
-	SHORT WorldToConsoleX(float world_x, float size)
-	{
-		return static_cast<SHORT>(floorf(WorldToConsoleXF(world_x, size)));
-	}
-
-	// ワールド座標をコンソール座標に変換
-	SHORT WorldToConsoleY(float world_y, float size)
-	{
-		return static_cast<SHORT>(floorf(WorldToConsoleYF(world_y, size)));
-	}
-
-	// コンソール座標をワールド座標に変換
-	float ConsoleToWorldXF(float screen_x, float size)
-	{
-		return screen_x / (SCREEN_RESOLUTION_X * size);
-	}
-
-	// コンソール座標をワールド座標に変換
-	float ConsoleToWorldYF(float screen_y, float size)
-	{
-		return screen_y / (SCREEN_RESOLUTION_Y * size);
-	}
-
-	// コンソール座標をワールド座標に変換
-	float ConsoleToWorldX(SHORT screen_x, float size)
-	{
-		return ConsoleToWorldXF(static_cast<float>(screen_x), size);
-	}
-
-	// コンソール座標をワールド座標に変換
-	float ConsoleToWorldY(SHORT screen_y, float size)
-	{
-		return ConsoleToWorldYF(static_cast<float>(screen_y), size);
-	}
-
 	// 矩形描画関数
 	void DrawBox(Vector2 boundsMin, Vector2 boundsMax, Color Color, int FillFlag)
 	{
@@ -209,5 +161,12 @@ namespace CXLib
 				}
 			}
 		}
+	}
+
+	// ウィンドウサイズ取得
+	Vector2 GetWindowSize()
+	{
+		static auto& context = ScreenManager::GetInstance().GetContext();
+		return Vector2{ context.boundsMax }*ConsoleToScreen;
 	}
 }

@@ -163,3 +163,9 @@ void ScreenManager::SetTitle(LPCWSTR title)
 {
 	SetConsoleTitleW(title);
 }
+
+void ScreenManager::SetCursorPosition(COORD pos)
+{
+	// カーソル位置の設定
+	SetConsoleCursorPosition(context.handle, pos);
+}

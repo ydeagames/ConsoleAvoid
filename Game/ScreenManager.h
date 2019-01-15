@@ -31,4 +31,5 @@ public:
 	void SetForeground(Color color);
 	void SetCursorVisibility(bool isVisible); // カーソルの表示・非表示切り替え
 	void SetTitle(LPCWSTR title);
+	void SetCursorPosition(COORD pos);
 };

@@ -75,7 +75,7 @@ void Screen::DrawStringLines(COORD coord, Color textColor, LPCWSTR chs)
 		for (SHORT iy = coord.Y; iy < context.boundsMax.Y; iy++)
 		{
 			// 改行までの距離
-			const WCHAR* enter = wcschr(chs, '\n');
+			LPCWSTR enter = wcschr(chs, '\n');
 
 			// 左と上にオーバーしすぎて見えなくなっていないかチェック
 			if (context.boundsMin.Y <= iy)
@@ -100,7 +100,7 @@ int Screen::GetDrawStringLinesWidth(LPCWSTR chs)
 	for (;;)
 	{
 		// 改行までの距離
-		const WCHAR* enter = wcschr(chs, '\n');
+		LPCWSTR enter = wcschr(chs, '\n');
 
 		int n = GetDrawStringWidth(chs);
 		max = std::max(max, n);
