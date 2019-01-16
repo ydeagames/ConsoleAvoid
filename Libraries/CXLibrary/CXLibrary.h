@@ -10,3 +10,5 @@
 #include "ScreenManager.h"
 #include "SystemUtils.h"
 #include "Time.h"
+
+using namespace CXLib;

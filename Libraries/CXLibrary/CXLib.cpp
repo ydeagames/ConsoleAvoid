@@ -5,11 +5,12 @@
 namespace CXLib
 {
 	// 矩形描画関数
-	void DrawBox(Vector2 boundsMin, Vector2 boundsMax, Color Color, int FillFlag)
+	void DrawBox(Vector2 boundsMin, Vector2 boundsMax, Color Color, int FillFlag, const Matrix3& world)
 	{
 		// ワールド座標をコンソール座標に変換
-		Vector2 c1 = boundsMin * ScreenToConsole;
-		Vector2 c2 = boundsMax * ScreenToConsole;
+		Matrix3 matrix = (ScreenToConsole * world);
+		Vector2 c1 = boundsMin * matrix;
+		Vector2 c2 = boundsMax * matrix;
 		SHORT cx1 = c1.Xs();
 		SHORT cy1 = c1.Ys();
 		SHORT cx2 = c2.Xs();
@@ -30,11 +31,12 @@ namespace CXLib
 	}
 
 	// 楕円描画関数
-	void DrawOval(Vector2 center, Vector2 size, Color Color, int FillFlag)
+	void DrawOval(Vector2 center, Vector2 size, Color Color, int FillFlag, const Matrix3& world)
 	{
 		// ワールド座標をコンソール座標に変換
-		Vector2 c = center * ScreenToConsole;
-		Vector2 cr = size * ScreenToConsole;
+		Matrix3 matrix = (ScreenToConsole * world);
+		Vector2 c = center * matrix;
+		Vector2 cr = size * matrix;
 		SHORT cx = c.Xs();
 		SHORT cy = c.Ys();
 		SHORT crx = cr.Xs();
@@ -56,18 +58,19 @@ namespace CXLib
 	}
 
 	// 円描画関数
-	void DrawCircle(Vector2 center, float r, Color Color, int FillFlag)
+	void DrawCircle(Vector2 center, float r, Color Color, int FillFlag, const Matrix3& world)
 	{
 		// 楕円描画
-		DrawOval(center, Vector2::one * r, Color, FillFlag);
+		DrawOval(center, Vector2::one * r, Color, FillFlag, world);
 	}
 
 	// 線描画関数
-	void DrawLine(Vector2 start, Vector2 end, Color Color)
+	void DrawLine(Vector2 start, Vector2 end, Color Color, const Matrix3& world)
 	{
 		// ワールド座標をコンソール座標に変換
-		Vector2 c1 = start * ScreenToConsole;
-		Vector2 c2 = end * ScreenToConsole;
+		Matrix3 matrix = (ScreenToConsole * world);
+		Vector2 c1 = start * matrix;
+		Vector2 c2 = end * matrix;
 		SHORT cx1 = c1.Xs();
 		SHORT cy1 = c1.Ys();
 		SHORT cx2 = c2.Xs();
@@ -112,11 +115,12 @@ namespace CXLib
 	}
 
 	// 破線を描画
-	void DrawDashedLine(Vector2 start, Vector2 end, Color Color, float length)
+	void DrawDashedLine(Vector2 start, Vector2 end, Color Color, float length, const Matrix3& world)
 	{
 		// ワールド座標をコンソール座標に変換
-		Vector2 c1 = start * ScreenToConsole;
-		Vector2 c2 = end * ScreenToConsole;
+		Matrix3 matrix = (ScreenToConsole * world);
+		Vector2 c1 = start * matrix;
+		Vector2 c2 = end * matrix;
 		SHORT cx1 = c1.Xs();
 		SHORT cy1 = c1.Ys();
 		SHORT cx2 = c2.Xs();

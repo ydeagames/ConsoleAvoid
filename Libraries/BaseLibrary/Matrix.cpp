@@ -1,6 +1,8 @@
 #include "Matrix.h"
 #include "Vector2.h"
 
+const Matrix3 Matrix3::Identity = CreateIdentity();
+
 template<> Matrix3 Matrix3::Inverse() const
 {
 	float det =
