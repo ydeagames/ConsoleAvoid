@@ -26,6 +26,7 @@
     <ClInclude Include="Libraries\BaseLibrary\BaseLibrary.h" />
     <ClInclude Include="Libraries\BaseLibrary\Easings.h" />
     <ClInclude Include="Libraries\BaseLibrary\Random.h" />
+    <ClInclude Include="Libraries\CXLibrary\CXImage.h" />
     <ClInclude Include="Libraries\CXLibrary\CXLibrary.h" />
     <ClInclude Include="Libraries\Dependencies\pch.h" />
     <ClInclude Include="Libraries\CXLibrary\Color.h" />
@@ -68,6 +69,7 @@
     <ClCompile Include="Game\TitleScene.cpp" />
     <ClCompile Include="Libraries\BaseLibrary\Easings.cpp" />
     <ClCompile Include="Libraries\BaseLibrary\Random.cpp" />
+    <ClCompile Include="Libraries\CXLibrary\CXImage.cpp" />
     <ClCompile Include="Libraries\Dependencies\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
