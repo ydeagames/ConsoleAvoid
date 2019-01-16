@@ -41,10 +41,12 @@ TitleScene::TitleScene()
 		CXFont font_pong = CreateFontToHandle(CXFontType::CXFONT_PONG, 12);
 		CXFont font = CreateFontToHandle(CXFontType::CXFONT_DEFAULT, 1);
 		Vector2 obj_pos;
+		CXImage image;
 
 		void Start()
 		{
 			obj_pos = { 10, 10 };
+			image = LoadGraph("Resources/Textures/kame.ppm", Transparent::FirstColor).DerivationGraphUV(Vector2::zero, Vector2::one / 2);
 		}
 
 		void Update()
@@ -70,9 +72,7 @@ TitleScene::TitleScene()
 			DrawStringToHandle(Vector2::zero, L"Pong Game!", Colors::Red, &font_pong, Matrix3::CreateTranslation(obj_pos) * world);
 			DrawCircle(Vector2{ 0, 10 }, 5, Colors::Blue, true, Matrix3::CreateTranslation(obj_pos) * world);
 			DrawBox(Vector2{ 10, 10 }, Vector2{ 20, 20 }, Colors::Green, true, Matrix3::CreateTranslation(obj_pos) * world);
-
-			for (int i = 0; i < 16; i++)
-				DrawBox(Vector2{ 50, 10 + i * 4 }, Vector2{ 100, 10 + (i + 1) * 4 }, i, true, world);
+			image.DrawGraph(Matrix3::CreateScale(Vector2{ 40, 40 }) * Matrix3::CreateTranslation(boundsMax - obj_pos));
 
 			DrawStringToHandle(obj_pos, L"‚ su\nshi‚¢‚¤\nsus\nhiª‚¦ª‚¨„«‚©", Colors::White, &font, world);
 			DrawStringToHandle(obj_pos + Vector2::down * 10, L"\u2593\u2593\u2593\u2593\u2593\n\u2591\u2591\u2591\u2591\u2591\n\u2592\u2592\u2592\u2592\u2592", Colors::White, &font, world);

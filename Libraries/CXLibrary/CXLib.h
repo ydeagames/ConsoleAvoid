@@ -15,13 +15,13 @@ namespace CXLib
 	constexpr auto CX_PI_F = static_cast<float>(M_PI);
 
 	// ‹éŒ`•`‰æŠÖ”
-	void DrawBox(Vector2 boundsMin, Vector2 boundsMax, Color Color, int FillFlag, const Matrix3& world = Matrix3::Identity);
+	void DrawBox(Vector2 boundsMin, Vector2 boundsMax, Color Color, bool FillFlag, const Matrix3& world = Matrix3::Identity);
 
 	// ‘È‰~•`‰æŠÖ”
-	void DrawOval(Vector2 center, Vector2 size, Color Color, int FillFlag, const Matrix3& world = Matrix3::Identity);
+	void DrawOval(Vector2 center, Vector2 size, Color Color, bool FillFlag, const Matrix3& world = Matrix3::Identity);
 
 	// ‰~•`‰æŠÖ”
-	void DrawCircle(Vector2 center, float r, Color Color, int FillFlag, const Matrix3& world = Matrix3::Identity);
+	void DrawCircle(Vector2 center, float r, Color Color, bool FillFlag, const Matrix3& world = Matrix3::Identity);
 
 	// ü•`‰æŠÖ”
 	void DrawLine(Vector2 start, Vector2 end, Color Color, const Matrix3& world = Matrix3::Identity);

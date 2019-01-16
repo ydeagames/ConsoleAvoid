@@ -3,7 +3,16 @@
 
 namespace CXLib
 {
-	class ConsoleImage
+	namespace Transparent
+	{
+		enum : ColorCode
+		{
+			None,
+			FirstColor,
+		};
+	}
+
+	class CXImage
 	{
 	public:
 		class PixelImage
@@ -26,17 +35,23 @@ namespace CXLib
 		std::shared_ptr<PixelImage> image;
 		int x, y, w, h;
 
-	public:
-		ConsoleImage(const std::string& path, ColorCode transparent = 0x0000ff);
+	private:
+		CXImage(const std::shared_ptr<PixelImage>& image, int x, int y, int w, int h);
 
 	public:
-		void DrawGraph(const Matrix3& world = Matrix3::Identity);
-		//ConsoleImage DerivationGraph(Vector2 start, Vector2 size);
+		CXImage(const std::string& path, ColorCode transparent = 0x0000ff);
+		CXImage();
+
+	public:
+		void DrawGraph(const Matrix3& world = Matrix3::Identity) const;
+
+	public:
+		CXImage DerivationGraph(Vector2 start, Vector2 size) const;
+		CXImage DerivationGraphUV(Vector2 startUV, Vector2 sizeUV) const;
 	};
-	using CXImage = std::shared_ptr<ConsoleImage>;
 
 	// イメージハンドルを作成する
-	CXImage LoadGraph(const std::string& path);
+	CXImage LoadGraph(const std::string& path, ColorCode transparent = 0x0000ff);
 
 	// イメージ描画関数
 	void DrawGraph(Vector2 pos, const CXImage& image, const Matrix3& world = Matrix3::Identity);

@@ -5,7 +5,7 @@
 namespace CXLib
 {
 	// 矩形描画関数
-	void DrawBox(Vector2 boundsMin, Vector2 boundsMax, Color Color, int FillFlag, const Matrix3& world)
+	void DrawBox(Vector2 boundsMin, Vector2 boundsMax, Color Color, bool FillFlag, const Matrix3& world)
 	{
 		// ワールド座標をコンソール座標に変換
 		Matrix3 matrix = (world * ScreenToConsole);
@@ -31,7 +31,7 @@ namespace CXLib
 	}
 
 	// 楕円描画関数
-	void DrawOval(Vector2 center, Vector2 size, Color Color, int FillFlag, const Matrix3& world)
+	void DrawOval(Vector2 center, Vector2 size, Color Color, bool FillFlag, const Matrix3& world)
 	{
 		// ワールド座標をコンソール座標に変換
 		Matrix3 matrix = (world * ScreenToConsole);
@@ -58,7 +58,7 @@ namespace CXLib
 	}
 
 	// 円描画関数
-	void DrawCircle(Vector2 center, float r, Color Color, int FillFlag, const Matrix3& world)
+	void DrawCircle(Vector2 center, float r, Color Color, bool FillFlag, const Matrix3& world)
 	{
 		// 楕円描画
 		DrawOval(center, Vector2::one * r, Color, FillFlag, world);
