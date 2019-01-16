@@ -30,7 +30,7 @@
     <ClInclude Include="Libraries\CXLibrary\ConsoleCharacter.h" />
     <ClInclude Include="Libraries\CXLibrary\CXFont.h" />
     <ClInclude Include="Libraries\CXLibrary\CXLib.h" />
-    <ClInclude Include="Libraries\CXLibrary\FrameTimer.h" />
+    <ClInclude Include="Libraries\GameLibrary\FrameTimer.h" />
     <ClInclude Include="Libraries\CXLibrary\Input.h" />
     <ClInclude Include="Libraries\BaseLibrary\MathUtils.h" />
     <ClInclude Include="Libraries\BaseLibrary\Matrix.h" />
@@ -42,7 +42,20 @@
     <ClInclude Include="Libraries\CXLibrary\SystemUtils.h" />
     <ClInclude Include="Libraries\CXLibrary\Time.h" />
     <ClInclude Include="Libraries\BaseLibrary\Vector2.h" />
+    <ClInclude Include="Libraries\GameLibrary\Collider.h" />
+    <ClInclude Include="Libraries\GameLibrary\CollisionEvent.h" />
+    <ClInclude Include="Libraries\GameLibrary\Component.h" />
+    <ClInclude Include="Libraries\GameLibrary\ComponentContainer.h" />
+    <ClInclude Include="Libraries\GameLibrary\GameLibraryClass.h" />
     <ClInclude Include="Libraries\GameLibrary\GameLibrary.h" />
+    <ClInclude Include="Libraries\GameLibrary\GameObject.h" />
+    <ClInclude Include="Libraries\GameLibrary\Renderer.h" />
+    <ClInclude Include="Libraries\GameLibrary\Rigidbody.h" />
+    <ClInclude Include="Libraries\GameLibrary\Scene.h" />
+    <ClInclude Include="Libraries\GameLibrary\SceneManager.h" />
+    <ClInclude Include="Libraries\GameLibrary\Shape.h" />
+    <ClInclude Include="Libraries\GameLibrary\Timer.h" />
+    <ClInclude Include="Libraries\GameLibrary\Transform.h" />
     <ClInclude Include="Libraries\Utilities\MemoryLeakDetector.h" />
   </ItemGroup>
   <ItemGroup>
@@ -61,7 +74,7 @@
     <ClCompile Include="Libraries\CXLibrary\ConsoleCharacter.cpp" />
     <ClCompile Include="Libraries\CXLibrary\CXFont.cpp" />
     <ClCompile Include="Libraries\CXLibrary\CXLib.cpp" />
-    <ClCompile Include="Libraries\CXLibrary\FrameTimer.cpp" />
+    <ClCompile Include="Libraries\GameLibrary\FrameTimer.cpp" />
     <ClCompile Include="Libraries\CXLibrary\Input.cpp" />
     <ClCompile Include="Libraries\BaseLibrary\MathUtils.cpp" />
     <ClCompile Include="Libraries\BaseLibrary\Matrix.cpp" />
@@ -73,6 +86,18 @@
     <ClCompile Include="Libraries\CXLibrary\SystemUtils.cpp" />
     <ClCompile Include="Libraries\CXLibrary\Time.cpp" />
     <ClCompile Include="Libraries\BaseLibrary\Vector2.cpp" />
+    <ClCompile Include="Libraries\GameLibrary\Collider.cpp" />
+    <ClCompile Include="Libraries\GameLibrary\CollisionEvent.cpp" />
+    <ClCompile Include="Libraries\GameLibrary\Component.cpp" />
+    <ClCompile Include="Libraries\GameLibrary\ComponentContainer.cpp" />
+    <ClCompile Include="Libraries\GameLibrary\GameObject.cpp" />
+    <ClCompile Include="Libraries\GameLibrary\Renderer.cpp" />
+    <ClCompile Include="Libraries\GameLibrary\Rigidbody.cpp" />
+    <ClCompile Include="Libraries\GameLibrary\Scene.cpp" />
+    <ClCompile Include="Libraries\GameLibrary\SceneManager.cpp" />
+    <ClCompile Include="Libraries\GameLibrary\Shape.cpp" />
+    <ClCompile Include="Libraries\GameLibrary\Timer.cpp" />
+    <ClCompile Include="Libraries\GameLibrary\Transform.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D65A40FE-E356-487B-925D-F6F0C8FA931C}</ProjectGuid>
@@ -153,7 +178,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;BaseLibrary\BaseLibrary.h;CXLibrary\CXLibrary.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;BaseLibrary\BaseLibrary.h;CXLibrary\CXLibrary.h;GameLibrary\GameLibraryClass.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -168,7 +193,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;BaseLibrary\BaseLibrary.h;CXLibrary\CXLibrary.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;BaseLibrary\BaseLibrary.h;CXLibrary\CXLibrary.h;GameLibrary\GameLibraryClass.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -185,7 +210,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;BaseLibrary\BaseLibrary.h;CXLibrary\CXLibrary.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;BaseLibrary\BaseLibrary.h;CXLibrary\CXLibrary.h;GameLibrary\GameLibraryClass.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -204,7 +229,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;BaseLibrary\BaseLibrary.h;CXLibrary\CXLibrary.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;BaseLibrary\BaseLibrary.h;CXLibrary\CXLibrary.h;GameLibrary\GameLibraryClass.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

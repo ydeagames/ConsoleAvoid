@@ -4,7 +4,6 @@
 #include "ConsoleCharacter.h"
 #include "CXFont.h"
 #include "CXLib.h"
-#include "FrameTimer.h"
 #include "Input.h"
 #include "Screen.h"
 #include "ScreenContext.h"

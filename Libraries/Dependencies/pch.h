@@ -17,6 +17,8 @@
 #include <typeindex>
 #include <cwchar>
 #include <functional>
+#include <queue>
+#include <array>
 
 #include <cmath>
 #include <chrono>
