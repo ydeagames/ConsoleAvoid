@@ -15,7 +15,7 @@ int main(void)
 {
 #if defined(_DEBUG)
 	// メモリーリーク検出機構のセットアップ
-	SetUpMemoryLeakDetector();
+	//SetUpMemoryLeakDetector();
 #endif
 
 	static auto& context = ScreenManager::GetInstance().GetContext();

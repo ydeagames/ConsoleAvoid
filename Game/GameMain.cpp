@@ -25,7 +25,7 @@ void Game::Update(void)
 	if (InputManager::GetInstance().key->GetButton(VK_ESCAPE))
 		SystemUtils::ExitGame();
 
-	float speed = 10 * Time::deltaTime;
+	float speed = 100 * Time::deltaTime;
 	if (InputManager::GetInstance().key->GetButton('W') || InputManager::GetInstance().key->GetButton(VK_UP))
 		obj_pos += Vector2::up * speed;
 	if (InputManager::GetInstance().key->GetButton('S') || InputManager::GetInstance().key->GetButton(VK_DOWN))

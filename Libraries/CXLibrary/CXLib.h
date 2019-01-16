@@ -1,7 +1,5 @@
 #pragma once
 #include "Color.h"
-#include "Vector2.h"
-#include "Matrix.h"
 
 namespace CXLib
 {

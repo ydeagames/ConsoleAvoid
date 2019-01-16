@@ -3,6 +3,7 @@
 namespace MathUtils
 {
 	static constexpr float FloatEpsilon = 10e-6f;
+	static constexpr float PI = static_cast<float>(M_PI);
 
 	// ”ÍˆÍ“à‚É§ŒÀ
 	template<class T> T Clamp(T x, T min, T max)

@@ -39,13 +39,13 @@ namespace MathUtils
 	// 角度の単位変換([度]→[ラジアン])
 	float ToRadians(float degree)
 	{
-		return degree * static_cast<float>(M_PI) / 180.0f;
+		return degree * PI / 180.0f;
 	}
 
 	// 角度の単位変換([ラジアン]→[度])
 	float ToDegrees(float radian)
 	{
-		return radian * 180.0f / static_cast<float>(M_PI);
+		return radian * 180.0f / PI;
 	}
 
 	// 0～maxの範囲でxは何%の位置にいるのか

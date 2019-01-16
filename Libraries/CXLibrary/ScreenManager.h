@@ -1,5 +1,4 @@
 #pragma once
-#include "Singleton.h"
 #include "Color.h"
 #include "ScreenContext.h"
 

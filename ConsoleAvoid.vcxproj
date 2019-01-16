@@ -19,52 +19,60 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\Entity.h" />
     <ClInclude Include="Game\GameMain.h" />
+    <ClInclude Include="Libraries\BaseLibrary\BaseLibrary.h" />
+    <ClInclude Include="Libraries\BaseLibrary\Easings.h" />
+    <ClInclude Include="Libraries\BaseLibrary\Random.h" />
+    <ClInclude Include="Libraries\CXLibrary\CXLibrary.h" />
     <ClInclude Include="Libraries\Dependencies\pch.h" />
-    <ClInclude Include="Libraries\GameLibrary\Color.h" />
-    <ClInclude Include="Libraries\GameLibrary\ConsoleCharacter.h" />
-    <ClInclude Include="Libraries\GameLibrary\CXFont.h" />
-    <ClInclude Include="Libraries\GameLibrary\CXLib.h" />
-    <ClInclude Include="Libraries\GameLibrary\FrameTimer.h" />
-    <ClInclude Include="Libraries\GameLibrary\GameLib.h" />
-    <ClInclude Include="Libraries\GameLibrary\Input.h" />
-    <ClInclude Include="Libraries\GameLibrary\MathUtils.h" />
-    <ClInclude Include="Libraries\GameLibrary\Matrix.h" />
-    <ClInclude Include="Libraries\GameLibrary\Screen.h" />
-    <ClInclude Include="Libraries\GameLibrary\ScreenContext.h" />
-    <ClInclude Include="Libraries\GameLibrary\ScreenManager.h" />
-    <ClInclude Include="Libraries\GameLibrary\Singleton.h" />
-    <ClInclude Include="Libraries\GameLibrary\String.h" />
-    <ClInclude Include="Libraries\GameLibrary\SystemUtils.h" />
-    <ClInclude Include="Libraries\GameLibrary\Time.h" />
-    <ClInclude Include="Libraries\GameLibrary\Vector2.h" />
+    <ClInclude Include="Libraries\CXLibrary\Color.h" />
+    <ClInclude Include="Libraries\CXLibrary\ConsoleCharacter.h" />
+    <ClInclude Include="Libraries\CXLibrary\CXFont.h" />
+    <ClInclude Include="Libraries\CXLibrary\CXLib.h" />
+    <ClInclude Include="Libraries\CXLibrary\FrameTimer.h" />
+    <ClInclude Include="Libraries\CXLibrary\Input.h" />
+    <ClInclude Include="Libraries\BaseLibrary\MathUtils.h" />
+    <ClInclude Include="Libraries\BaseLibrary\Matrix.h" />
+    <ClInclude Include="Libraries\CXLibrary\Screen.h" />
+    <ClInclude Include="Libraries\CXLibrary\ScreenContext.h" />
+    <ClInclude Include="Libraries\CXLibrary\ScreenManager.h" />
+    <ClInclude Include="Libraries\BaseLibrary\Singleton.h" />
+    <ClInclude Include="Libraries\BaseLibrary\String.h" />
+    <ClInclude Include="Libraries\CXLibrary\SystemUtils.h" />
+    <ClInclude Include="Libraries\CXLibrary\Time.h" />
+    <ClInclude Include="Libraries\BaseLibrary\Vector2.h" />
+    <ClInclude Include="Libraries\GameLibrary\GameLibrary.h" />
     <ClInclude Include="Libraries\Utilities\MemoryLeakDetector.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Entity.cpp" />
     <ClCompile Include="Game\GameMain.cpp" />
     <ClCompile Include="Game\Main.cpp" />
+    <ClCompile Include="Libraries\BaseLibrary\Easings.cpp" />
+    <ClCompile Include="Libraries\BaseLibrary\Random.cpp" />
     <ClCompile Include="Libraries\Dependencies\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Libraries\GameLibrary\Color.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\ConsoleCharacter.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\CXFont.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\CXLib.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\FrameTimer.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\Input.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\MathUtils.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\Matrix.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\Screen.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\ScreenContext.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\ScreenManager.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\Singleton.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\String.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\SystemUtils.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\Time.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\Vector2.cpp" />
+    <ClCompile Include="Libraries\CXLibrary\Color.cpp" />
+    <ClCompile Include="Libraries\CXLibrary\ConsoleCharacter.cpp" />
+    <ClCompile Include="Libraries\CXLibrary\CXFont.cpp" />
+    <ClCompile Include="Libraries\CXLibrary\CXLib.cpp" />
+    <ClCompile Include="Libraries\CXLibrary\FrameTimer.cpp" />
+    <ClCompile Include="Libraries\CXLibrary\Input.cpp" />
+    <ClCompile Include="Libraries\BaseLibrary\MathUtils.cpp" />
+    <ClCompile Include="Libraries\BaseLibrary\Matrix.cpp" />
+    <ClCompile Include="Libraries\CXLibrary\Screen.cpp" />
+    <ClCompile Include="Libraries\CXLibrary\ScreenContext.cpp" />
+    <ClCompile Include="Libraries\CXLibrary\ScreenManager.cpp" />
+    <ClCompile Include="Libraries\BaseLibrary\Singleton.cpp" />
+    <ClCompile Include="Libraries\BaseLibrary\String.cpp" />
+    <ClCompile Include="Libraries\CXLibrary\SystemUtils.cpp" />
+    <ClCompile Include="Libraries\CXLibrary\Time.cpp" />
+    <ClCompile Include="Libraries\BaseLibrary\Vector2.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D65A40FE-E356-487B-925D-F6F0C8FA931C}</ProjectGuid>
@@ -145,7 +153,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;GameLibrary\GameLib.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;BaseLibrary\BaseLibrary.h;CXLibrary\CXLibrary.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -160,7 +168,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;GameLibrary\GameLib.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;BaseLibrary\BaseLibrary.h;CXLibrary\CXLibrary.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -177,7 +185,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;GameLibrary\GameLib.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;BaseLibrary\BaseLibrary.h;CXLibrary\CXLibrary.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -196,7 +204,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;GameLibrary\GameLib.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;BaseLibrary\BaseLibrary.h;CXLibrary\CXLibrary.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
