@@ -12,10 +12,7 @@
 class Game
 {
 private:
-	CXLib::CXFont font_pong;
-	CXLib::CXFont font;
-	Vector2 obj_pos;
-	FrameTimer fps;
+	FrameTimer m_frame_timer;
 
 public:
 	Game();

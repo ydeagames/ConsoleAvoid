@@ -66,6 +66,9 @@
     <Filter Include="ライブラリ\ゲームライブラリ\物理">
       <UniqueIdentifier>{b3990177-717b-4d4a-ae02-32f1729034d5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ゲーム\シーン">
+      <UniqueIdentifier>{b31857f4-ee0f-48d9-9233-c26e162a4231}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameMain.h">
@@ -76,9 +79,6 @@
     </ClInclude>
     <ClInclude Include="Libraries\Dependencies\pch.h">
       <Filter>ライブラリ\依存関係</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Entity.h">
-      <Filter>ゲーム</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\CXLibrary\Input.h">
       <Filter>ライブラリ\コンソールライブラリ\ConsoleController</Filter>
@@ -182,6 +182,15 @@
     <ClInclude Include="Libraries\GameLibrary\FrameTimer.h">
       <Filter>ライブラリ\ゲームライブラリ\ユーティリティ</Filter>
     </ClInclude>
+    <ClInclude Include="Game\PlayScene.h">
+      <Filter>ゲーム\シーン</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\ResultScene.h">
+      <Filter>ゲーム\シーン</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\TitleScene.h">
+      <Filter>ゲーム\シーン</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Main.cpp">
@@ -192,9 +201,6 @@
     </ClCompile>
     <ClCompile Include="Libraries\Dependencies\pch.cpp">
       <Filter>ライブラリ\依存関係</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Entity.cpp">
-      <Filter>ゲーム</Filter>
     </ClCompile>
     <ClCompile Include="Libraries\CXLibrary\Input.cpp">
       <Filter>ライブラリ\コンソールライブラリ\ConsoleController</Filter>
@@ -285,6 +291,15 @@
     </ClCompile>
     <ClCompile Include="Libraries\GameLibrary\FrameTimer.cpp">
       <Filter>ライブラリ\ゲームライブラリ\ユーティリティ</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\PlayScene.cpp">
+      <Filter>ゲーム\シーン</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\ResultScene.cpp">
+      <Filter>ゲーム\シーン</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\TitleScene.cpp">
+      <Filter>ゲーム\シーン</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

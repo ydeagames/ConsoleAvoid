@@ -19,8 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game\Entity.h" />
     <ClInclude Include="Game\GameMain.h" />
+    <ClInclude Include="Game\PlayScene.h" />
+    <ClInclude Include="Game\ResultScene.h" />
+    <ClInclude Include="Game\TitleScene.h" />
     <ClInclude Include="Libraries\BaseLibrary\BaseLibrary.h" />
     <ClInclude Include="Libraries\BaseLibrary\Easings.h" />
     <ClInclude Include="Libraries\BaseLibrary\Random.h" />
@@ -59,9 +61,11 @@
     <ClInclude Include="Libraries\Utilities\MemoryLeakDetector.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Game\Entity.cpp" />
     <ClCompile Include="Game\GameMain.cpp" />
     <ClCompile Include="Game\Main.cpp" />
+    <ClCompile Include="Game\PlayScene.cpp" />
+    <ClCompile Include="Game\ResultScene.cpp" />
+    <ClCompile Include="Game\TitleScene.cpp" />
     <ClCompile Include="Libraries\BaseLibrary\Easings.cpp" />
     <ClCompile Include="Libraries\BaseLibrary\Random.cpp" />
     <ClCompile Include="Libraries\Dependencies\pch.cpp">
