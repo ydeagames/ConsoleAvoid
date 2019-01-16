@@ -7,87 +7,113 @@ namespace CXLib
 {
 	namespace Atlas
 	{
-		constexpr auto TEXTURE_ATLAS_WIDTH = 60; 			// テクスチャアトラスの幅
-		constexpr auto TEXTURE_ATLAS_HEIGHT = 27;			// テクスチャアトラスの高さ
-		constexpr Vector2 FONT_SPAN_SIZE = { 2.f, 2.f };	// 文字同士の横の空白
+		constexpr Vector2 FONT_SPAN_SIZE = { 0.f, 1.f };	// 文字同士の横の空白
 
-		// スプライト
-		typedef struct
+		struct Character
 		{
-			char name;
-			int x;
-			int y;
-			int w;
-			int h;
-		} Sprite;
-
-		// テクスチャアトラス
-		constexpr LPCSTR texture_atlas[TEXTURE_ATLAS_HEIGHT] =
-		{
-			"11   1111  1111  1  1  1111  11111 11111  11111 11111  11111",
-			"11   1111  1111  1  1  1111  11111 11111  11111 11111  11111",
-			" 1   1  1     1  1  1  1     1        11  1  11 1  11  11  1",
-			" 1     11   111  1111  1111  11111    11  11111 11111  111 1",
-			" 1    11      1  1111     1  11111    11  11111 11111  1 1 1",
-			" 1   11       1     1     1  1  11    11  1  11    11  1  11",
-			"111  1111  1111     1  1111  11111    11  11111    11  11111",
-			"                                                            ",
-			"11111                        11111                          ",
-			"11111                        11111                          ",
-			"1   1  1111  1111  1111      1     111  1111111  111        ",
-			"11111  1  1  1  1  1  1      1 111   1  1  1  1  1 1        ",
-			"11111  1  1  1  1  1  1      1 111 111  1  1  1  111        ",
-			"1      1  1  1  1  1  1      1  11 1 1  1  1  1  1          ",
-			"1      1111  1  1  1111      11111 111  1  1  1  111        ",
-			"                      1                                     ",
-			"                   1111                                     ",
-			"                   1111                                     ",
-			"                                                            ",
-			"11111 1                1         11  11                     ",
-			"11111 1                1         11 11              1       ",
-			"  1   1111             1 11       111         1  1  1       ",
-			"  1   1  1             111         11         1  1  1       ",
-			"  1   1  1             11          1          1  1  1       ",
-			"  1   1  1             1 1         1          1  1          ",
-			"  1   1  1             1 11        1          1111  1       ",
-			"                                                    1       "
+			int codePoint, x, y, width, height, originX, originY;
 		};
 
-		// フォント・スプライト
-		const std::vector<Sprite> fonts =
+		constexpr Character fonts[] =
 		{
-			{ '1', 0, 0, 3, 7 },
-			{ '2', 5, 0, 4, 7 },
-			{ '3', 11, 0, 4, 7 },
-			{ '4', 17, 0, 4, 7 },
-			{ '5', 23, 0, 4, 7 },
-			{ '6', 29, 0, 5, 7 },
-			{ '7', 35, 0, 5, 7 },
-			{ '8', 42, 0, 5, 7 },
-			{ '9', 48, 0, 5, 7 },
-			{ '0', 55, 0, 5, 7 },
-			{ 'P', 0, 8, 5, 7 },
-			{ 'o', 7, 8, 4, 7 },
-			{ 'n', 13, 8, 4, 7 },
-			{ 'g', 19, 8, 4, 10 },
-			{ ' ', 24, 8, 4, 7 },
-			{ 'G', 29, 8, 5, 7 },
-			{ 'a', 35, 8, 3, 7 },
-			{ 'm', 40, 8, 7, 7 },
-			{ 'e', 49, 8, 3, 7 },
-			{ 'T', 0, 19, 5, 7 },
-			{ 'h', 6, 19, 4, 7 },
-			{ 'k', 23, 19, 4, 7 },
-			{ 'Y', 33, 19, 6, 7 },
-			{ 'u', 46, 19, 4, 7 },
-			{ '!', 52, 19, 1, 8 }
+			{' ', 108, 62, 3, 3, 1, 1},
+			{'!', 7, 41, 5, 11, 1, 11},
+			{'"', 43, 62, 8, 7, 0, 14},
+			{'#', 33, 41, 10, 10, 1, 11},
+			{'$', 59, 0, 12, 17, 1, 13},
+			{'%', 22, 41, 11, 10, 1, 11},
+			{'&', 22, 62, 12, 7, 1, 7},
+			{'\'', 75, 62, 5, 5, 1, 11},
+			{'(', 22, 0, 8, 18, 0, 14},
+			{')', 30, 0, 8, 18, 0, 14},
+			{'*', 40, 52, 10, 9, 0, 14},
+			{'+', 22, 18, 13, 11, 0, 11},
+			{',', 64, 62, 5, 6, 1, 5},
+			{'-', 99, 62, 9, 3, 1, 7},
+			{'.', 80, 62, 5, 5, 1, 5},
+			{'/', 71, 0, 10, 17, 2, 14},
+			{'0', 53, 41, 9, 10, 1, 11},
+			{'1', 0, 41, 7, 11, 1, 11},
+			{'2', 50, 30, 9, 11, 1, 11},
+			{'3', 62, 41, 9, 10, 1, 11},
+			{'4', 59, 30, 9, 11, 1, 12},
+			{'5', 134, 0, 9, 12, 1, 12},
+			{'6', 68, 30, 9, 11, 1, 11},
+			{'7', 71, 41, 9, 10, 1, 11},
+			{'8', 77, 30, 9, 11, 1, 11},
+			{'9', 80, 41, 9, 10, 1, 11},
+			{':', 12, 41, 5, 11, -1, 10},
+			{';', 121, 0, 7, 14, 0, 10},
+			{'<', 35, 18, 13, 11, 0, 11},
+			{'=', 34, 62, 9, 7, 1, 9},
+			{'>', 48, 18, 13, 11, 0, 11},
+			{'?', 0, 52, 8, 10, 1, 11},
+			{'@', 81, 0, 17, 16, 0, 13},
+			{'A', 84, 18, 10, 11, 1, 12},
+			{'B', 89, 41, 9, 10, 1, 11},
+			{'C', 98, 41, 9, 10, 1, 11},
+			{'D', 107, 41, 9, 10, 1, 11},
+			{'E', 116, 41, 9, 10, 1, 11},
+			{'F', 8, 52, 8, 10, 1, 11},
+			{'G', 125, 41, 9, 10, 1, 11},
+			{'H', 43, 41, 10, 10, 1, 11},
+			{'I', 16, 52, 7, 10, 1, 11},
+			{'J', 0, 18, 8, 12, 1, 12},
+			{'K', 94, 18, 10, 11, 1, 12},
+			{'L', 134, 41, 9, 10, 1, 11},
+			{'M', 61, 18, 12, 11, 1, 12},
+			{'N', 104, 18, 10, 11, 1, 12},
+			{'O', 114, 18, 10, 11, 1, 12},
+			{'P', 124, 18, 10, 11, 1, 12},
+			{'Q', 110, 0, 11, 14, 1, 12},
+			{'R', 134, 18, 10, 11, 1, 12},
+			{'S', 86, 30, 9, 11, 1, 12},
+			{'T', 143, 41, 9, 10, 1, 11},
+			{'U', 0, 30, 10, 11, 1, 12},
+			{'V', 73, 18, 11, 11, 1, 12},
+			{'W', 8, 18, 14, 11, 1, 12},
+			{'X', 10, 30, 10, 11, 1, 12},
+			{'Y', 20, 30, 10, 11, 1, 12},
+			{'Z', 30, 30, 10, 11, 1, 12},
+			{'[', 38, 0, 8, 18, 0, 14},
+			{'\\', 98, 0, 12, 14, 1, 13},
+			{']', 46, 0, 8, 18, 1, 14},
+			{'^', 66, 52, 13, 8, 0, 13},
+			{'_', 85, 62, 14, 3, 2, 0},
+			{'`', 69, 62, 6, 5, -1, 14},
+			{'a', 117, 52, 8, 8, 1, 9},
+			{'b', 104, 30, 8, 11, 1, 12},
+			{'c', 125, 52, 8, 8, 1, 9},
+			{'d', 112, 30, 8, 11, 1, 12},
+			{'e', 133, 52, 8, 8, 1, 9},
+			{'f', 120, 30, 8, 11, 1, 12},
+			{'g', 143, 0, 9, 12, 1, 9},
+			{'h', 95, 30, 9, 11, 1, 12},
+			{'i', 23, 52, 5, 10, 1, 11},
+			{'j', 128, 0, 6, 13, 1, 11},
+			{'k', 128, 30, 8, 11, 1, 12},
+			{'l', 17, 41, 5, 11, 1, 12},
+			{'m', 28, 52, 12, 9, 1, 10},
+			{'n', 90, 52, 9, 8, 1, 9},
+			{'o', 99, 52, 9, 8, 1, 9},
+			{'p', 136, 30, 8, 11, 1, 9},
+			{'q', 144, 30, 8, 11, 1, 9},
+			{'r', 8, 62, 7, 8, 1, 9},
+			{'s', 15, 62, 7, 8, 1, 9},
+			{'t', 59, 52, 7, 9, 1, 10},
+			{'u', 108, 52, 9, 8, 1, 9},
+			{'v', 50, 52, 9, 9, 1, 9},
+			{'w', 79, 52, 11, 8, 1, 9},
+			{'x', 141, 52, 8, 8, 1, 9},
+			{'y', 40, 30, 10, 11, 1, 9},
+			{'z', 0, 62, 8, 8, 1, 9},
+			{'{', 0, 0, 11, 18, 1, 14},
+			{'|', 54, 0, 5, 18, -1, 14},
+			{'}', 11, 0, 11, 18, 1, 14},
+			{'~', 51, 62, 13, 6, 0, 8},
 		};
 
-		// ピクセルを取得
-		constexpr char GetPixel(int x, int y)
-		{
-			return texture_atlas[y][x];
-		}
+		CXImage texture_atlas = LoadGraph("Resources/Textures/font.ppm", Transparent::FirstColor);
 	}
 
 	// フォントハンドルを作成する
@@ -129,7 +155,7 @@ namespace CXLib
 			for (LPCWSTR c = String; *c != '\0'; c++)
 			{
 				// スプライト
-				const Atlas::Sprite* sprite = nullptr;
+				const Atlas::Character* sprite = nullptr;
 
 				// 改行だったら
 				if (*c == '\n')
@@ -145,7 +171,7 @@ namespace CXLib
 				for (auto& font : Atlas::fonts)
 				{
 					// 一致していたら取得
-					if (font.name == *c)
+					if (font.codePoint == *c)
 					{
 						sprite = &font;
 						break;
@@ -155,7 +181,7 @@ namespace CXLib
 				// スプライトがあれば幅を加算
 				if (sprite != nullptr)
 				{
-					font_x += sprite->w + Atlas::FONT_SPAN_SIZE.x;
+					font_x += sprite->width + Atlas::FONT_SPAN_SIZE.x;
 				}
 			}
 			// フォントの幅の最大
@@ -175,24 +201,19 @@ namespace CXLib
 			DrawString(pos, String, Color, world);
 			break;
 		case CXFONT_PONG:
+			Matrix3 matrix = Matrix3::CreateTranslation(pos) * world;
 			// サイズの比
-			float size = 7 / FontHandle->size;
+			float size = 7 * FontHandle->size;
 			// フォント左上の座標
 			Vector2 font_pos = {};
 			// フォントの最大高さ
 			float font_h = 0;
 
-			Matrix3 matrix = (world * ScreenToConsole);
-			// 座標
-			Vector2 base_pos = pos * matrix;
-			// サイズ
-			Vector2 base_size = Vector2::one / size * matrix - Vector2::zero * matrix;
-
 			// 文字ループ
 			for (LPCWSTR c = String; *c != '\0'; c++)
 			{
 				// スプライト
-				const Atlas::Sprite* sprite = nullptr;
+				const Atlas::Character* sprite = nullptr;
 
 				// 改行だったら
 				if (*c == '\n')
@@ -210,7 +231,7 @@ namespace CXLib
 				for (auto& font : Atlas::fonts)
 				{
 					// 一致していたら取得
-					if (font.name == *c)
+					if (font.codePoint == *c)
 					{
 						sprite = &font;
 						break;
@@ -220,25 +241,17 @@ namespace CXLib
 				// スプライトがあれば
 				if (sprite != nullptr)
 				{
-					COORD sprite_pos = font_pos * base_size + base_pos;
-					COORD sprite_size = Vector2{ sprite->w, sprite->h }*base_size;
-
-					// Yループ
-					for (SHORT iy = 0; iy < sprite_size.Y; iy++)
-					{
-						// Xループ
-						for (SHORT ix = 0; ix < sprite_size.X; ix++)
-						{
-							// ピクセルが1だったら描画
-							if (Atlas::GetPixel(sprite->x + static_cast<int>(ix / base_size.x), sprite->y + static_cast<int>(iy / base_size.y)) == '1')
-								Screen::Draw(COORD{ sprite_pos.X + ix, sprite_pos.Y + iy }, Color);
-						}
-					}
+					auto atlas = Atlas::texture_atlas.DerivationGraph(Vector2{ sprite->x, sprite->y }, Vector2{ sprite->width, sprite->height });
+					atlas.DrawGraph(
+						Matrix3::CreateScale(Vector2 { sprite->width, sprite->height }) *
+						Matrix3::CreateTranslation(-Vector2{ sprite->originX, sprite->originY }) *
+						Matrix3::CreateTranslation(font_pos) *
+						matrix);
 
 					// フォント左上のX座標を進める
-					font_pos.x += sprite->w + Atlas::FONT_SPAN_SIZE.x;
+					font_pos.x += sprite->width + Atlas::FONT_SPAN_SIZE.x;
 					// フォントの最大高さを更新
-					font_h = std::max(font_pos.y, sprite->h / base_size.x);
+					font_h = std::max(font_pos.y, static_cast<float>(sprite->height));
 				}
 			}
 			break;
