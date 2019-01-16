@@ -72,6 +72,18 @@
     <Filter Include="ライブラリ\コンソールライブラリ\CXLib\Dependencies">
       <UniqueIdentifier>{9961d4c1-bfc6-4b21-8720-b964a6b11a59}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース\アイコン">
+      <UniqueIdentifier>{4ba6070f-78bb-444f-8c52-c7bb3e474b51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース\テクスチャ">
+      <UniqueIdentifier>{db3d96bd-3724-4f2b-89a0-15cdb5f6ab26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース\フォント">
+      <UniqueIdentifier>{340c4436-2604-4cd8-a2c4-f5cf4531a727}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース\音">
+      <UniqueIdentifier>{c4721adc-6123-4339-b3e6-84f317c16ac7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameMain.h">
@@ -200,6 +212,9 @@
     <ClInclude Include="Libraries\CXLibrary\PPMLib.h">
       <Filter>ライブラリ\コンソールライブラリ\CXLib\Dependencies</Filter>
     </ClInclude>
+    <ClInclude Include="Resources\Icon\Icon.h">
+      <Filter>リソース\アイコン</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Main.cpp">
@@ -316,5 +331,25 @@
     <ClCompile Include="Libraries\CXLibrary\PPMLib.cpp">
       <Filter>ライブラリ\コンソールライブラリ\CXLib\Dependencies</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources\Icon\Icon.rc">
+      <Filter>リソース\アイコン</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Icon\Icon.ico">
+      <Filter>リソース\アイコン</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fonts\font.ppm">
+      <Filter>リソース\フォント</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Resources\Fonts\font.txt">
+      <Filter>リソース\フォント</Filter>
+    </Text>
   </ItemGroup>
 </Project>

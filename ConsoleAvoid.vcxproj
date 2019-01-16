@@ -61,6 +61,7 @@
     <ClInclude Include="Libraries\GameLibrary\Timer.h" />
     <ClInclude Include="Libraries\GameLibrary\Transform.h" />
     <ClInclude Include="Libraries\Utilities\MemoryLeakDetector.h" />
+    <ClInclude Include="Resources\Icon\Icon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\GameMain.cpp" />
@@ -106,6 +107,18 @@
     <ClCompile Include="Libraries\GameLibrary\Shape.cpp" />
     <ClCompile Include="Libraries\GameLibrary\Timer.cpp" />
     <ClCompile Include="Libraries\GameLibrary\Transform.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources\Icon\Icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Icon\Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fonts\font.ppm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Resources\Fonts\font.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D65A40FE-E356-487B-925D-F6F0C8FA931C}</ProjectGuid>

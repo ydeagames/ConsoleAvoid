@@ -69,7 +69,6 @@ TitleScene::TitleScene()
 			Matrix3 world = Matrix3::CreateScale(Vector2{ 1, 1 });
 
 			Vector2 boundsMax = GetWindowSize();
-			DrawStringToHandle(Vector2::zero, L"Pong Game!", Colors::Red, &font_pong, Matrix3::CreateTranslation(obj_pos) * world);
 			DrawCircle(Vector2{ 0, 10 }, 5, Colors::Blue, true, Matrix3::CreateTranslation(obj_pos) * world);
 			DrawBox(Vector2{ 10, 10 }, Vector2{ 20, 20 }, Colors::Green, true, Matrix3::CreateTranslation(obj_pos) * world);
 			image.DrawGraph(Matrix3::CreateScale(Vector2{ 40, 40 }) * Matrix3::CreateTranslation(boundsMax - obj_pos));
@@ -86,6 +85,8 @@ TitleScene::TitleScene()
 				DrawStringToHandle(Vector2{ 10, 40 }, L"Å©", Colors::White, &font, world);
 			if (InputManager::GetInstance().key->GetButton('D') || InputManager::GetInstance().key->GetButton(VK_RIGHT))
 				DrawStringToHandle(Vector2{ 20, 40 }, L"Å®", Colors::White, &font, world);
+
+			DrawStringToHandle(Vector2::zero, L"kgsgrbkyGkgygKG\nyeGBCKYGYrykbGBE\nCg:;:;+*+:+];`{@\n]:]//.,!!\"#$%&'()", Colors::Red, &font_pong, Matrix3::CreateTranslation(obj_pos) * world);
 		}
 	};
 

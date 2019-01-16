@@ -113,7 +113,7 @@ namespace CXLib
 			{'~', 51, 62, 13, 6, 0, 8},
 		};
 
-		CXImage texture_atlas = LoadGraph("Resources/Textures/font.ppm", Transparent::FirstColor);
+		CXImage texture_atlas = LoadGraph("Resources/Fonts/font.ppm", Transparent::FirstColor);
 	}
 
 	// フォントハンドルを作成する
