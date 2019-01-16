@@ -8,7 +8,7 @@ namespace CXLib
 	void DrawBox(Vector2 boundsMin, Vector2 boundsMax, Color Color, int FillFlag, const Matrix3& world)
 	{
 		// ワールド座標をコンソール座標に変換
-		Matrix3 matrix = (ScreenToConsole * world);
+		Matrix3 matrix = (world * ScreenToConsole);
 		Vector2 c1 = boundsMin * matrix;
 		Vector2 c2 = boundsMax * matrix;
 		SHORT cx1 = c1.Xs();
@@ -34,9 +34,9 @@ namespace CXLib
 	void DrawOval(Vector2 center, Vector2 size, Color Color, int FillFlag, const Matrix3& world)
 	{
 		// ワールド座標をコンソール座標に変換
-		Matrix3 matrix = (ScreenToConsole * world);
+		Matrix3 matrix = (world * ScreenToConsole);
 		Vector2 c = center * matrix;
-		Vector2 cr = size * matrix;
+		Vector2 cr = size * matrix - Vector2::zero * matrix;
 		SHORT cx = c.Xs();
 		SHORT cy = c.Ys();
 		SHORT crx = cr.Xs();
@@ -68,7 +68,7 @@ namespace CXLib
 	void DrawLine(Vector2 start, Vector2 end, Color Color, const Matrix3& world)
 	{
 		// ワールド座標をコンソール座標に変換
-		Matrix3 matrix = (ScreenToConsole * world);
+		Matrix3 matrix = (world * ScreenToConsole);
 		Vector2 c1 = start * matrix;
 		Vector2 c2 = end * matrix;
 		SHORT cx1 = c1.Xs();
@@ -118,7 +118,7 @@ namespace CXLib
 	void DrawDashedLine(Vector2 start, Vector2 end, Color Color, float length, const Matrix3& world)
 	{
 		// ワールド座標をコンソール座標に変換
-		Matrix3 matrix = (ScreenToConsole * world);
+		Matrix3 matrix = (world * ScreenToConsole);
 		Vector2 c1 = start * matrix;
 		Vector2 c2 = end * matrix;
 		SHORT cx1 = c1.Xs();

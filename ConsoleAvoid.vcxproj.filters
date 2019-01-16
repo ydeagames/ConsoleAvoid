@@ -69,6 +69,9 @@
     <Filter Include="ゲーム\シーン">
       <UniqueIdentifier>{b31857f4-ee0f-48d9-9233-c26e162a4231}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ライブラリ\コンソールライブラリ\CXLib\Dependencies">
+      <UniqueIdentifier>{9961d4c1-bfc6-4b21-8720-b964a6b11a59}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameMain.h">
@@ -191,6 +194,12 @@
     <ClInclude Include="Game\TitleScene.h">
       <Filter>ゲーム\シーン</Filter>
     </ClInclude>
+    <ClInclude Include="Libraries\CXLibrary\CXImage.h">
+      <Filter>ライブラリ\コンソールライブラリ\CXLib</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\CXLibrary\PPMLib.h">
+      <Filter>ライブラリ\コンソールライブラリ\CXLib\Dependencies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Main.cpp">
@@ -300,6 +309,12 @@
     </ClCompile>
     <ClCompile Include="Game\TitleScene.cpp">
       <Filter>ゲーム\シーン</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\CXLibrary\CXImage.cpp">
+      <Filter>ライブラリ\コンソールライブラリ\CXLib</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\CXLibrary\PPMLib.cpp">
+      <Filter>ライブラリ\コンソールライブラリ\CXLib\Dependencies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

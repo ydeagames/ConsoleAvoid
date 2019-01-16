@@ -64,16 +64,19 @@ TitleScene::TitleScene()
 		{
 			static auto& context = ScreenManager::GetInstance().GetContext();
 
-			Matrix3 world = Matrix3::CreateScale(Vector2{ 1, 2 });
+			Matrix3 world = Matrix3::CreateScale(Vector2{ 1, 1 });
 
 			Vector2 boundsMax = GetWindowSize();
-			DrawStringToHandle(boundsMax - obj_pos, L"Pong Game!", Colors::Red, &font_pong, world);
-			for (int iy = 0; iy < 2; iy++)
-				for (int ix = 0; ix < 10; ix++)
-					DrawCircle(obj_pos + Vector2{ ix, iy }*10, 5, Colors::Blue, true, world);
+			DrawStringToHandle(Vector2::zero, L"Pong Game!", Colors::Red, &font_pong, Matrix3::CreateTranslation(obj_pos) * world);
+			DrawCircle(Vector2{ 0, 10 }, 5, Colors::Blue, true, Matrix3::CreateTranslation(obj_pos) * world);
+			DrawBox(Vector2{ 10, 10 }, Vector2{ 20, 20 }, Colors::Green, true, Matrix3::CreateTranslation(obj_pos) * world);
+
+			for (int i = 0; i < 16; i++)
+				DrawBox(Vector2{ 50, 10 + i * 4 }, Vector2{ 100, 10 + (i + 1) * 4 }, i, true, world);
 
 			DrawStringToHandle(obj_pos, L"Ç†su\nshiÇ¢Ç§\nsus\nhiÅ™Ç¶Å™Ç®Ñ´Ç©", Colors::White, &font, world);
-			DrawDashedLine(Vector2::zero, boundsMax, Colors::Green, 8, world);
+			DrawStringToHandle(obj_pos + Vector2::down * 10, L"\u2593\u2593\u2593\u2593\u2593\n\u2591\u2591\u2591\u2591\u2591\n\u2592\u2592\u2592\u2592\u2592", Colors::White, &font, world);
+			DrawDashedLine(Vector2::zero, Vector2{ boundsMax.y, boundsMax.y }, Colors::Green, 8, world);
 
 			if (InputManager::GetInstance().key->GetButton('W') || InputManager::GetInstance().key->GetButton(VK_UP))
 				DrawStringToHandle(Vector2{ 15, 35 }, L"Å™", Colors::White, &font, world);

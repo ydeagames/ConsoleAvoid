@@ -105,7 +105,7 @@ namespace CXLib
 	// 文字列描画関数
 	void DrawString(Vector2 pos, LPCWSTR String, Color Color, const Matrix3& world)
 	{
-		Screen::DrawStringLines(pos * (ScreenToConsole * world), Color, String);
+		Screen::DrawStringLines(pos * (world * ScreenToConsole), Color, String);
 	}
 
 	// フォントハンドルを使用した文字列の描画幅(ワールド座標)を取得する
@@ -182,11 +182,11 @@ namespace CXLib
 			// フォントの最大高さ
 			float font_h = 0;
 
-			Matrix3 matrix = (ScreenToConsole * world);
+			Matrix3 matrix = (world * ScreenToConsole);
 			// 座標
 			Vector2 base_pos = pos * matrix;
 			// サイズ
-			Vector2 base_size = Vector2::one / size * matrix;
+			Vector2 base_size = Vector2::one / size * matrix - Vector2::zero * matrix;
 
 			// 文字ループ
 			for (LPCWSTR c = String; *c != '\0'; c++)

@@ -11,5 +11,6 @@
 #include "ScreenManager.h"
 #include "SystemUtils.h"
 #include "Time.h"
+#include "PPMLib.h"
 
 using namespace CXLib;

@@ -28,6 +28,7 @@
     <ClInclude Include="Libraries\BaseLibrary\Random.h" />
     <ClInclude Include="Libraries\CXLibrary\CXImage.h" />
     <ClInclude Include="Libraries\CXLibrary\CXLibrary.h" />
+    <ClInclude Include="Libraries\CXLibrary\PPMLib.h" />
     <ClInclude Include="Libraries\Dependencies\pch.h" />
     <ClInclude Include="Libraries\CXLibrary\Color.h" />
     <ClInclude Include="Libraries\CXLibrary\ConsoleCharacter.h" />
@@ -70,6 +71,7 @@
     <ClCompile Include="Libraries\BaseLibrary\Easings.cpp" />
     <ClCompile Include="Libraries\BaseLibrary\Random.cpp" />
     <ClCompile Include="Libraries\CXLibrary\CXImage.cpp" />
+    <ClCompile Include="Libraries\CXLibrary\PPMLib.cpp" />
     <ClCompile Include="Libraries\Dependencies\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
