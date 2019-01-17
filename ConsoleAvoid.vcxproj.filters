@@ -215,6 +215,12 @@
     <ClInclude Include="Resources\Icon\Icon.h">
       <Filter>リソース\アイコン</Filter>
     </ClInclude>
+    <ClInclude Include="Game\LogoScene.h">
+      <Filter>ゲーム\シーン</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\BaseLibrary\AspectUtils.h">
+      <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Main.cpp">
@@ -330,6 +336,12 @@
     </ClCompile>
     <ClCompile Include="Libraries\CXLibrary\PPMLib.cpp">
       <Filter>ライブラリ\コンソールライブラリ\CXLib\Dependencies</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\LogoScene.cpp">
+      <Filter>ゲーム\シーン</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\BaseLibrary\AspectUtils.cpp">
+      <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

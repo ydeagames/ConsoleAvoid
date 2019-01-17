@@ -1,10 +1,8 @@
 #include "TitleScene.h"
-#include "GameMain.h"
 
 // <ƒV[ƒ“>
 
 TitleScene::TitleScene()
-	: Scene()
 {
 	//SetMouseDispFlag(true);
 
@@ -46,7 +44,7 @@ TitleScene::TitleScene()
 		void Start()
 		{
 			obj_pos = { 10, 10 };
-			image = LoadGraph("Resources/Textures/kame.ppm", Transparent::FirstColor).DerivationGraphUV(Vector2::zero, Vector2::one / 2);
+			image = LoadGraph("Resources/Textures/kame.ppm", Transparent::FirstColor);
 		}
 
 		void Update()

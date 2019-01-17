@@ -25,7 +25,7 @@ namespace CXLib
 			const Color* dataPtr;
 
 		public:
-			constexpr Color GetPixel(int x, int y) const { return dataPtr[x + y * width]; }
+			inline Color GetPixel(int x, int y) const { return dataPtr[x + y * width]; }
 
 		public:
 			PixelImage(const std::string& path, ColorCode transparent);
@@ -34,6 +34,9 @@ namespace CXLib
 	private:
 		std::shared_ptr<PixelImage> image;
 		int x, y, w, h;
+
+	public:
+		inline Vector2 GetSize() const { return{ w, h }; }
 
 	private:
 		CXImage(const std::shared_ptr<PixelImage>& image, int x, int y, int w, int h);

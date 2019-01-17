@@ -20,9 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameMain.h" />
+    <ClInclude Include="Game\LogoScene.h" />
     <ClInclude Include="Game\PlayScene.h" />
     <ClInclude Include="Game\ResultScene.h" />
     <ClInclude Include="Game\TitleScene.h" />
+    <ClInclude Include="Libraries\BaseLibrary\AspectUtils.h" />
     <ClInclude Include="Libraries\BaseLibrary\BaseLibrary.h" />
     <ClInclude Include="Libraries\BaseLibrary\Easings.h" />
     <ClInclude Include="Libraries\BaseLibrary\Random.h" />
@@ -65,10 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\GameMain.cpp" />
+    <ClCompile Include="Game\LogoScene.cpp" />
     <ClCompile Include="Game\Main.cpp" />
     <ClCompile Include="Game\PlayScene.cpp" />
     <ClCompile Include="Game\ResultScene.cpp" />
     <ClCompile Include="Game\TitleScene.cpp" />
+    <ClCompile Include="Libraries\BaseLibrary\AspectUtils.cpp" />
     <ClCompile Include="Libraries\BaseLibrary\Easings.cpp" />
     <ClCompile Include="Libraries\BaseLibrary\Random.cpp" />
     <ClCompile Include="Libraries\CXLibrary\CXImage.cpp" />

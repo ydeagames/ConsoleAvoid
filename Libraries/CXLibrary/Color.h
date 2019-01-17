@@ -64,7 +64,7 @@ public:
 		: Attributes(static_cast<Color>((word >> 4)), static_cast<Color>((word >> 0))) {}
 
 public:
-	constexpr inline operator WORD() const { return (background << 4) | foreground; }
+	inline operator WORD() const { return (background << 4) | foreground; }
 
 	inline Attributes& back(Color color) { background = color & 0xf; return *this; }
 	inline Attributes& text(Color color) { foreground = color & 0xf; return *this; }
