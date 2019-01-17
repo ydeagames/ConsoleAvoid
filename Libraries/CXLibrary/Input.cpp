@@ -89,12 +89,12 @@ bool KeyInput::GetButton(int button)
 
 bool KeyInput::GetButtonDown(int button)
 {
-	return !input_state_last[button] && input_state[button];
+	return input_state_last[button] == 0 && input_state[button] != 0;
 }
 
 bool KeyInput::GetButtonUp(int button)
 {
-	return input_state_last[button] && !input_state[button];
+	return input_state_last[button] != 0 && !input_state[button] == 0;
 }
 
 InputManager::InputManager()
