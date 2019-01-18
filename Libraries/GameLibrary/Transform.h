@@ -4,6 +4,8 @@
 class Transform final : public Component
 {
 public:
+	std::weak_ptr<Transform> parent;// <親>
+	Matrix3 world;					// <行列>
 	Vector2 position;				// <テクスチャ>
 	float rotation;					// <回転>
 	Vector2 scale;					// <スケール>

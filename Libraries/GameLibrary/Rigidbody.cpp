@@ -49,5 +49,5 @@ void Rigidbody::Update()
 				}
 	}
 
-	gameObject()->transform()->position += vel;
+	gameObject()->transform()->position += vel * Time::deltaTime;
 }

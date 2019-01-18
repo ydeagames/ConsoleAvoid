@@ -110,3 +110,14 @@ void FontTextRenderer::Render()
 	Vector2 pos = gameObject()->transform()->position;
 	//DrawFormatStringFToHandle(pos.x, pos.y, Colors::White, font->GetResource(), text.c_str());
 }
+
+TextureRenderer::TextureRenderer(const CXImage & image)
+	: image(image)
+{
+}
+
+void TextureRenderer::Render()
+{
+	auto world = Matrix3::CreateTranslation(-Vector2::one / 2) * gameObject()->transform()->GetMatrix();
+	image.DrawGraph(world);
+}

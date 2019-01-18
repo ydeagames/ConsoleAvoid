@@ -14,7 +14,11 @@ Transform::Transform()
 
 Matrix3 Transform::GetMatrix() const
 {
-	Matrix3 m = Matrix3::CreateScale(scale);
+	Matrix3 m = Matrix3::Identity;
+	if (auto& p = parent.lock())
+		m *= p->GetMatrix();
+	m *= world;
+	m *= Matrix3::CreateScale(scale);
 	m *= Matrix3::CreateRotationZ(rotation);
 	m *= Matrix3::CreateTranslation(position);
 	return m;

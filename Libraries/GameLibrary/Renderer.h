@@ -76,3 +76,15 @@ public:
 
 	void Render() override;
 };
+
+class TextureRenderer : public Component
+{
+public:
+	CXImage image;
+
+public:
+	TextureRenderer(const CXImage& image);
+
+	void Render() override;
+};
+

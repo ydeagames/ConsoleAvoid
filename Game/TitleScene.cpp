@@ -89,6 +89,17 @@ TitleScene::TitleScene()
 	};
 
 	GameObject::Create("TestObj")->AddNewComponent<TestObj>();
+
+	class SceneHook : public Component
+	{
+		void Update()
+		{
+			if (InputManager::GetInstance().key->GetButtonDown(VK_SPACE))
+				SceneManager::GetInstance().RequestScene(SceneID::PLAY);
+		}
+	};
+
+	GameObject::Create("SceneHook")->AddNewComponent<SceneHook>();
 }
 
 TitleScene::~TitleScene()
