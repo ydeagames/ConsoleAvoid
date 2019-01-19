@@ -169,7 +169,7 @@ namespace CXLib
 	// ウィンドウサイズ取得
 	Vector2 GetWindowSize()
 	{
-		static auto& context = ScreenManager::GetInstance().GetContext();
+		static auto& context = ScreenManager::GetInstance().GetOutputContext();
 		return Vector2{ context.boundsMax }*ConsoleToScreen;
 	}
 }

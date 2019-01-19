@@ -3,9 +3,12 @@
 // 1フレーム
 static int ProcessMessage(void)
 {
+	static auto& contextIn = ScreenManager::GetInstance().GetInputContext();
+
 	auto& time = Time::GetInstance();
 	time.Update();
 	time.WaitFrame();
+	contextIn.HandleInput();
 	InputManager::GetInstance().Update();
 	return !SystemUtils::running;
 }
@@ -18,10 +21,11 @@ int main(void)
 	//SetUpMemoryLeakDetector();
 #endif
 
-	static auto& context = ScreenManager::GetInstance().GetContext();
+	static auto& context = ScreenManager::GetInstance().GetOutputContext();
 
 	// 初期状態の画面モードの設定
 
+	ScreenManager::GetInstance().EnableMouseInput();
 	ScreenManager::GetInstance().SetFontSize(7);
 	ScreenManager::GetInstance().SetWindowSize(640, 480);
 	ScreenManager::GetInstance().SetCursorVisibility(false);

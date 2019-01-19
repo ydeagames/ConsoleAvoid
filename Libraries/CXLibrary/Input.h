@@ -51,19 +51,58 @@ public:
 	virtual bool GetButtonUp(int button) = 0;
 };
 
+// <マウス入力デバイス>
+class MouseInput final : public Input
+{
+private:
+	Vector2 position;
+	float wheel_pos;
+	float wheel_delta;
+
+public:
+	enum MouseInputButton
+	{
+		MOUSE_INPUT_0 = FROM_LEFT_1ST_BUTTON_PRESSED,
+		MOUSE_INPUT_1 = RIGHTMOST_BUTTON_PRESSED,
+		MOUSE_INPUT_2 = FROM_LEFT_2ND_BUTTON_PRESSED,
+		MOUSE_INPUT_3 = FROM_LEFT_3RD_BUTTON_PRESSED,
+		MOUSE_INPUT_4 = FROM_LEFT_4TH_BUTTON_PRESSED,
+		MOUSE_INPUT_LEFT = MOUSE_INPUT_0,
+		MOUSE_INPUT_RIGHT = MOUSE_INPUT_1,
+		MOUSE_INPUT_MIDDLE = MOUSE_INPUT_2,
+	};
+
+public:
+	MouseInput();
+
+	~MouseInput();
+
+	void Update() override;
+
+	void Consume(int button) override;
+
+	bool GetButton(int button) override;
+
+	bool GetButtonDown(int button) override;
+
+	bool GetButtonUp(int button) override;
+
+	// ダブルクリックを取得
+	bool GetButtonDoubleClick(int button);
+
+	// マウスを座標を取得
+	const Vector2& GetPosition();
+
+	// マウスの回転量を取得
+	float GetWheel();
+
+	// マウスの回転量の差を取得
+	float GetDeltaWheel();
+};
+
 // <キー入力デバイス>
 class KeyInput final : public Input
 {
-private:
-	static const DWORD MAX_INPUT_LENGTH = 16;
-
-	bool input_state[256];
-	bool input_state_last[256];
-
-	INPUT_RECORD input[MAX_INPUT_LENGTH];
-	HANDLE console;
-	DWORD length;
-
 public:
 	KeyInput();
 
@@ -89,6 +128,7 @@ private:
 
 public:
 	std::shared_ptr<KeyInput> key;
+	std::shared_ptr<MouseInput> mouse;
 
 private:
 	InputManager();

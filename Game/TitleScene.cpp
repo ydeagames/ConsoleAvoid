@@ -62,7 +62,7 @@ TitleScene::TitleScene()
 
 		void Render()
 		{
-			static auto& context = ScreenManager::GetInstance().GetContext();
+			static auto& context = ScreenManager::GetInstance().GetOutputContext();
 
 			Matrix3 world = Matrix3::CreateScale(Vector2{ 1, 1 });
 

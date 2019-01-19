@@ -41,11 +41,70 @@ InputButton Input::GetInputButton(int button)
 	return{ shared_from_this(), button };
 }
 
+MouseInput::MouseInput()
+{
+}
+
+MouseInput::~MouseInput()
+{
+}
+
+void MouseInput::Consume(int button)
+{
+	static auto& contextIn = ScreenManager::GetInstance().GetInputContext();
+	contextIn.mouse_handler.click_state_last ^= (contextIn.mouse_handler.click_state_last ^ contextIn.mouse_handler.click_state) & button;
+}
+
+bool MouseInput::GetButton(int button)
+{
+	static auto& contextIn = ScreenManager::GetInstance().GetInputContext();
+	return (contextIn.mouse_handler.click_state & button) != 0;
+}
+
+bool MouseInput::GetButtonDown(int button)
+{
+	static auto& contextIn = ScreenManager::GetInstance().GetInputContext();
+	return !(contextIn.mouse_handler.click_state_last & button) && (contextIn.mouse_handler.click_state & button);
+}
+
+bool MouseInput::GetButtonUp(int button)
+{
+	static auto& contextIn = ScreenManager::GetInstance().GetInputContext();
+	return (contextIn.mouse_handler.click_state_last & button) && !(contextIn.mouse_handler.click_state & button);
+}
+
+bool MouseInput::GetButtonDoubleClick(int button)
+{
+	static auto& contextIn = ScreenManager::GetInstance().GetInputContext();
+	return !(contextIn.mouse_handler.doubleclick_state_last & button) && (contextIn.mouse_handler.doubleclick_state & button);
+}
+
+void MouseInput::Update()
+{
+	static auto& contextIn = ScreenManager::GetInstance().GetInputContext();
+	position = Vector2{ contextIn.mouse_handler.position } * ConsoleToScreen;
+	Vector2 scale = Vector2::one * ConsoleToScreen - Vector2::zero * ConsoleToScreen;
+	wheel_pos = contextIn.mouse_handler.wheel * scale.y;
+	wheel_delta = contextIn.mouse_handler.delta_wheel * scale.y;
+}
+
+const Vector2& MouseInput::GetPosition()
+{
+	return position;
+}
+
+float MouseInput::GetWheel()
+{
+	return wheel_pos;
+}
+
+float MouseInput::GetDeltaWheel()
+{
+	return wheel_delta;
+}
+
 KeyInput::KeyInput()
 {
-	console = GetStdHandle(STD_INPUT_HANDLE);
-	length = 0;
-	memset(input_state, false, sizeof(input_state));
 }
 
 KeyInput::~KeyInput()
@@ -54,52 +113,36 @@ KeyInput::~KeyInput()
 
 void KeyInput::Update()
 {
-	memcpy(input_state_last, input_state, sizeof(input_state));
-	
-	GetNumberOfConsoleInputEvents(console, &length);
-	if (static_cast<int>(length) > 0)
-	{
-		ReadConsoleInput(console, input, MAX_INPUT_LENGTH, &length);
-		for (int i = 0; i < static_cast<int>(length); i++)
-		{
-			auto& in = input[i];
-
-			switch (in.EventType)
-			{
-			case KEY_EVENT:
-				input_state[in.Event.KeyEvent.wVirtualKeyCode] = in.Event.KeyEvent.bKeyDown != 0;
-				break;
-			case WINDOW_BUFFER_SIZE_EVENT:
-				ScreenManager::GetInstance().UpdateContext();
-				break;
-			}
-		}
-	}
 }
 
 void KeyInput::Consume(int button)
 {
-	input_state_last[button] = input_state[button];
+	static auto& contextIn = ScreenManager::GetInstance().GetInputContext();
+	contextIn.key_handler.key_state_last[button] = contextIn.key_handler.key_state[button];
 }
 
 bool KeyInput::GetButton(int button)
 {
-	return input_state[button] != 0;
+	static auto& contextIn = ScreenManager::GetInstance().GetInputContext();
+	return contextIn.key_handler.key_state[button] != 0;
 }
 
 bool KeyInput::GetButtonDown(int button)
 {
-	return input_state_last[button] == 0 && input_state[button] != 0;
+	static auto& contextIn = ScreenManager::GetInstance().GetInputContext();
+	return contextIn.key_handler.key_state_last[button] == 0 && contextIn.key_handler.key_state[button] != 0;
 }
 
 bool KeyInput::GetButtonUp(int button)
 {
-	return input_state_last[button] != 0 && !input_state[button] == 0;
+	static auto& contextIn = ScreenManager::GetInstance().GetInputContext();
+	return contextIn.key_handler.key_state_last[button] != 0 && !contextIn.key_handler.key_state[button] == 0;
 }
 
 InputManager::InputManager()
 {
 	key = Register<KeyInput>("Key", std::make_shared<KeyInput>());
+	mouse = Register<MouseInput>("Mouse", std::make_shared<MouseInput>());
 }
 
 void InputManager::Update()

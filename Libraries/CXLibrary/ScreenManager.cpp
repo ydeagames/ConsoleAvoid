@@ -1,23 +1,24 @@
 #include "ScreenManager.h"
 
 ScreenManager::ScreenManager()
-	: context(ScreenContext{ GetStdHandle(STD_OUTPUT_HANDLE) })
+	: inputContext(ScreenInputContext{ GetStdHandle(STD_INPUT_HANDLE) })
+	, outputContext(ScreenOutputContext{ GetStdHandle(STD_OUTPUT_HANDLE) })
 {
 }
 
-void ScreenManager::UpdateContext()
+void ScreenManager::UpdateOutputContext()
 {
 	// スクリーンバッファに関する情報
 	CONSOLE_SCREEN_BUFFER_INFO screenBufferInfo;
 
 	// スクリーンバッファに関する情報の取得
-	GetConsoleScreenBufferInfo(context.handle, &screenBufferInfo);
+	GetConsoleScreenBufferInfo(outputContext.handle, &screenBufferInfo);
 
 	// スクリーンバッファ修正
-	SetConsoleScreenBufferSize(context.handle, COORD{ screenBufferInfo.srWindow.Right + 1, screenBufferInfo.srWindow.Bottom + 1 });
+	SetConsoleScreenBufferSize(outputContext.handle, COORD{ screenBufferInfo.srWindow.Right + 1, screenBufferInfo.srWindow.Bottom + 1 });
 
 	// コンテキスト更新
-	context = ScreenContext{ context.handle, context.default_pixel };
+	outputContext = ScreenOutputContext{ outputContext.handle, outputContext.default_pixel };
 }
 
 bool ScreenManager::SetScreenSize(int width, int height)
@@ -34,27 +35,27 @@ bool ScreenManager::SetScreenSize(int width, int height)
 	};
 
 	// 画面のサイズ変更
-	if (newSize.X - context.boundsMax.X > 0 || newSize.Y - context.boundsMax.Y > 0)
+	if (newSize.X - outputContext.boundsMax.X > 0 || newSize.Y - outputContext.boundsMax.Y > 0)
 	{
 		// 拡大の場合
-		if (!SetConsoleScreenBufferSize(context.handle, newSize))
+		if (!SetConsoleScreenBufferSize(outputContext.handle, newSize))
 			return false;
 
-		if (!SetConsoleWindowInfo(context.handle, true, &newRect))
+		if (!SetConsoleWindowInfo(outputContext.handle, true, &newRect))
 			return false;
 	}
 	else
 	{
 		// 縮小の場合
-		if (!SetConsoleWindowInfo(context.handle, true, &newRect))
+		if (!SetConsoleWindowInfo(outputContext.handle, true, &newRect))
 			return false;
 
-		if (!SetConsoleScreenBufferSize(context.handle, newSize))
+		if (!SetConsoleScreenBufferSize(outputContext.handle, newSize))
 			return false;
 	}
 
 	// コンテキスト更新
-	UpdateContext();
+	UpdateOutputContext();
 
 	return true;
 }
@@ -65,7 +66,7 @@ bool ScreenManager::SetWindowSize(int width, int height)
 	CONSOLE_FONT_INFOEX fontInfo = { sizeof(CONSOLE_FONT_INFOEX) };    // フォント情報
 
 	// 現在使用中のフォントの取得
-	GetCurrentConsoleFontEx(context.handle, false, &fontInfo);
+	GetCurrentConsoleFontEx(outputContext.handle, false, &fontInfo);
 
 	// コンソールサイズ
 	return SetScreenSize(width / fontInfo.dwFontSize.X, height / fontInfo.dwFontSize.Y);
@@ -77,16 +78,16 @@ void ScreenManager::SetFontSize(int size)
 	CONSOLE_FONT_INFOEX fontInfo = { sizeof(CONSOLE_FONT_INFOEX) };    // フォント情報
 
 	// 現在使用中のフォントの取得
-	GetCurrentConsoleFontEx(context.handle, false, &fontInfo);
+	GetCurrentConsoleFontEx(outputContext.handle, false, &fontInfo);
 
 	// フォントサイズの設定
 	fontInfo.dwFontSize = COORD{ static_cast<SHORT>(size / PixelAspectRatio), static_cast<SHORT>(size) };
 
 	// フォントの更新
-	SetCurrentConsoleFontEx(context.handle, false, &fontInfo);
+	SetCurrentConsoleFontEx(outputContext.handle, false, &fontInfo);
 
 	// コンテキスト更新
-	UpdateContext();
+	UpdateOutputContext();
 }
 
 void ScreenManager::SetPixelSize(int size)
@@ -95,7 +96,7 @@ void ScreenManager::SetPixelSize(int size)
 	CONSOLE_FONT_INFOEX fontInfo = { sizeof(CONSOLE_FONT_INFOEX) };    // フォント情報
 
 	// 現在使用中のフォントの取得
-	GetCurrentConsoleFontEx(context.handle, false, &fontInfo);
+	GetCurrentConsoleFontEx(outputContext.handle, false, &fontInfo);
 
 	// フォントサイズの設定
 	COORD oldFontSize = fontInfo.dwFontSize;
@@ -104,48 +105,48 @@ void ScreenManager::SetPixelSize(int size)
 	fontInfo.dwFontSize = COORD{ static_cast<SHORT>(size / PixelAspectRatio), static_cast<SHORT>(size) };
 
 	// フォントの更新
-	SetCurrentConsoleFontEx(context.handle, false, &fontInfo);
+	SetCurrentConsoleFontEx(outputContext.handle, false, &fontInfo);
 
 	// コンソールサイズ
 	SetScreenSize(
-		context.boundsMax.X * fontInfo.dwFontSize.X / oldFontSize.X,
-		context.boundsMax.Y * fontInfo.dwFontSize.Y / oldFontSize.Y);
+		outputContext.boundsMax.X * fontInfo.dwFontSize.X / oldFontSize.X,
+		outputContext.boundsMax.Y * fontInfo.dwFontSize.Y / oldFontSize.Y);
 }
 
 void ScreenManager::SetDefaultText(WCHAR ch)
 {
-	auto& pixel = context.default_pixel;
+	auto& pixel = outputContext.default_pixel;
 	pixel.Char.UnicodeChar = ch;
 }
 
 void ScreenManager::SetDefaultBackground(Color background)
 {
-	auto& pixel = context.default_pixel;
+	auto& pixel = outputContext.default_pixel;
 	pixel.Attributes = Attributes{ pixel.Attributes }.back(background);
 }
 
 void ScreenManager::SetDefaultForeground(Color foreground)
 {
-	auto& pixel = context.default_pixel;
+	auto& pixel = outputContext.default_pixel;
 	pixel.Attributes = Attributes{ pixel.Attributes }.text(foreground);
 }
 
 void ScreenManager::SetBackground(Color color)
 {
 	// 属性設定
-	SetConsoleTextAttribute(context.handle, Attributes{ context.attributes }.back(color));
+	SetConsoleTextAttribute(outputContext.handle, Attributes{ outputContext.attributes }.back(color));
 
 	// コンテキスト更新
-	UpdateContext();
+	UpdateOutputContext();
 }
 
 void ScreenManager::SetForeground(Color color)
 {
 	// 属性設定
-	SetConsoleTextAttribute(context.handle, Attributes{ context.attributes }.text(color));
+	SetConsoleTextAttribute(outputContext.handle, Attributes{ outputContext.attributes }.text(color));
 
 	// コンテキスト更新
-	UpdateContext();
+	UpdateOutputContext();
 }
 
 void ScreenManager::SetCursorVisibility(bool isVisible)
@@ -154,9 +155,9 @@ void ScreenManager::SetCursorVisibility(bool isVisible)
 	CONSOLE_CURSOR_INFO cursorInfo;    // カーソル情報
 
 	// カーソルの表示状態の変更
-	GetConsoleCursorInfo(context.handle, &cursorInfo);
+	GetConsoleCursorInfo(outputContext.handle, &cursorInfo);
 	cursorInfo.bVisible = isVisible;
-	SetConsoleCursorInfo(context.handle, &cursorInfo);
+	SetConsoleCursorInfo(outputContext.handle, &cursorInfo);
 }
 
 void ScreenManager::SetTitle(LPCWSTR title)
@@ -167,5 +168,13 @@ void ScreenManager::SetTitle(LPCWSTR title)
 void ScreenManager::SetCursorPosition(COORD pos)
 {
 	// カーソル位置の設定
-	SetConsoleCursorPosition(context.handle, pos);
+	SetConsoleCursorPosition(outputContext.handle, pos);
+}
+
+void ScreenManager::EnableMouseInput()
+{
+	// 簡易編集モードを無効化
+	SetConsoleMode(inputContext.handle, ENABLE_EXTENDED_FLAGS);
+	// マウス有効化
+	SetConsoleMode(inputContext.handle, ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT);
 }

@@ -4,7 +4,7 @@
 
 void Screen::Draw(COORD coord, Color backColor)
 {
-	static auto& context = ScreenManager::GetInstance().GetContext();
+	static auto& context = ScreenManager::GetInstance().GetOutputContext();
 	if (context.boundsMin.X <= coord.X && coord.X <= context.boundsMax.X - 1 &&
 		context.boundsMin.Y <= coord.Y && coord.Y <= context.boundsMax.Y - 1)
 	{
@@ -18,7 +18,7 @@ void Screen::Draw(COORD coord, Color backColor)
 
 void Screen::DrawCharacter(COORD coord, Color textColor, WCHAR ch)
 {
-	static auto& context = ScreenManager::GetInstance().GetContext();
+	static auto& context = ScreenManager::GetInstance().GetOutputContext();
 	int width = ConsoleCharacter::GetCharacterWidthCJK(ch);
 	if (context.boundsMin.X <= coord.X && coord.X <= context.boundsMax.X - width)
 	{
@@ -68,7 +68,7 @@ int Screen::GetDrawStringWidth(LPCWSTR chs)
 
 void Screen::DrawStringLines(COORD coord, Color textColor, LPCWSTR chs)
 {
-	static auto& context = ScreenManager::GetInstance().GetContext();
+	static auto& context = ScreenManager::GetInstance().GetOutputContext();
 	// ‰E‰º‚æ‚è¶ã‚È‚ç
 	if (coord.X < context.boundsMax.X && coord.Y < context.boundsMax.Y)
 	{

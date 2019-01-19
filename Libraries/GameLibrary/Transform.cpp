@@ -1,7 +1,8 @@
 #include "Transform.h"
 
 Transform::Transform(const Vector2& position, float rotation, const Vector2& scale)
-	: position(position)
+	: world(Matrix3::Identity)
+	, position(position)
 	, rotation(rotation)
 	, scale(scale)
 {
