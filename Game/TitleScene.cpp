@@ -94,7 +94,8 @@ TitleScene::TitleScene()
 	{
 		void Update()
 		{
-			if (InputManager::GetInstance().key->GetButtonDown(VK_SPACE))
+			if (InputManager::GetInstance().key->GetButtonDown(VK_SPACE)
+				|| InputManager::GetInstance().mouse->GetButtonDown(MouseInput::MOUSE_INPUT_LEFT))
 				SceneManager::GetInstance().RequestScene(SceneID::PLAY);
 		}
 	};

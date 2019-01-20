@@ -15,7 +15,9 @@ LogoScene::LogoScene()
 		void Update()
 		{
 			time += .01f;
-			if (time > 1.5f || InputManager::GetInstance().key->GetButtonDown(VK_SPACE))
+			if (time > 1.5f
+				|| InputManager::GetInstance().key->GetButtonDown(VK_SPACE)
+				|| InputManager::GetInstance().mouse->GetButtonDown(MouseInput::MOUSE_INPUT_LEFT))
 				SceneManager::GetInstance().RequestScene(SceneID::TITLE);
 		}
 

@@ -13,16 +13,27 @@ Transform::Transform()
 {
 }
 
-Matrix3 Transform::GetMatrix() const
+Matrix3 Transform::GetLocalMatrix() const
+{
+	Matrix3 m = Matrix3::Identity;
+	m *= Matrix3::CreateScale(scale);
+	m *= Matrix3::CreateRotationZ(rotation);
+	m *= Matrix3::CreateTranslation(position);
+	m *= world;
+	return m;
+}
+
+Matrix3 Transform::GetParentMatrix() const
 {
 	Matrix3 m = Matrix3::Identity;
 	if (auto& p = parent.lock())
 		m *= p->GetMatrix();
-	m *= world;
-	m *= Matrix3::CreateScale(scale);
-	m *= Matrix3::CreateRotationZ(rotation);
-	m *= Matrix3::CreateTranslation(position);
 	return m;
+}
+
+Matrix3 Transform::GetMatrix() const
+{
+	return GetLocalMatrix() * GetParentMatrix();
 }
 
 /*

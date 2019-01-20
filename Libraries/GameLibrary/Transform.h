@@ -15,5 +15,7 @@ public:
 	Transform();
 
 public:
+	Matrix3 GetLocalMatrix() const;
+	Matrix3 GetParentMatrix() const;
 	Matrix3 GetMatrix() const;
 };
