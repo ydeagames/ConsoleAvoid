@@ -4,15 +4,8 @@ PlayScene::PlayScene()
 {
 	class Player : public Component
 	{
-		CXImage textures[2];
 		Vector2 last_pos;
 		Vector2 last_click;
-
-		void Start()
-		{
-			textures[0] = LoadGraph("Resources/Textures/bomb1.ppm", Transparent::FirstColor);
-			textures[1] = LoadGraph("Resources/Textures/bomb2.ppm", Transparent::FirstColor);
-		}
 
 		void Update()
 		{
@@ -31,37 +24,40 @@ PlayScene::PlayScene()
 
 			auto& transform = gameObject()->transform();
 			auto& parentInverse = transform->GetParentMatrix().Inverse();
-			transform->position = InputManager::GetInstance().mouse->GetPosition() * parentInverse;
-			//if (InputManager::GetInstance().mouse->GetButtonDown(MouseInput::MOUSE_INPUT_LEFT))
-			//{
-			//	last_pos = transform->position;
-			//	last_click = InputManager::GetInstance().mouse->GetPosition();
-			//}
-			//if (InputManager::GetInstance().mouse->GetButton(MouseInput::MOUSE_INPUT_LEFT))
-			//{
-			//	auto sub = InputManager::GetInstance().mouse->GetPosition() - last_click;
-			//	transform->position = last_pos + sub;
-			//}
-		}
-
-		void Render()
-		{
-			auto& transform = gameObject()->transform();
-
-			auto& texture = textures[static_cast<int>(Time::time) % 2];
-
-			texture.DrawGraph(Matrix3::CreateTranslation(-Vector2::one / 2) * transform->GetMatrix());
+			auto point = InputManager::GetInstance().mouse->GetPosition() * parentInverse;
+			//transform->position = point;
+			if (InputManager::GetInstance().mouse->GetButtonDown(MouseInput::MOUSE_INPUT_LEFT))
+			{
+				last_pos = transform->position;
+				last_click = point;
+			}
+			if (InputManager::GetInstance().mouse->GetButton(MouseInput::MOUSE_INPUT_LEFT))
+			{
+				auto sub = point - last_click;
+				transform->position = last_pos + sub;
+			}
 		}
 	};
 
+	auto aspect = Vector2{ 16, 9 };
+
 	auto field = GameObject::Create("Field");
 	field->transform()->position = GetWindowSize() / 2;
-	field->transform()->scale = Vector2::one * 10;
+	field->transform()->scale = AspectUtils::Height(Vector2::one, GetWindowSize());
 
 	auto player = GameObject::Create("Player");
 	player->transform()->parent = field->transform();
+	player->transform()->scale = Vector2::one * .1f;
 	player->AddNewComponent<Player>();
 	player->AddNewComponent<Rigidbody>();
+	auto texture = Texture{
+		std::vector<CXImage>{
+			LoadGraph("Resources/Textures/bomb1.ppm", Transparent::FirstColor),
+			LoadGraph("Resources/Textures/bomb2.ppm", Transparent::FirstColor),
+		},
+		1
+	};
+	player->AddNewComponent<TextureRenderer>(texture);
 
 	class SceneHook : public Component
 	{

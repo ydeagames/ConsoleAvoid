@@ -1,5 +1,6 @@
 #pragma once
 #include "Component.h"
+#include "Texture.h"
 
 class Material final
 {
@@ -55,24 +56,14 @@ public:
 	void Render() override;
 };
 
-class TextRenderer : public Component
+class FontTextRenderer : public Component
 {
 public:
-	std::string text;
+	std::wstring text;
+	CXFont font;
 
 public:
-	TextRenderer(const std::string& text);
-
-	void Render() override;
-};
-
-class FontTextRenderer : public TextRenderer
-{
-public:
-	std::shared_ptr<FontResource> font;
-
-public:
-	FontTextRenderer(const std::shared_ptr<FontResource>& font, const std::string& text);
+	FontTextRenderer(const CXFont& font, const std::wstring& text);
 
 	void Render() override;
 };
@@ -80,10 +71,10 @@ public:
 class TextureRenderer : public Component
 {
 public:
-	CXImage image;
+	Texture texture;
 
 public:
-	TextureRenderer(const CXImage& image);
+	TextureRenderer(const Texture& image);
 
 	void Render() override;
 };

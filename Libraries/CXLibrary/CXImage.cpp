@@ -81,15 +81,15 @@ CXLib::CXImage::CXImage()
 
 void CXLib::CXImage::DrawGraph(const Matrix3& world) const
 {
+	Matrix3 matrix = Matrix3::CreateTranslation(-Vector2::one / 2) * world * ScreenToConsole;
 	if (image == nullptr)
 	{
-		DrawBox(Vector2::zero, Vector2::one, Colors::Black, true, world);
-		DrawBox(Vector2::zero, Vector2::one / 2, Colors::Magenta, true, world);
-		DrawBox(Vector2::one / 2, Vector2::one, Colors::Magenta, true, world);
+		DrawBox(Vector2::zero, Vector2::one, Colors::Black, true, matrix);
+		DrawBox(Vector2::zero, Vector2::one / 2, Colors::Magenta, true, matrix);
+		DrawBox(Vector2::one / 2, Vector2::one, Colors::Magenta, true, matrix);
 	}
 	else
 	{
-		Matrix3 matrix = (world * ScreenToConsole);
 		// 座標
 		Vector2 base_pos = Vector2::zero * matrix;
 		// サイズ
@@ -132,12 +132,7 @@ CXImage CXLib::LoadGraph(const std::string& path, ColorCode transparent)
 	return { path, transparent };
 }
 
-void CXLib::DrawGraph(Vector2 pos, const CXImage& image, const Matrix3& world)
+void CXLib::DrawGraph(const CXImage& image, const Matrix3& world)
 {
-	image.DrawGraph(Matrix3::CreateTranslation(pos) * world);
-}
-
-void CXLib::DrawExtendGraph(Vector2 start, Vector2 end, const CXImage& image, const Matrix3& world)
-{
-	image.DrawGraph(Matrix3::CreateTranslation(start) * Matrix3::CreateScale(end - start) * world);
+	image.DrawGraph(world);
 }

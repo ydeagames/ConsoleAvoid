@@ -71,20 +71,22 @@ TitleScene::TitleScene()
 			DrawBox(Vector2{ 10, 10 }, Vector2{ 20, 20 }, Colors::Green, true, Matrix3::CreateTranslation(obj_pos) * world);
 			image.DrawGraph(Matrix3::CreateScale(Vector2{ 40, 40 }) * Matrix3::CreateTranslation(boundsMax - obj_pos));
 
-			DrawStringToHandle(obj_pos, L"Ç†su\nshiÇ¢Ç§\nsus\nhiÅ™Ç¶Å™Ç®Ñ´Ç©", Colors::White, &font, world);
-			DrawStringToHandle(obj_pos + Vector2::down * 10, L"\u2593\u2593\u2593\u2593\u2593\n\u2591\u2591\u2591\u2591\u2591\n\u2592\u2592\u2592\u2592\u2592", Colors::White, &font, world);
+			DrawStringToHandle(L"Ç†su\nshiÇ¢Ç§\nsus\nhiÅ™Ç¶Å™Ç®Ñ´Ç©", Colors::White, font, Matrix3::CreateTranslation(obj_pos) * world);
+			DrawStringToHandle(L"\u2593\u2593\u2593\u2593\u2593\n\u2591\u2591\u2591\u2591\u2591\n\u2592\u2592\u2592\u2592\u2592",
+				Colors::White, font, Matrix3::CreateTranslation(obj_pos + Vector2::down * 10) * world);
 			DrawDashedLine(Vector2::zero, Vector2{ boundsMax.y, boundsMax.y }, Colors::Green, 8, world);
 
 			if (InputManager::GetInstance().key->GetButton('W') || InputManager::GetInstance().key->GetButton(VK_UP))
-				DrawStringToHandle(Vector2{ 15, 35 }, L"Å™", Colors::White, &font, world);
+				DrawStringToHandle(L"Å™", Colors::White, font, Matrix3::CreateTranslation(Vector2{ 15, 35 }) * world);
 			if (InputManager::GetInstance().key->GetButton('S') || InputManager::GetInstance().key->GetButton(VK_DOWN))
-				DrawStringToHandle(Vector2{ 15, 45 }, L"Å´", Colors::White, &font, world);
+				DrawStringToHandle(L"Å´", Colors::White, font, Matrix3::CreateTranslation(Vector2{ 15, 45 }) * world);
 			if (InputManager::GetInstance().key->GetButton('A') || InputManager::GetInstance().key->GetButton(VK_LEFT))
-				DrawStringToHandle(Vector2{ 10, 40 }, L"Å©", Colors::White, &font, world);
+				DrawStringToHandle(L"Å©", Colors::White, font, Matrix3::CreateTranslation(Vector2{ 10, 40 }) * world);
 			if (InputManager::GetInstance().key->GetButton('D') || InputManager::GetInstance().key->GetButton(VK_RIGHT))
-				DrawStringToHandle(Vector2{ 20, 40 }, L"Å®", Colors::White, &font, world);
+				DrawStringToHandle(L"Å®", Colors::White, font, Matrix3::CreateTranslation(Vector2{ 20, 40 }) * world);
 
-			DrawStringToHandle(Vector2::zero, L"kgsgrbkyGkgygKG\nyeGBCKYGYrykbGBE\nCg:;:;+*+:+];`{@\n]:]//.,!!\"#$%&'()", Colors::Red, &font_pong, Matrix3::CreateTranslation(obj_pos) * world);
+			DrawStringToHandle(L"kgsgrbkyGkgygKG\nyeGBCKYGYrykbGBE\nCg:;:;+*+:+];`{@\n]:]//.,!!\"#$%&'()",
+				Colors::Red, font_pong, Matrix3::CreateTranslation(obj_pos) * world);
 		}
 	};
 

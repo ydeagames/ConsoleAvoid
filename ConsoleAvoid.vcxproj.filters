@@ -84,9 +84,6 @@
     <Filter Include="リソース\音">
       <UniqueIdentifier>{c4721adc-6123-4339-b3e6-84f317c16ac7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ライブラリ\ベースライブラリ\物理">
-      <UniqueIdentifier>{19aac873-57f3-440d-a634-3f4bfe8cf475}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\GameMain.h">
@@ -123,6 +120,12 @@
       <Filter>ライブラリ\コンソールライブラリ\オブジェクト</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\BaseLibrary\String.h">
+      <Filter>ライブラリ\ベースライブラリ\オブジェクト</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\BaseLibrary\Matrix.h">
+      <Filter>ライブラリ\ベースライブラリ\オブジェクト</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\BaseLibrary\Vector2.h">
       <Filter>ライブラリ\ベースライブラリ\オブジェクト</Filter>
     </ClInclude>
     <ClInclude Include="Libraries\BaseLibrary\MathUtils.h">
@@ -218,11 +221,8 @@
     <ClInclude Include="Libraries\BaseLibrary\AspectUtils.h">
       <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
     </ClInclude>
-    <ClInclude Include="Libraries\BaseLibrary\Vector2.h">
-      <Filter>ライブラリ\ベースライブラリ\物理</Filter>
-    </ClInclude>
-    <ClInclude Include="Libraries\BaseLibrary\Matrix.h">
-      <Filter>ライブラリ\ベースライブラリ\物理</Filter>
+    <ClInclude Include="Libraries\GameLibrary\Texture.h">
+      <Filter>ライブラリ\ゲームライブラリ\コンポーネント</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -260,6 +260,12 @@
       <Filter>ライブラリ\コンソールライブラリ\オブジェクト</Filter>
     </ClCompile>
     <ClCompile Include="Libraries\BaseLibrary\String.cpp">
+      <Filter>ライブラリ\ベースライブラリ\オブジェクト</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\BaseLibrary\Matrix.cpp">
+      <Filter>ライブラリ\ベースライブラリ\オブジェクト</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\BaseLibrary\Vector2.cpp">
       <Filter>ライブラリ\ベースライブラリ\オブジェクト</Filter>
     </ClCompile>
     <ClCompile Include="Libraries\BaseLibrary\MathUtils.cpp">
@@ -340,11 +346,8 @@
     <ClCompile Include="Libraries\BaseLibrary\AspectUtils.cpp">
       <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
     </ClCompile>
-    <ClCompile Include="Libraries\BaseLibrary\Vector2.cpp">
-      <Filter>ライブラリ\ベースライブラリ\物理</Filter>
-    </ClCompile>
-    <ClCompile Include="Libraries\BaseLibrary\Matrix.cpp">
-      <Filter>ライブラリ\ベースライブラリ\物理</Filter>
+    <ClCompile Include="Libraries\GameLibrary\Texture.cpp">
+      <Filter>ライブラリ\ゲームライブラリ\コンポーネント</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -57,6 +57,5 @@ namespace CXLib
 	CXImage LoadGraph(const std::string& path, ColorCode transparent = 0x0000ff);
 
 	// ƒCƒ[ƒW•`‰æŠÖ”
-	void DrawGraph(Vector2 pos, const CXImage& image, const Matrix3& world = Matrix3::Identity);
-	void DrawExtendGraph(Vector2 start, Vector2 end, const CXImage& image, const Matrix3& world = Matrix3::Identity);
+	void DrawGraph(const CXImage& image, const Matrix3& world = Matrix3::Identity);
 }

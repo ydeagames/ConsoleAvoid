@@ -88,36 +88,25 @@ void LineRenderer::Render()
 	//DrawLineAA(line.p1.x, line.p1.y, line.p2.x, line.p2.y, material.edge_color, material.edge_thickness);
 }
 
-TextRenderer::TextRenderer(const std::string& text)
+FontTextRenderer::FontTextRenderer(const CXFont& font, const std::wstring& text)
 	: text(text)
-{
-}
-
-void TextRenderer::Render()
-{
-	Vector2 pos = gameObject()->transform()->position;
-	//DrawFormatStringF(pos.x, pos.y, Colors::White, text.c_str());
-}
-
-FontTextRenderer::FontTextRenderer(const std::shared_ptr<FontResource>& font, const std::string& text)
-	: TextRenderer(text)
 	, font(font)
 {
 }
 
 void FontTextRenderer::Render()
 {
-	Vector2 pos = gameObject()->transform()->position;
-	//DrawFormatStringFToHandle(pos.x, pos.y, Colors::White, font->GetResource(), text.c_str());
+	auto world = gameObject()->transform()->GetMatrix();
+	DrawStringToHandle(text.c_str(), Colors::White, font, world);
 }
 
-TextureRenderer::TextureRenderer(const CXImage & image)
-	: image(image)
+TextureRenderer::TextureRenderer(const Texture & texture)
+	: texture(texture)
 {
 }
 
 void TextureRenderer::Render()
 {
-	auto world = Matrix3::CreateTranslation(-Vector2::one / 2) * gameObject()->transform()->GetMatrix();
-	image.DrawGraph(world);
+	auto world = gameObject()->transform()->GetMatrix();
+	texture.GetFrame().DrawGraph(world);
 }

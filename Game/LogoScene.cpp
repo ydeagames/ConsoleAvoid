@@ -2,7 +2,7 @@
 
 LogoScene::LogoScene()
 {
-	class LogoRenderer : public Component
+	class Logo : public Component
 	{
 		CXImage image;
 		float time = 0;
@@ -26,14 +26,13 @@ LogoScene::LogoScene()
 			auto windowsize = GetWindowSize();
 			auto size = AspectUtils::Inner(image.GetSize(), windowsize);
 			DrawBox(Vector2::zero, windowsize, Colors::White, true);
-			image.DrawGraph(Matrix3::CreateTranslation(-Vector2::one / 2)
-				* Matrix3::CreateScale(size)
+			image.DrawGraph(Matrix3::CreateScale(size)
 				* Matrix3::CreateScale(Vector2::one * Easings::OUTCUBIC.GetEasingValueRange(std::min(1.f, time), .5f, .75f))
 				* Matrix3::CreateTranslation(windowsize / 2));
 		}
 	};
 
-	GameObject::Create("LogoRenderer")->AddNewComponent<LogoRenderer>();
+	GameObject::Create("Logo")->AddNewComponent<Logo>();
 }
 
 LogoScene::~LogoScene()

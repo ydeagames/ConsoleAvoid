@@ -129,15 +129,15 @@ namespace CXLib
 	}
 
 	// 文字列描画関数
-	void DrawString(Vector2 pos, LPCWSTR String, Color Color, const Matrix3& world)
+	void DrawString(LPCWSTR String, Color Color, const Matrix3& world)
 	{
-		Screen::DrawStringLines(pos * (world * ScreenToConsole), Color, String);
+		Screen::DrawStringLines(Vector2::zero * (world * ScreenToConsole), Color, String);
 	}
 
 	// フォントハンドルを使用した文字列の描画幅(ワールド座標)を取得する
-	float GetDrawStringWidthToHandle(LPCWSTR String, const CXFont* FontHandle)
+	float GetDrawStringWidthToHandle(LPCWSTR String, const CXFont& FontHandle)
 	{
-		switch (FontHandle->type)
+		switch (FontHandle.type)
 		{
 		default:
 		case CXFONT_DEFAULT:
@@ -145,7 +145,7 @@ namespace CXLib
 			return GetDrawStringWidthToHandle(String);
 		case CXFONT_PONG:
 			// サイズの比
-			float size = 7 / FontHandle->size;
+			float size = 7 / FontHandle.size;
 			// フォントの幅
 			float font_w = 0;
 			// フォント左上のX座標
@@ -191,19 +191,18 @@ namespace CXLib
 	}
 
 	// フォントハンドルを使用して文字列を描画する
-	void DrawStringToHandle(Vector2 pos, LPCWSTR String, Color Color, const CXFont* FontHandle, const Matrix3& world)
+	void DrawStringToHandle(LPCWSTR String, Color Color, const CXFont& FontHandle, const Matrix3& world)
 	{
-		switch (FontHandle->type)
+		switch (FontHandle.type)
 		{
 		default:
 		case CXFONT_DEFAULT:
 			// 文字列をそのまま描画
-			DrawString(pos, String, Color, world);
+			DrawString(String, Color, world);
 			break;
 		case CXFONT_PONG:
-			Matrix3 matrix = Matrix3::CreateTranslation(pos) * world;
 			// サイズの比
-			float size = 7 * FontHandle->size;
+			float size = 7 * FontHandle.size;
 			// フォント左上の座標
 			Vector2 font_pos = {};
 			// フォントの最大高さ
@@ -246,7 +245,7 @@ namespace CXLib
 						Matrix3::CreateScale(Vector2 { sprite->width, sprite->height }) *
 						Matrix3::CreateTranslation(-Vector2{ sprite->originX, sprite->originY }) *
 						Matrix3::CreateTranslation(font_pos) *
-						matrix);
+						world);
 
 					// フォント左上のX座標を進める
 					font_pos.x += sprite->width + Atlas::FONT_SPAN_SIZE.x;

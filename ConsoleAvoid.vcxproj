@@ -60,6 +60,7 @@
     <ClInclude Include="Libraries\GameLibrary\Scene.h" />
     <ClInclude Include="Libraries\GameLibrary\SceneManager.h" />
     <ClInclude Include="Libraries\GameLibrary\Shape.h" />
+    <ClInclude Include="Libraries\GameLibrary\Texture.h" />
     <ClInclude Include="Libraries\GameLibrary\Timer.h" />
     <ClInclude Include="Libraries\GameLibrary\Transform.h" />
     <ClInclude Include="Libraries\Utilities\MemoryLeakDetector.h" />
@@ -109,6 +110,7 @@
     <ClCompile Include="Libraries\GameLibrary\Scene.cpp" />
     <ClCompile Include="Libraries\GameLibrary\SceneManager.cpp" />
     <ClCompile Include="Libraries\GameLibrary\Shape.cpp" />
+    <ClCompile Include="Libraries\GameLibrary\Texture.cpp" />
     <ClCompile Include="Libraries\GameLibrary\Timer.cpp" />
     <ClCompile Include="Libraries\GameLibrary\Transform.cpp" />
   </ItemGroup>
