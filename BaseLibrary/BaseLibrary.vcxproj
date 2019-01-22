@@ -100,7 +100,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeader />
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <ForcedIncludeFiles>Dependencies\pch.h</ForcedIncludeFiles>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -128,7 +128,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeader />
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <ForcedIncludeFiles>Dependencies\pch.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
@@ -147,7 +147,7 @@
     <ClInclude Include="..\Libraries\BaseLibrary\String.h" />
     <ClInclude Include="..\Libraries\BaseLibrary\Vector2.h" />
     <ClInclude Include="..\Libraries\Dependencies\pch.h" />
-    <ClInclude Include="..\Libraries\Utilities\MemoryLeakDetector.h" />
+    <ClInclude Include="..\Libraries\BaseLibrary\MemoryLeakDetector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Libraries\BaseLibrary\AspectUtils.cpp" />
@@ -159,6 +159,8 @@
     <ClCompile Include="..\Libraries\Dependencies\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

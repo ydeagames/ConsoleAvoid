@@ -45,11 +45,11 @@
     <ClInclude Include="..\Libraries\BaseLibrary\Singleton.h">
       <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\Utilities\MemoryLeakDetector.h">
-      <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
-    </ClInclude>
     <ClInclude Include="..\Libraries\Dependencies\pch.h">
       <Filter>ライブラリ\依存関係</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\BaseLibrary\MemoryLeakDetector.h">
+      <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
