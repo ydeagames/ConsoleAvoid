@@ -63,6 +63,7 @@
     <ClInclude Include="Libraries\GameLibrary\Texture.h" />
     <ClInclude Include="Libraries\GameLibrary\Timer.h" />
     <ClInclude Include="Libraries\GameLibrary\Transform.h" />
+    <ClInclude Include="Libraries\Library.h" />
     <ClInclude Include="Libraries\Utilities\MemoryLeakDetector.h" />
     <ClInclude Include="Resources\Icon\Icon.h" />
   </ItemGroup>
@@ -205,7 +206,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;BaseLibrary\BaseLibrary.h;CXLibrary\CXLibrary.h;GameLibrary\GameLibraryClass.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;Library.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -220,7 +221,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;BaseLibrary\BaseLibrary.h;CXLibrary\CXLibrary.h;GameLibrary\GameLibraryClass.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;Library.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -237,7 +238,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;BaseLibrary\BaseLibrary.h;CXLibrary\CXLibrary.h;GameLibrary\GameLibraryClass.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;Library.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -256,7 +257,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;Utilities\MemoryLeakDetector.h;BaseLibrary\BaseLibrary.h;CXLibrary\CXLibrary.h;GameLibrary\GameLibraryClass.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;Library.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

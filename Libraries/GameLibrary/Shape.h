@@ -1,5 +1,7 @@
 #pragma once
 
+class Transform;
+
 // <‰¡ˆÊ’uŠÖŒW>
 enum class HorizontalSide
 {
