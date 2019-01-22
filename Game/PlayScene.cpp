@@ -54,7 +54,7 @@ PlayScene::PlayScene()
 
 	auto player = GameObject::Create("Player");
 	player->transform()->parent = field->transform();
-	player->transform()->scale = Vector2::one * .1f;
+	player->transform()->scale = Vector2::one * .15f;
 	player->AddNewComponent<Player>();
 	player->AddNewComponent<Rigidbody>();
 	auto texture = Texture{
@@ -64,6 +64,7 @@ PlayScene::PlayScene()
 		},
 		1
 	};
+	player->AddNewComponent<BoxRenderer>()->material = Material{}.SetBorder(Colors::Blue);
 	player->AddNewComponent<TextureRenderer>(texture);
 
 	class SceneHook : public Component
