@@ -39,17 +39,25 @@ PlayScene::PlayScene()
 		}
 	};
 
-	auto gameAspect = Vector2{ 16, 9 };
-	auto windowAspect = GetWindowSize();
-	auto windowAspectRatio = windowAspect.x / windowAspect.y;
+	static auto gameAspect = Vector2{ 16, 9 };
+	static float gameAspectRatio = gameAspect.x / gameAspect.y;
 
+	class Canvas : public Component
+	{
+		void Update()
+		{
+			auto windowsize = GetWindowSize();
+			auto& transform = gameObject()->transform();
+			transform->position = windowsize / 2;
+			transform->scale = AspectUtils::Height(Vector2::one, AspectUtils::Inner(gameAspect, windowsize));
+		}
+	};
 	auto field = GameObject::Create("Field");
-	field->transform()->position = GetWindowSize() / 2;
-	field->transform()->scale = AspectUtils::Height(Vector2::one, GetWindowSize());
+	field->AddNewComponent<Canvas>();
 
 	auto back = GameObject::Create("Back");
 	back->transform()->parent = field->transform();
-	back->transform()->scale = Vector2{ windowAspectRatio, 1.f };
+	back->transform()->scale = Vector2{ gameAspectRatio, 1.f };
 	back->AddNewComponent<BoxRenderer>()->material = Material{}.SetBase(Colors::Green).SetBorder(Colors::Red);
 
 	auto player = GameObject::Create("Player");
