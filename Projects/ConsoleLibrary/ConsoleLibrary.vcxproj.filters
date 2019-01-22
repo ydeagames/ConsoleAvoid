@@ -30,9 +30,6 @@
     <ClInclude Include="..\..\Libraries\ConsoleLibrary\Screen.h">
       <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Libraries\ConsoleLibrary\ScreenContext.h">
-      <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Libraries\ConsoleLibrary\ScreenManager.h">
       <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen</Filter>
     </ClInclude>
@@ -42,12 +39,15 @@
     <ClInclude Include="..\..\Libraries\Dependencies\pch.h">
       <Filter>ライブラリ\依存関係</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Libraries\ConsoleLibrary\ScreenInputContext.h">
+      <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Libraries\ConsoleLibrary\ScreenOutputContext.h">
+      <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Libraries\ConsoleLibrary\Screen.cpp">
-      <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Libraries\ConsoleLibrary\ScreenContext.cpp">
       <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Libraries\ConsoleLibrary\ScreenManager.cpp">
@@ -58,6 +58,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Libraries\Dependencies\pch.cpp">
       <Filter>ライブラリ\依存関係</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libraries\ConsoleLibrary\ScreenInputContext.cpp">
+      <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Libraries\ConsoleLibrary\ScreenOutputContext.cpp">
+      <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

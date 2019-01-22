@@ -162,7 +162,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\Libraries\GameLibrary\Collider.cpp" />
-    <ClCompile Include="..\..\Libraries\GameLibrary\CollisionEvent.cpp" />
     <ClCompile Include="..\..\Libraries\GameLibrary\Component.cpp" />
     <ClCompile Include="..\..\Libraries\GameLibrary\ComponentContainer.cpp" />
     <ClCompile Include="..\..\Libraries\GameLibrary\FrameTimer.cpp" />

@@ -1,6 +1,7 @@
 #pragma once
 #include "Color.h"
-#include "ScreenContext.h"
+#include "ScreenInputContext.h"
+#include "ScreenOutputContext.h"
 
 class ScreenManager : public Singleton<ScreenManager>
 {

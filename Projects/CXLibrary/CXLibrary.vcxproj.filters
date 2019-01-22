@@ -62,9 +62,6 @@
     <ClCompile Include="..\..\Libraries\CXLibrary\CXLib.cpp">
       <Filter>ライブラリ\CXライブラリ\CXLib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Libraries\CXLibrary\PPMLib.cpp">
-      <Filter>ライブラリ\CXライブラリ\CXLib\Dependencies</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Libraries\CXLibrary\SystemUtils.cpp">
       <Filter>ライブラリ\CXライブラリ\ユーティリティ</Filter>
     </ClCompile>

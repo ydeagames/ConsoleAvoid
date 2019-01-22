@@ -152,7 +152,6 @@
     <ClCompile Include="..\..\Libraries\CXLibrary\CXImage.cpp" />
     <ClCompile Include="..\..\Libraries\CXLibrary\CXLib.cpp" />
     <ClCompile Include="..\..\Libraries\CXLibrary\Input.cpp" />
-    <ClCompile Include="..\..\Libraries\CXLibrary\PPMLib.cpp" />
     <ClCompile Include="..\..\Libraries\CXLibrary\SystemUtils.cpp" />
     <ClCompile Include="..\..\Libraries\CXLibrary\Time.cpp" />
     <ClCompile Include="..\..\Libraries\Dependencies\pch.cpp">

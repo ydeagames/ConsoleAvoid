@@ -98,9 +98,6 @@
     <ClCompile Include="..\..\Libraries\GameLibrary\Collider.cpp">
       <Filter>ライブラリ\ゲームライブラリ\物理</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Libraries\GameLibrary\CollisionEvent.cpp">
-      <Filter>ライブラリ\ゲームライブラリ\物理</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Libraries\GameLibrary\Shape.cpp">
       <Filter>ライブラリ\ゲームライブラリ\物理</Filter>
     </ClCompile>

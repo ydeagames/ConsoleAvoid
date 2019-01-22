@@ -141,14 +141,16 @@
     <ClInclude Include="..\..\Libraries\ConsoleLibrary\ConsoleCharacter.h" />
     <ClInclude Include="..\..\Libraries\ConsoleLibrary\ConsoleLibrary.h" />
     <ClInclude Include="..\..\Libraries\ConsoleLibrary\Screen.h" />
-    <ClInclude Include="..\..\Libraries\ConsoleLibrary\ScreenContext.h" />
+    <ClInclude Include="..\..\Libraries\ConsoleLibrary\ScreenOutputContext.h" />
+    <ClInclude Include="..\..\Libraries\ConsoleLibrary\ScreenInputContext.h" />
     <ClInclude Include="..\..\Libraries\ConsoleLibrary\ScreenManager.h" />
     <ClInclude Include="..\..\Libraries\Dependencies\pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Libraries\ConsoleLibrary\ConsoleCharacter.cpp" />
     <ClCompile Include="..\..\Libraries\ConsoleLibrary\Screen.cpp" />
-    <ClCompile Include="..\..\Libraries\ConsoleLibrary\ScreenContext.cpp" />
+    <ClCompile Include="..\..\Libraries\ConsoleLibrary\ScreenOutputContext.cpp" />
+    <ClCompile Include="..\..\Libraries\ConsoleLibrary\ScreenInputContext.cpp" />
     <ClCompile Include="..\..\Libraries\ConsoleLibrary\ScreenManager.cpp" />
     <ClCompile Include="..\..\Libraries\Dependencies\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

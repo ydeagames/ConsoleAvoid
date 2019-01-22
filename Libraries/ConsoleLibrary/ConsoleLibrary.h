@@ -4,5 +4,6 @@
 #include "Color.h"
 #include "ConsoleCharacter.h"
 #include "Screen.h"
-#include "ScreenContext.h"
+#include "ScreenInputContext.h"
+#include "ScreenOutputContext.h"
 #include "ScreenManager.h"
