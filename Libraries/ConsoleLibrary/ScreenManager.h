@@ -5,9 +5,6 @@
 
 class ScreenManager : public Singleton<ScreenManager>
 {
-public:
-	static const SHORT PixelAspectRatio = 2;
-
 private:
 	ScreenInputContext inputContext;
 	ScreenOutputContext outputContext;

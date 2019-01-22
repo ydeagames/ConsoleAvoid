@@ -9,6 +9,7 @@ public:
 	COORD boundsMax;			  			// バッファサイズ
 	WORD attributes;			  			// 属性
 	CHAR_INFO default_pixel;	  			// デフォルトピクセル
+	SHORT fontSize;							// フォントサイズ
 
 private:
 	SMALL_RECT screenRegion;	  			// 描画領域

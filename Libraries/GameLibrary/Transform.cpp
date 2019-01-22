@@ -5,6 +5,7 @@ Transform::Transform(const Vector2& position, float rotation, const Vector2& sca
 	, position(position)
 	, rotation(rotation)
 	, scale(scale)
+	, static_object(false)
 {
 }
 
@@ -34,6 +35,15 @@ Matrix3 Transform::GetParentMatrix() const
 Matrix3 Transform::GetMatrix() const
 {
 	return GetLocalMatrix() * GetParentMatrix();
+}
+
+bool Transform::IsStaticObject() const
+{
+	bool result = static_object;
+	if (auto& p = parent.lock())
+		if (!p->IsStaticObject())
+			result = false;
+	return result;
 }
 
 /*

@@ -58,6 +58,7 @@ PlayScene::PlayScene()
 	auto back = GameObject::Create("Back");
 	back->transform()->parent = field->transform();
 	back->transform()->scale = Vector2{ gameAspectRatio, 1.f };
+	back->transform()->static_object = true;
 	back->AddNewComponent<BoxRenderer>()->material = Material{}.SetBase(Colors::Green).SetBorder(Colors::Red);
 
 	auto player = GameObject::Create("Player");

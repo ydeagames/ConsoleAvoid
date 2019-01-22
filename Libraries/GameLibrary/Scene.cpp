@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "GameObject.h"
+#include "Transform.h"
 
 void Scene::Update()
 {
@@ -22,9 +23,29 @@ void Scene::Update()
 
 void Scene::Render()
 {
+	static auto& context = ScreenManager::GetInstance().GetOutputContext();
+
+	if (first_rendering)
+	{
+		context.ClearStaticBuffer();
+		first_rendering = false;
+	}
+
+	if (!context.HasStaticBuffer())
+	{
+		context.ClearStaticBuffer();
+		context.BeginStaticBuffer();
+		for (auto& layer : layers)
+			for (auto& wobject : layer)
+				if (auto object = wobject.lock())
+					if (object && !object->IsDestroyed() && object->transform()->IsStaticObject())
+						object->Render();
+		context.EndStaticBuffer();
+	}
+
 	for (auto& layer : layers)
 		for (auto& wobject : layer)
 			if (auto object = wobject.lock())
-				if (object && !object->IsDestroyed())
+				if (object && !object->IsDestroyed() && !object->transform()->IsStaticObject())
 					object->Render();
 }

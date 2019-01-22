@@ -9,6 +9,7 @@ public:
 	Vector2 position;				// <テクスチャ>
 	float rotation;					// <回転>
 	Vector2 scale;					// <スケール>
+	bool static_object;				// <静的オブジェクト>
 
 public:
 	Transform(const Vector2& position, float rotation, const Vector2& scale);
@@ -18,4 +19,5 @@ public:
 	Matrix3 GetLocalMatrix() const;
 	Matrix3 GetParentMatrix() const;
 	Matrix3 GetMatrix() const;
+	bool IsStaticObject() const;
 };

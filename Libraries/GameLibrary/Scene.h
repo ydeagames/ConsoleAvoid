@@ -14,8 +14,12 @@ public:
 	std::vector<std::weak_ptr<GameObject>> layers[MAX_LAYERS];
 
 public:
-	Scene() = default;
+	Scene()
+		: first_rendering(true) {}
 	virtual ~Scene() = default;
+
+private:
+	bool first_rendering;
 
 public:
 	void Update();

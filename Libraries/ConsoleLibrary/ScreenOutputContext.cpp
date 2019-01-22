@@ -18,6 +18,11 @@ ScreenOutputContext::ScreenOutputContext(const HANDLE& hOut, CHAR_INFO default_p
 	screenRegion = { boundsMin.X, boundsMin.Y, boundsMax.X - 1, boundsMax.Y - 1 };
 	attributes = screenBufferInfo.wAttributes;
 
+	// ƒtƒHƒ“ƒgŽæ“¾
+	CONSOLE_FONT_INFOEX fontInfo = { sizeof(CONSOLE_FONT_INFOEX) };
+	GetCurrentConsoleFontEx(handle, false, &fontInfo);
+	fontSize = fontInfo.dwFontSize.Y;
+
 	dynamicBuffer = std::vector<CHAR_INFO>(boundsMax.X * boundsMax.Y, default_pixel);
 	staticBuffer = std::vector<CHAR_INFO>(boundsMax.X * boundsMax.Y, default_pixel);
 	currentBuffer = &dynamicBuffer[0];

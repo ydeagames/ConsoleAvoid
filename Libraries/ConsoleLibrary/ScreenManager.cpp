@@ -81,7 +81,7 @@ void ScreenManager::SetFontSize(int size)
 	GetCurrentConsoleFontEx(outputContext.handle, false, &fontInfo);
 
 	// フォントサイズの設定
-	fontInfo.dwFontSize = COORD{ static_cast<SHORT>(size / PixelAspectRatio), static_cast<SHORT>(size) };
+	fontInfo.dwFontSize = COORD{ static_cast<SHORT>(size / 2), static_cast<SHORT>(size) };
 
 	// フォントの更新
 	SetCurrentConsoleFontEx(outputContext.handle, false, &fontInfo);
@@ -102,7 +102,7 @@ void ScreenManager::SetPixelSize(int size)
 	COORD oldFontSize = fontInfo.dwFontSize;
 
 	// フォントサイズの設定
-	fontInfo.dwFontSize = COORD{ static_cast<SHORT>(size / PixelAspectRatio), static_cast<SHORT>(size) };
+	fontInfo.dwFontSize = COORD{ static_cast<SHORT>(size / 2), static_cast<SHORT>(size) };
 
 	// フォントの更新
 	SetCurrentConsoleFontEx(outputContext.handle, false, &fontInfo);
