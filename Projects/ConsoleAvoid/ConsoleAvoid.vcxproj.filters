@@ -32,68 +32,68 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Game\GameMain.h">
+    <ClInclude Include="..\..\Game\GameMain.h">
       <Filter>ゲーム</Filter>
     </ClInclude>
-    <ClInclude Include="..\Game\LogoScene.h">
+    <ClInclude Include="..\..\Game\LogoScene.h">
       <Filter>ゲーム\シーン</Filter>
     </ClInclude>
-    <ClInclude Include="..\Game\PlayScene.h">
+    <ClInclude Include="..\..\Game\PlayScene.h">
       <Filter>ゲーム\シーン</Filter>
     </ClInclude>
-    <ClInclude Include="..\Game\ResultScene.h">
+    <ClInclude Include="..\..\Game\ResultScene.h">
       <Filter>ゲーム\シーン</Filter>
     </ClInclude>
-    <ClInclude Include="..\Game\TitleScene.h">
+    <ClInclude Include="..\..\Game\TitleScene.h">
       <Filter>ゲーム\シーン</Filter>
     </ClInclude>
-    <ClInclude Include="..\Resources\Icon\Icon.h">
+    <ClInclude Include="..\..\Resources\Icon\Icon.h">
       <Filter>リソース\アイコン</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\Dependencies\pch.h">
+    <ClInclude Include="..\..\Libraries\Dependencies\pch.h">
       <Filter>ライブラリ\依存関係</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Game\GameMain.cpp">
+    <ClCompile Include="..\..\Game\GameMain.cpp">
       <Filter>ゲーム</Filter>
     </ClCompile>
-    <ClCompile Include="..\Game\Main.cpp">
+    <ClCompile Include="..\..\Game\Main.cpp">
       <Filter>ゲーム</Filter>
     </ClCompile>
-    <ClCompile Include="..\Game\LogoScene.cpp">
+    <ClCompile Include="..\..\Game\LogoScene.cpp">
       <Filter>ゲーム\シーン</Filter>
     </ClCompile>
-    <ClCompile Include="..\Game\PlayScene.cpp">
+    <ClCompile Include="..\..\Game\PlayScene.cpp">
       <Filter>ゲーム\シーン</Filter>
     </ClCompile>
-    <ClCompile Include="..\Game\ResultScene.cpp">
+    <ClCompile Include="..\..\Game\ResultScene.cpp">
       <Filter>ゲーム\シーン</Filter>
     </ClCompile>
-    <ClCompile Include="..\Game\TitleScene.cpp">
+    <ClCompile Include="..\..\Game\TitleScene.cpp">
       <Filter>ゲーム\シーン</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\Dependencies\pch.cpp">
+    <ClCompile Include="..\..\Libraries\Dependencies\pch.cpp">
       <Filter>ライブラリ\依存関係</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Resources\Icon\Icon.ico">
+    <Image Include="..\..\Resources\Icon\Icon.ico">
       <Filter>リソース\アイコン</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\Resources\Icon\Icon.rc">
+    <ResourceCompile Include="..\..\Resources\Icon\Icon.rc">
       <Filter>リソース\アイコン</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Resources\Fonts\font.ppm">
+    <None Include="..\..\Resources\Fonts\font.ppm">
       <Filter>リソース\フォント</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\Resources\Fonts\font.txt">
+    <Text Include="..\..\Resources\Fonts\font.txt">
       <Filter>リソース\フォント</Filter>
     </Text>
   </ItemGroup>

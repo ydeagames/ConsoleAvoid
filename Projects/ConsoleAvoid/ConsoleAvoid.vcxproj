@@ -18,33 +18,83 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Game\GameMain.h" />
+    <ClInclude Include="..\..\Game\LogoScene.h" />
+    <ClInclude Include="..\..\Game\PlayScene.h" />
+    <ClInclude Include="..\..\Game\ResultScene.h" />
+    <ClInclude Include="..\..\Game\TitleScene.h" />
+    <ClInclude Include="..\..\Libraries\Dependencies\pch.h" />
+    <ClInclude Include="..\..\Resources\Icon\Icon.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Game\GameMain.cpp" />
+    <ClCompile Include="..\..\Game\LogoScene.cpp" />
+    <ClCompile Include="..\..\Game\Main.cpp" />
+    <ClCompile Include="..\..\Game\PlayScene.cpp" />
+    <ClCompile Include="..\..\Game\ResultScene.cpp" />
+    <ClCompile Include="..\..\Game\TitleScene.cpp" />
+    <ClCompile Include="..\..\Libraries\Dependencies\pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\Resources\Icon\Icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\Resources\Icon\Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Resources\Fonts\font.ppm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\Resources\Fonts\font.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BaseLibrary\BaseLibrary.vcxproj">
+      <Project>{daded0cc-fae5-4f78-a985-b5770104db5a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ConsoleLibrary\ConsoleLibrary.vcxproj">
+      <Project>{0ea2357a-cbd3-48e0-aa10-59c4f06248a2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\CXLibrary\CXLibrary.vcxproj">
+      <Project>{40ba638f-cb68-4913-962a-8017888b412f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GameLibrary\GameLibrary.vcxproj">
+      <Project>{b05e7b67-d798-4375-a2d3-fa7b0eca6760}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{DADED0CC-FAE5-4F78-A985-B5770104DB5A}</ProjectGuid>
-    <RootNamespace>BaseLibrary</RootNamespace>
+    <ProjectGuid>{D65A40FE-E356-487B-925D-F6F0C8FA931C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>ConsoleAvoid</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -69,100 +119,89 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <LibraryPath>$(SolutionDir)\Libraries;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <LibraryPath>$(SolutionDir)\Libraries;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <LibraryPath>$(SolutionDir)\Libraries;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(SolutionDir)\Libraries;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <LibraryPath>$(SolutionDir)\Libraries;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;Dependencies\pch.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <ForcedIncludeFiles>Dependencies\pch.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;Dependencies\pch.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <ForcedIncludeFiles>Dependencies\pch.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\Libraries\BaseLibrary\AspectUtils.h" />
-    <ClInclude Include="..\Libraries\BaseLibrary\BaseLibrary.h" />
-    <ClInclude Include="..\Libraries\BaseLibrary\Easings.h" />
-    <ClInclude Include="..\Libraries\BaseLibrary\MathUtils.h" />
-    <ClInclude Include="..\Libraries\BaseLibrary\Matrix.h" />
-    <ClInclude Include="..\Libraries\BaseLibrary\Random.h" />
-    <ClInclude Include="..\Libraries\BaseLibrary\Singleton.h" />
-    <ClInclude Include="..\Libraries\BaseLibrary\String.h" />
-    <ClInclude Include="..\Libraries\BaseLibrary\Vector2.h" />
-    <ClInclude Include="..\Libraries\Dependencies\pch.h" />
-    <ClInclude Include="..\Libraries\BaseLibrary\MemoryLeakDetector.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\Libraries\BaseLibrary\AspectUtils.cpp" />
-    <ClCompile Include="..\Libraries\BaseLibrary\Easings.cpp" />
-    <ClCompile Include="..\Libraries\BaseLibrary\MathUtils.cpp" />
-    <ClCompile Include="..\Libraries\BaseLibrary\Matrix.cpp" />
-    <ClCompile Include="..\Libraries\BaseLibrary\Random.cpp" />
-    <ClCompile Include="..\Libraries\BaseLibrary\Vector2.cpp" />
-    <ClCompile Include="..\Libraries\Dependencies\pch.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

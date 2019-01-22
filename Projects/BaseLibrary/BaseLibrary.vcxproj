@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{40BA638F-CB68-4913-962A-8017888B412F}</ProjectGuid>
-    <RootNamespace>CXLibrary</RootNamespace>
+    <ProjectGuid>{DADED0CC-FAE5-4F78-A985-B5770104DB5A}</ProjectGuid>
+    <RootNamespace>BaseLibrary</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -77,11 +77,11 @@
     <LibraryPath>$(SolutionDir)\Libraries;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>$(SolutionDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Libraries;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>$(SolutionDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Libraries;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -91,7 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;ConsoleLibrary\ConsoleLibrary.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;Dependencies\pch.h</ForcedIncludeFiles>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -99,9 +99,9 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;ConsoleLibrary\ConsoleLibrary.h</ForcedIncludeFiles>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <ForcedIncludeFiles>Dependencies\pch.h</ForcedIncludeFiles>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -113,7 +113,7 @@
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;ConsoleLibrary\ConsoleLibrary.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;Dependencies\pch.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -127,9 +127,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;ConsoleLibrary\ConsoleLibrary.h</ForcedIncludeFiles>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <ForcedIncludeFiles>Dependencies\pch.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -137,38 +137,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\Libraries\CXLibrary\CXFont.h" />
-    <ClInclude Include="..\Libraries\CXLibrary\CXImage.h" />
-    <ClInclude Include="..\Libraries\CXLibrary\CXLib.h" />
-    <ClInclude Include="..\Libraries\CXLibrary\CXLibrary.h" />
-    <ClInclude Include="..\Libraries\CXLibrary\Input.h" />
-    <ClInclude Include="..\Libraries\CXLibrary\PPMLib.h" />
-    <ClInclude Include="..\Libraries\CXLibrary\SystemUtils.h" />
-    <ClInclude Include="..\Libraries\CXLibrary\Time.h" />
-    <ClInclude Include="..\Libraries\Dependencies\pch.h" />
+    <ClInclude Include="..\..\Libraries\BaseLibrary\AspectUtils.h" />
+    <ClInclude Include="..\..\Libraries\BaseLibrary\BaseLibrary.h" />
+    <ClInclude Include="..\..\Libraries\BaseLibrary\Easings.h" />
+    <ClInclude Include="..\..\Libraries\BaseLibrary\MathUtils.h" />
+    <ClInclude Include="..\..\Libraries\BaseLibrary\Matrix.h" />
+    <ClInclude Include="..\..\Libraries\BaseLibrary\Random.h" />
+    <ClInclude Include="..\..\Libraries\BaseLibrary\Singleton.h" />
+    <ClInclude Include="..\..\Libraries\BaseLibrary\String.h" />
+    <ClInclude Include="..\..\Libraries\BaseLibrary\Vector2.h" />
+    <ClInclude Include="..\..\Libraries\Dependencies\pch.h" />
+    <ClInclude Include="..\..\Libraries\BaseLibrary\MemoryLeakDetector.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Libraries\CXLibrary\CXFont.cpp" />
-    <ClCompile Include="..\Libraries\CXLibrary\CXImage.cpp" />
-    <ClCompile Include="..\Libraries\CXLibrary\CXLib.cpp" />
-    <ClCompile Include="..\Libraries\CXLibrary\Input.cpp" />
-    <ClCompile Include="..\Libraries\CXLibrary\PPMLib.cpp" />
-    <ClCompile Include="..\Libraries\CXLibrary\SystemUtils.cpp" />
-    <ClCompile Include="..\Libraries\CXLibrary\Time.cpp" />
-    <ClCompile Include="..\Libraries\Dependencies\pch.cpp">
+    <ClCompile Include="..\..\Libraries\BaseLibrary\AspectUtils.cpp" />
+    <ClCompile Include="..\..\Libraries\BaseLibrary\Easings.cpp" />
+    <ClCompile Include="..\..\Libraries\BaseLibrary\MathUtils.cpp" />
+    <ClCompile Include="..\..\Libraries\BaseLibrary\Matrix.cpp" />
+    <ClCompile Include="..\..\Libraries\BaseLibrary\Random.cpp" />
+    <ClCompile Include="..\..\Libraries\BaseLibrary\Vector2.cpp" />
+    <ClCompile Include="..\..\Libraries\Dependencies\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BaseLibrary\BaseLibrary.vcxproj">
-      <Project>{daded0cc-fae5-4f78-a985-b5770104db5a}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\ConsoleLibrary\ConsoleLibrary.vcxproj">
-      <Project>{0ea2357a-cbd3-48e0-aa10-59c4f06248a2}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -21,42 +21,42 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Libraries\ConsoleLibrary\ConsoleLibrary.h">
+    <ClInclude Include="..\..\Libraries\ConsoleLibrary\ConsoleLibrary.h">
       <Filter>ライブラリ\コンソールライブラリ</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\ConsoleLibrary\Color.h">
+    <ClInclude Include="..\..\Libraries\ConsoleLibrary\Color.h">
       <Filter>ライブラリ\コンソールライブラリ\オブジェクト</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\ConsoleLibrary\Screen.h">
+    <ClInclude Include="..\..\Libraries\ConsoleLibrary\Screen.h">
       <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\ConsoleLibrary\ScreenContext.h">
+    <ClInclude Include="..\..\Libraries\ConsoleLibrary\ScreenContext.h">
       <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\ConsoleLibrary\ScreenManager.h">
+    <ClInclude Include="..\..\Libraries\ConsoleLibrary\ScreenManager.h">
       <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\ConsoleLibrary\ConsoleCharacter.h">
+    <ClInclude Include="..\..\Libraries\ConsoleLibrary\ConsoleCharacter.h">
       <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen\Dependencies</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\Dependencies\pch.h">
+    <ClInclude Include="..\..\Libraries\Dependencies\pch.h">
       <Filter>ライブラリ\依存関係</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Libraries\ConsoleLibrary\Screen.cpp">
+    <ClCompile Include="..\..\Libraries\ConsoleLibrary\Screen.cpp">
       <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\ConsoleLibrary\ScreenContext.cpp">
+    <ClCompile Include="..\..\Libraries\ConsoleLibrary\ScreenContext.cpp">
       <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\ConsoleLibrary\ScreenManager.cpp">
+    <ClCompile Include="..\..\Libraries\ConsoleLibrary\ScreenManager.cpp">
       <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\ConsoleLibrary\ConsoleCharacter.cpp">
+    <ClCompile Include="..\..\Libraries\ConsoleLibrary\ConsoleCharacter.cpp">
       <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen\Dependencies</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\Dependencies\pch.cpp">
+    <ClCompile Include="..\..\Libraries\Dependencies\pch.cpp">
       <Filter>ライブラリ\依存関係</Filter>
     </ClCompile>
   </ItemGroup>

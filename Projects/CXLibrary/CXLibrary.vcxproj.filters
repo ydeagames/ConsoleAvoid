@@ -24,57 +24,57 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Libraries\CXLibrary\CXLibrary.h">
+    <ClInclude Include="..\..\Libraries\CXLibrary\CXLibrary.h">
       <Filter>ライブラリ\CXライブラリ</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\CXLibrary\CXImage.h">
+    <ClInclude Include="..\..\Libraries\CXLibrary\CXImage.h">
       <Filter>ライブラリ\CXライブラリ\CXLib</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\CXLibrary\CXFont.h">
+    <ClInclude Include="..\..\Libraries\CXLibrary\CXFont.h">
       <Filter>ライブラリ\CXライブラリ\CXLib</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\CXLibrary\CXLib.h">
+    <ClInclude Include="..\..\Libraries\CXLibrary\CXLib.h">
       <Filter>ライブラリ\CXライブラリ\CXLib</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\CXLibrary\PPMLib.h">
+    <ClInclude Include="..\..\Libraries\CXLibrary\PPMLib.h">
       <Filter>ライブラリ\CXライブラリ\CXLib\Dependencies</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\CXLibrary\SystemUtils.h">
+    <ClInclude Include="..\..\Libraries\CXLibrary\SystemUtils.h">
       <Filter>ライブラリ\CXライブラリ\ユーティリティ</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\CXLibrary\Time.h">
+    <ClInclude Include="..\..\Libraries\CXLibrary\Time.h">
       <Filter>ライブラリ\CXライブラリ\ユーティリティ</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\CXLibrary\Input.h">
+    <ClInclude Include="..\..\Libraries\CXLibrary\Input.h">
       <Filter>ライブラリ\CXライブラリ\ConsoleController</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\Dependencies\pch.h">
+    <ClInclude Include="..\..\Libraries\Dependencies\pch.h">
       <Filter>ライブラリ\依存関係</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Libraries\CXLibrary\CXImage.cpp">
+    <ClCompile Include="..\..\Libraries\CXLibrary\CXImage.cpp">
       <Filter>ライブラリ\CXライブラリ\CXLib</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\CXLibrary\CXFont.cpp">
+    <ClCompile Include="..\..\Libraries\CXLibrary\CXFont.cpp">
       <Filter>ライブラリ\CXライブラリ\CXLib</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\CXLibrary\CXLib.cpp">
+    <ClCompile Include="..\..\Libraries\CXLibrary\CXLib.cpp">
       <Filter>ライブラリ\CXライブラリ\CXLib</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\CXLibrary\PPMLib.cpp">
+    <ClCompile Include="..\..\Libraries\CXLibrary\PPMLib.cpp">
       <Filter>ライブラリ\CXライブラリ\CXLib\Dependencies</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\CXLibrary\SystemUtils.cpp">
+    <ClCompile Include="..\..\Libraries\CXLibrary\SystemUtils.cpp">
       <Filter>ライブラリ\CXライブラリ\ユーティリティ</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\CXLibrary\Time.cpp">
+    <ClCompile Include="..\..\Libraries\CXLibrary\Time.cpp">
       <Filter>ライブラリ\CXライブラリ\ユーティリティ</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\CXLibrary\Input.cpp">
+    <ClCompile Include="..\..\Libraries\CXLibrary\Input.cpp">
       <Filter>ライブラリ\CXライブラリ\ConsoleController</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\Dependencies\pch.cpp">
+    <ClCompile Include="..\..\Libraries\Dependencies\pch.cpp">
       <Filter>ライブラリ\依存関係</Filter>
     </ClCompile>
   </ItemGroup>

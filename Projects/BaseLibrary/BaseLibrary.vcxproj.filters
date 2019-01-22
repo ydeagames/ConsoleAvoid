@@ -18,60 +18,60 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Libraries\BaseLibrary\BaseLibrary.h">
+    <ClInclude Include="..\..\Libraries\BaseLibrary\BaseLibrary.h">
       <Filter>ライブラリ\ベースライブラリ</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\BaseLibrary\Matrix.h">
+    <ClInclude Include="..\..\Libraries\BaseLibrary\Matrix.h">
       <Filter>ライブラリ\ベースライブラリ\オブジェクト</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\BaseLibrary\String.h">
+    <ClInclude Include="..\..\Libraries\BaseLibrary\String.h">
       <Filter>ライブラリ\ベースライブラリ\オブジェクト</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\BaseLibrary\Vector2.h">
+    <ClInclude Include="..\..\Libraries\BaseLibrary\Vector2.h">
       <Filter>ライブラリ\ベースライブラリ\オブジェクト</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\BaseLibrary\AspectUtils.h">
+    <ClInclude Include="..\..\Libraries\BaseLibrary\AspectUtils.h">
       <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\BaseLibrary\Easings.h">
+    <ClInclude Include="..\..\Libraries\BaseLibrary\Easings.h">
       <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\BaseLibrary\Random.h">
+    <ClInclude Include="..\..\Libraries\BaseLibrary\Random.h">
       <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\BaseLibrary\MathUtils.h">
+    <ClInclude Include="..\..\Libraries\BaseLibrary\MathUtils.h">
       <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\BaseLibrary\Singleton.h">
+    <ClInclude Include="..\..\Libraries\BaseLibrary\Singleton.h">
       <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\Dependencies\pch.h">
+    <ClInclude Include="..\..\Libraries\Dependencies\pch.h">
       <Filter>ライブラリ\依存関係</Filter>
     </ClInclude>
-    <ClInclude Include="..\Libraries\BaseLibrary\MemoryLeakDetector.h">
+    <ClInclude Include="..\..\Libraries\BaseLibrary\MemoryLeakDetector.h">
       <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Libraries\BaseLibrary\Matrix.cpp">
+    <ClCompile Include="..\..\Libraries\BaseLibrary\Matrix.cpp">
       <Filter>ライブラリ\ベースライブラリ\オブジェクト</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\BaseLibrary\Vector2.cpp">
+    <ClCompile Include="..\..\Libraries\BaseLibrary\Vector2.cpp">
       <Filter>ライブラリ\ベースライブラリ\オブジェクト</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\BaseLibrary\AspectUtils.cpp">
+    <ClCompile Include="..\..\Libraries\BaseLibrary\AspectUtils.cpp">
       <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\BaseLibrary\Easings.cpp">
+    <ClCompile Include="..\..\Libraries\BaseLibrary\Easings.cpp">
       <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\BaseLibrary\Random.cpp">
+    <ClCompile Include="..\..\Libraries\BaseLibrary\Random.cpp">
       <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\BaseLibrary\MathUtils.cpp">
+    <ClCompile Include="..\..\Libraries\BaseLibrary\MathUtils.cpp">
       <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\Dependencies\pch.cpp">
+    <ClCompile Include="..\..\Libraries\Dependencies\pch.cpp">
       <Filter>ライブラリ\依存関係</Filter>
     </ClCompile>
   </ItemGroup>

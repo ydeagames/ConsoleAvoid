@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B05E7B67-D798-4375-A2D3-FA7B0ECA6760}</ProjectGuid>
-    <RootNamespace>GameLibrary</RootNamespace>
+    <ProjectGuid>{40BA638F-CB68-4913-962A-8017888B412F}</ProjectGuid>
+    <RootNamespace>CXLibrary</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -91,7 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;CXLibrary\CXLibrary.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;ConsoleLibrary\ConsoleLibrary.h</ForcedIncludeFiles>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -101,7 +101,7 @@
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;CXLibrary\CXLibrary.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;ConsoleLibrary\ConsoleLibrary.h</ForcedIncludeFiles>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -113,7 +113,7 @@
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;CXLibrary\CXLibrary.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;ConsoleLibrary\ConsoleLibrary.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -129,7 +129,7 @@
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;CXLibrary\CXLibrary.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;ConsoleLibrary\ConsoleLibrary.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -137,51 +137,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\Libraries\Dependencies\pch.h" />
-    <ClInclude Include="..\Libraries\GameLibrary\Collider.h" />
-    <ClInclude Include="..\Libraries\GameLibrary\CollisionEvent.h" />
-    <ClInclude Include="..\Libraries\GameLibrary\Component.h" />
-    <ClInclude Include="..\Libraries\GameLibrary\ComponentContainer.h" />
-    <ClInclude Include="..\Libraries\GameLibrary\FrameTimer.h" />
-    <ClInclude Include="..\Libraries\GameLibrary\GameLibrary.h" />
-    <ClInclude Include="..\Libraries\GameLibrary\GameObject.h" />
-    <ClInclude Include="..\Libraries\GameLibrary\Renderer.h" />
-    <ClInclude Include="..\Libraries\GameLibrary\Rigidbody.h" />
-    <ClInclude Include="..\Libraries\GameLibrary\Scene.h" />
-    <ClInclude Include="..\Libraries\GameLibrary\SceneManager.h" />
-    <ClInclude Include="..\Libraries\GameLibrary\Shape.h" />
-    <ClInclude Include="..\Libraries\GameLibrary\Texture.h" />
-    <ClInclude Include="..\Libraries\GameLibrary\Timer.h" />
-    <ClInclude Include="..\Libraries\GameLibrary\Transform.h" />
+    <ClInclude Include="..\..\Libraries\CXLibrary\CXFont.h" />
+    <ClInclude Include="..\..\Libraries\CXLibrary\CXImage.h" />
+    <ClInclude Include="..\..\Libraries\CXLibrary\CXLib.h" />
+    <ClInclude Include="..\..\Libraries\CXLibrary\CXLibrary.h" />
+    <ClInclude Include="..\..\Libraries\CXLibrary\Input.h" />
+    <ClInclude Include="..\..\Libraries\CXLibrary\PPMLib.h" />
+    <ClInclude Include="..\..\Libraries\CXLibrary\SystemUtils.h" />
+    <ClInclude Include="..\..\Libraries\CXLibrary\Time.h" />
+    <ClInclude Include="..\..\Libraries\Dependencies\pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Libraries\Dependencies\pch.cpp">
+    <ClCompile Include="..\..\Libraries\CXLibrary\CXFont.cpp" />
+    <ClCompile Include="..\..\Libraries\CXLibrary\CXImage.cpp" />
+    <ClCompile Include="..\..\Libraries\CXLibrary\CXLib.cpp" />
+    <ClCompile Include="..\..\Libraries\CXLibrary\Input.cpp" />
+    <ClCompile Include="..\..\Libraries\CXLibrary\PPMLib.cpp" />
+    <ClCompile Include="..\..\Libraries\CXLibrary\SystemUtils.cpp" />
+    <ClCompile Include="..\..\Libraries\CXLibrary\Time.cpp" />
+    <ClCompile Include="..\..\Libraries\Dependencies\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\Libraries\GameLibrary\Collider.cpp" />
-    <ClCompile Include="..\Libraries\GameLibrary\CollisionEvent.cpp" />
-    <ClCompile Include="..\Libraries\GameLibrary\Component.cpp" />
-    <ClCompile Include="..\Libraries\GameLibrary\ComponentContainer.cpp" />
-    <ClCompile Include="..\Libraries\GameLibrary\FrameTimer.cpp" />
-    <ClCompile Include="..\Libraries\GameLibrary\GameObject.cpp" />
-    <ClCompile Include="..\Libraries\GameLibrary\Renderer.cpp" />
-    <ClCompile Include="..\Libraries\GameLibrary\Rigidbody.cpp" />
-    <ClCompile Include="..\Libraries\GameLibrary\Scene.cpp" />
-    <ClCompile Include="..\Libraries\GameLibrary\SceneManager.cpp" />
-    <ClCompile Include="..\Libraries\GameLibrary\Shape.cpp" />
-    <ClCompile Include="..\Libraries\GameLibrary\Texture.cpp" />
-    <ClCompile Include="..\Libraries\GameLibrary\Timer.cpp" />
-    <ClCompile Include="..\Libraries\GameLibrary\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BaseLibrary\BaseLibrary.vcxproj">
       <Project>{daded0cc-fae5-4f78-a985-b5770104db5a}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\CXLibrary\CXLibrary.vcxproj">
-      <Project>{40ba638f-cb68-4913-962a-8017888b412f}</Project>
+    <ProjectReference Include="..\ConsoleLibrary\ConsoleLibrary.vcxproj">
+      <Project>{0ea2357a-cbd3-48e0-aa10-59c4f06248a2}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
