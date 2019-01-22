@@ -89,7 +89,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PrecompiledHeader />
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>Dependencies\pch.h;CXLibrary\CXLibrary.h</ForcedIncludeFiles>
     </ClCompile>
@@ -111,7 +111,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PrecompiledHeader />
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>Dependencies\pch.h;CXLibrary\CXLibrary.h</ForcedIncludeFiles>
     </ClCompile>
@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Libraries\Dependencies\pch.h" />
     <ClInclude Include="..\Libraries\GameLibrary\Collider.h" />
     <ClInclude Include="..\Libraries\GameLibrary\CollisionEvent.h" />
     <ClInclude Include="..\Libraries\GameLibrary\Component.h" />
@@ -152,9 +153,14 @@
     <ClInclude Include="..\Libraries\GameLibrary\Texture.h" />
     <ClInclude Include="..\Libraries\GameLibrary\Timer.h" />
     <ClInclude Include="..\Libraries\GameLibrary\Transform.h" />
-    <ClInclude Include="..\Libraries\Library.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Libraries\Dependencies\pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\Libraries\GameLibrary\Collider.cpp" />
     <ClCompile Include="..\Libraries\GameLibrary\CollisionEvent.cpp" />
     <ClCompile Include="..\Libraries\GameLibrary\Component.cpp" />

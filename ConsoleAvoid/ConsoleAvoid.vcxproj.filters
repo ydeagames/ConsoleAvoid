@@ -24,6 +24,12 @@
     <Filter Include="リソース\音">
       <UniqueIdentifier>{c4721adc-6123-4339-b3e6-84f317c16ac7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ライブラリ">
+      <UniqueIdentifier>{ac623a13-28ce-46df-bfb6-4db2d7c34732}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ライブラリ\依存関係">
+      <UniqueIdentifier>{bc3c0a04-a1ec-41ff-8f47-708cc00edb9f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Game\GameMain.h">
@@ -44,6 +50,9 @@
     <ClInclude Include="..\Resources\Icon\Icon.h">
       <Filter>リソース\アイコン</Filter>
     </ClInclude>
+    <ClInclude Include="..\Libraries\Dependencies\pch.h">
+      <Filter>ライブラリ\依存関係</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Game\GameMain.cpp">
@@ -63,6 +72,9 @@
     </ClCompile>
     <ClCompile Include="..\Game\TitleScene.cpp">
       <Filter>ゲーム\シーン</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\Dependencies\pch.cpp">
+      <Filter>ライブラリ\依存関係</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

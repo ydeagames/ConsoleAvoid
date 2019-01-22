@@ -19,6 +19,9 @@
     <Filter Include="ライブラリ\CXライブラリ\ConsoleController">
       <UniqueIdentifier>{0bbf0da7-162b-4565-8837-4b2aabc3337e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ライブラリ\依存関係">
+      <UniqueIdentifier>{45591e99-4544-4c6b-b6f1-d9f5cce68550}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Libraries\CXLibrary\CXLibrary.h">
@@ -45,6 +48,9 @@
     <ClInclude Include="..\Libraries\CXLibrary\Input.h">
       <Filter>ライブラリ\CXライブラリ\ConsoleController</Filter>
     </ClInclude>
+    <ClInclude Include="..\Libraries\Dependencies\pch.h">
+      <Filter>ライブラリ\依存関係</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Libraries\CXLibrary\CXImage.cpp">
@@ -67,6 +73,9 @@
     </ClCompile>
     <ClCompile Include="..\Libraries\CXLibrary\Input.cpp">
       <Filter>ライブラリ\CXライブラリ\ConsoleController</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\Dependencies\pch.cpp">
+      <Filter>ライブラリ\依存関係</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

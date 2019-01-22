@@ -24,6 +24,7 @@
     <ClInclude Include="..\Game\PlayScene.h" />
     <ClInclude Include="..\Game\ResultScene.h" />
     <ClInclude Include="..\Game\TitleScene.h" />
+    <ClInclude Include="..\Libraries\Dependencies\pch.h" />
     <ClInclude Include="..\Resources\Icon\Icon.h" />
   </ItemGroup>
   <ItemGroup>
@@ -33,6 +34,12 @@
     <ClCompile Include="..\Game\PlayScene.cpp" />
     <ClCompile Include="..\Game\ResultScene.cpp" />
     <ClCompile Include="..\Game\TitleScene.cpp" />
+    <ClCompile Include="..\Libraries\Dependencies\pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Resources\Icon\Icon.rc" />
@@ -133,8 +140,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -164,8 +170,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>

@@ -22,11 +22,11 @@
     <Filter Include="ライブラリ\ゲームライブラリ\物理">
       <UniqueIdentifier>{6280437b-e03c-450b-a44c-3b8b4229cf87}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ライブラリ\依存関係">
+      <UniqueIdentifier>{bfb2aaa8-c5c6-4ae6-90cf-8bcd99a1a04e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Libraries\Library.h">
-      <Filter>ライブラリ</Filter>
-    </ClInclude>
     <ClInclude Include="..\Libraries\GameLibrary\GameLibrary.h">
       <Filter>ライブラリ\ゲームライブラリ</Filter>
     </ClInclude>
@@ -72,6 +72,9 @@
     <ClInclude Include="..\Libraries\GameLibrary\Renderer.h">
       <Filter>ライブラリ\ゲームライブラリ\コンポーネント</Filter>
     </ClInclude>
+    <ClInclude Include="..\Libraries\Dependencies\pch.h">
+      <Filter>ライブラリ\依存関係</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Libraries\GameLibrary\FrameTimer.cpp">
@@ -115,6 +118,9 @@
     </ClCompile>
     <ClCompile Include="..\Libraries\GameLibrary\Renderer.cpp">
       <Filter>ライブラリ\ゲームライブラリ\コンポーネント</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\Dependencies\pch.cpp">
+      <Filter>ライブラリ\依存関係</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

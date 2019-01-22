@@ -4,9 +4,6 @@
     <Filter Include="ライブラリ">
       <UniqueIdentifier>{505669e8-8f3f-41db-a10b-12559b5ab7e1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ライブラリ\依存関係">
-      <UniqueIdentifier>{3ec16160-63d3-4c7b-81f9-354d5aad16e0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ライブラリ\ベースライブラリ">
       <UniqueIdentifier>{8a5f99bb-9f7b-44b0-b481-498ddda300a6}</UniqueIdentifier>
     </Filter>
@@ -16,14 +13,11 @@
     <Filter Include="ライブラリ\ベースライブラリ\ユーティリティ">
       <UniqueIdentifier>{18d4d328-160d-4f18-8b9d-1807393d8cd6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ライブラリ\ユーティリティ">
-      <UniqueIdentifier>{7e501b81-6a54-43c9-8a92-1861c74952e9}</UniqueIdentifier>
+    <Filter Include="ライブラリ\依存関係">
+      <UniqueIdentifier>{498470fa-fa44-4db2-9ed2-72f949c93de0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Libraries\Dependencies\pch.h">
-      <Filter>ライブラリ\依存関係</Filter>
-    </ClInclude>
     <ClInclude Include="..\Libraries\BaseLibrary\BaseLibrary.h">
       <Filter>ライブラリ\ベースライブラリ</Filter>
     </ClInclude>
@@ -52,17 +46,14 @@
       <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
     </ClInclude>
     <ClInclude Include="..\Libraries\Utilities\MemoryLeakDetector.h">
-      <Filter>ライブラリ\ユーティリティ</Filter>
+      <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\Dependencies\pch.h">
+      <Filter>ライブラリ\依存関係</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Libraries\Dependencies\pch.cpp">
-      <Filter>ライブラリ\依存関係</Filter>
-    </ClCompile>
     <ClCompile Include="..\Libraries\BaseLibrary\Matrix.cpp">
-      <Filter>ライブラリ\ベースライブラリ\オブジェクト</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Libraries\BaseLibrary\String.cpp">
       <Filter>ライブラリ\ベースライブラリ\オブジェクト</Filter>
     </ClCompile>
     <ClCompile Include="..\Libraries\BaseLibrary\Vector2.cpp">
@@ -80,8 +71,8 @@
     <ClCompile Include="..\Libraries\BaseLibrary\MathUtils.cpp">
       <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
     </ClCompile>
-    <ClCompile Include="..\Libraries\BaseLibrary\Singleton.cpp">
-      <Filter>ライブラリ\ベースライブラリ\ユーティリティ</Filter>
+    <ClCompile Include="..\Libraries\Dependencies\pch.cpp">
+      <Filter>ライブラリ\依存関係</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

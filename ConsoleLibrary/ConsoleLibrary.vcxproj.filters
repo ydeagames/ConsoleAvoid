@@ -16,6 +16,9 @@
     <Filter Include="ライブラリ\コンソールライブラリ\ConsoleScreen\Dependencies">
       <UniqueIdentifier>{ba7d6252-fdac-470a-9be5-c0c1610b37e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ライブラリ\依存関係">
+      <UniqueIdentifier>{3dbbc01f-f8bc-4a07-bd13-8569cd3d5efa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Libraries\ConsoleLibrary\ConsoleLibrary.h">
@@ -36,11 +39,11 @@
     <ClInclude Include="..\Libraries\ConsoleLibrary\ConsoleCharacter.h">
       <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen\Dependencies</Filter>
     </ClInclude>
+    <ClInclude Include="..\Libraries\Dependencies\pch.h">
+      <Filter>ライブラリ\依存関係</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Libraries\ConsoleLibrary\Color.cpp">
-      <Filter>ライブラリ\コンソールライブラリ\オブジェクト</Filter>
-    </ClCompile>
     <ClCompile Include="..\Libraries\ConsoleLibrary\Screen.cpp">
       <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen</Filter>
     </ClCompile>
@@ -52,6 +55,9 @@
     </ClCompile>
     <ClCompile Include="..\Libraries\ConsoleLibrary\ConsoleCharacter.cpp">
       <Filter>ライブラリ\コンソールライブラリ\ConsoleScreen\Dependencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\Dependencies\pch.cpp">
+      <Filter>ライブラリ\依存関係</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
