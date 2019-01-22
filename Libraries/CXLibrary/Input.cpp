@@ -1,5 +1,7 @@
 #include "Input.h"
-#include "ScreenManager.h"
+#include "CXLib.h"
+
+using CXLib::ConsoleToScreen;
 
 InputButton::InputButton(std::shared_ptr<Input> input, int button) :
 	input(input),

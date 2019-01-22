@@ -1,4 +1,5 @@
 #include "ComponentContainer.h"
+#include "Component.h"
 
 ComponentContainer& ComponentContainer::operator=(const ComponentContainer& container)
 {

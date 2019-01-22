@@ -19,113 +19,46 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game\GameMain.h" />
-    <ClInclude Include="Game\LogoScene.h" />
-    <ClInclude Include="Game\PlayScene.h" />
-    <ClInclude Include="Game\ResultScene.h" />
-    <ClInclude Include="Game\TitleScene.h" />
-    <ClInclude Include="Libraries\BaseLibrary\AspectUtils.h" />
-    <ClInclude Include="Libraries\BaseLibrary\BaseLibrary.h" />
-    <ClInclude Include="Libraries\BaseLibrary\Easings.h" />
-    <ClInclude Include="Libraries\BaseLibrary\Random.h" />
-    <ClInclude Include="Libraries\CXLibrary\CXImage.h" />
-    <ClInclude Include="Libraries\CXLibrary\CXLibrary.h" />
-    <ClInclude Include="Libraries\CXLibrary\PPMLib.h" />
-    <ClInclude Include="Libraries\Dependencies\pch.h" />
-    <ClInclude Include="Libraries\CXLibrary\Color.h" />
-    <ClInclude Include="Libraries\CXLibrary\ConsoleCharacter.h" />
-    <ClInclude Include="Libraries\CXLibrary\CXFont.h" />
-    <ClInclude Include="Libraries\CXLibrary\CXLib.h" />
-    <ClInclude Include="Libraries\GameLibrary\FrameTimer.h" />
-    <ClInclude Include="Libraries\CXLibrary\Input.h" />
-    <ClInclude Include="Libraries\BaseLibrary\MathUtils.h" />
-    <ClInclude Include="Libraries\BaseLibrary\Matrix.h" />
-    <ClInclude Include="Libraries\CXLibrary\Screen.h" />
-    <ClInclude Include="Libraries\CXLibrary\ScreenContext.h" />
-    <ClInclude Include="Libraries\CXLibrary\ScreenManager.h" />
-    <ClInclude Include="Libraries\BaseLibrary\Singleton.h" />
-    <ClInclude Include="Libraries\BaseLibrary\String.h" />
-    <ClInclude Include="Libraries\CXLibrary\SystemUtils.h" />
-    <ClInclude Include="Libraries\CXLibrary\Time.h" />
-    <ClInclude Include="Libraries\BaseLibrary\Vector2.h" />
-    <ClInclude Include="Libraries\GameLibrary\Collider.h" />
-    <ClInclude Include="Libraries\GameLibrary\CollisionEvent.h" />
-    <ClInclude Include="Libraries\GameLibrary\Component.h" />
-    <ClInclude Include="Libraries\GameLibrary\ComponentContainer.h" />
-    <ClInclude Include="Libraries\GameLibrary\GameLibraryClass.h" />
-    <ClInclude Include="Libraries\GameLibrary\GameLibrary.h" />
-    <ClInclude Include="Libraries\GameLibrary\GameObject.h" />
-    <ClInclude Include="Libraries\GameLibrary\Renderer.h" />
-    <ClInclude Include="Libraries\GameLibrary\Rigidbody.h" />
-    <ClInclude Include="Libraries\GameLibrary\Scene.h" />
-    <ClInclude Include="Libraries\GameLibrary\SceneManager.h" />
-    <ClInclude Include="Libraries\GameLibrary\Shape.h" />
-    <ClInclude Include="Libraries\GameLibrary\Texture.h" />
-    <ClInclude Include="Libraries\GameLibrary\Timer.h" />
-    <ClInclude Include="Libraries\GameLibrary\Transform.h" />
-    <ClInclude Include="Libraries\Library.h" />
-    <ClInclude Include="Libraries\Utilities\MemoryLeakDetector.h" />
-    <ClInclude Include="Resources\Icon\Icon.h" />
+    <ClInclude Include="..\Game\GameMain.h" />
+    <ClInclude Include="..\Game\LogoScene.h" />
+    <ClInclude Include="..\Game\PlayScene.h" />
+    <ClInclude Include="..\Game\ResultScene.h" />
+    <ClInclude Include="..\Game\TitleScene.h" />
+    <ClInclude Include="..\Resources\Icon\Icon.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Game\GameMain.cpp" />
-    <ClCompile Include="Game\LogoScene.cpp" />
-    <ClCompile Include="Game\Main.cpp" />
-    <ClCompile Include="Game\PlayScene.cpp" />
-    <ClCompile Include="Game\ResultScene.cpp" />
-    <ClCompile Include="Game\TitleScene.cpp" />
-    <ClCompile Include="Libraries\BaseLibrary\AspectUtils.cpp" />
-    <ClCompile Include="Libraries\BaseLibrary\Easings.cpp" />
-    <ClCompile Include="Libraries\BaseLibrary\Random.cpp" />
-    <ClCompile Include="Libraries\CXLibrary\CXImage.cpp" />
-    <ClCompile Include="Libraries\CXLibrary\PPMLib.cpp" />
-    <ClCompile Include="Libraries\Dependencies\pch.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="Libraries\CXLibrary\Color.cpp" />
-    <ClCompile Include="Libraries\CXLibrary\ConsoleCharacter.cpp" />
-    <ClCompile Include="Libraries\CXLibrary\CXFont.cpp" />
-    <ClCompile Include="Libraries\CXLibrary\CXLib.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\FrameTimer.cpp" />
-    <ClCompile Include="Libraries\CXLibrary\Input.cpp" />
-    <ClCompile Include="Libraries\BaseLibrary\MathUtils.cpp" />
-    <ClCompile Include="Libraries\BaseLibrary\Matrix.cpp" />
-    <ClCompile Include="Libraries\CXLibrary\Screen.cpp" />
-    <ClCompile Include="Libraries\CXLibrary\ScreenContext.cpp" />
-    <ClCompile Include="Libraries\CXLibrary\ScreenManager.cpp" />
-    <ClCompile Include="Libraries\BaseLibrary\Singleton.cpp" />
-    <ClCompile Include="Libraries\BaseLibrary\String.cpp" />
-    <ClCompile Include="Libraries\CXLibrary\SystemUtils.cpp" />
-    <ClCompile Include="Libraries\CXLibrary\Time.cpp" />
-    <ClCompile Include="Libraries\BaseLibrary\Vector2.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\Collider.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\CollisionEvent.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\Component.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\ComponentContainer.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\GameObject.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\Renderer.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\Rigidbody.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\Scene.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\SceneManager.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\Shape.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\Texture.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\Timer.cpp" />
-    <ClCompile Include="Libraries\GameLibrary\Transform.cpp" />
+    <ClCompile Include="..\Game\GameMain.cpp" />
+    <ClCompile Include="..\Game\LogoScene.cpp" />
+    <ClCompile Include="..\Game\Main.cpp" />
+    <ClCompile Include="..\Game\PlayScene.cpp" />
+    <ClCompile Include="..\Game\ResultScene.cpp" />
+    <ClCompile Include="..\Game\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Resources\Icon\Icon.rc" />
+    <ResourceCompile Include="..\Resources\Icon\Icon.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resources\Icon\Icon.ico" />
+    <Image Include="..\Resources\Icon\Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Fonts\font.ppm" />
+    <None Include="..\Resources\Fonts\font.ppm" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Resources\Fonts\font.txt" />
+    <Text Include="..\Resources\Fonts\font.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BaseLibrary\BaseLibrary.vcxproj">
+      <Project>{daded0cc-fae5-4f78-a985-b5770104db5a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ConsoleLibrary\ConsoleLibrary.vcxproj">
+      <Project>{0ea2357a-cbd3-48e0-aa10-59c4f06248a2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\CXLibrary\CXLibrary.vcxproj">
+      <Project>{40ba638f-cb68-4913-962a-8017888b412f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GameLibrary\GameLibrary.vcxproj">
+      <Project>{b05e7b67-d798-4375-a2d3-fa7b0eca6760}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D65A40FE-E356-487B-925D-F6F0C8FA931C}</ProjectGuid>
@@ -180,23 +113,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <LibraryPath>$(ProjectDir)\Libraries;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
+    <IncludePath>$(SolutionDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(SolutionDir)\Libraries;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <LibraryPath>$(ProjectDir)\Libraries;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+    <IncludePath>$(SolutionDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(SolutionDir)\Libraries;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <LibraryPath>$(ProjectDir)\Libraries;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
+    <IncludePath>$(SolutionDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(SolutionDir)\Libraries;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <LibraryPath>$(ProjectDir)\Libraries;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+    <IncludePath>$(SolutionDir)\Libraries;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(SolutionDir)\Libraries;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -206,7 +139,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;Library.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -221,7 +154,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;Library.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -238,7 +171,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;Library.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -257,7 +190,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>Dependencies\pch.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>Dependencies\pch.h;Library.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>Dependencies\pch.h;GameLibrary\GameLibrary.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

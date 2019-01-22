@@ -1,6 +1,7 @@
 #include "GameObject.h"
 #include "Scene.h"
 #include "SceneManager.h"
+#include "Transform.h"
 
 GameObject::GameObject(const std::string& name, int layer, const std::string& tag)
 	: name(name)

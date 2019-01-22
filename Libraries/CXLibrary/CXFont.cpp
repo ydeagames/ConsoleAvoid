@@ -1,7 +1,6 @@
 #include "CXFont.h"
 #include "CXLib.h"
-#include "ScreenManager.h"
-#include "Screen.h"
+#include "CXImage.h"
 
 namespace CXLib
 {

@@ -11,6 +11,7 @@ enum class SceneID
 };
 
 class Scene;
+class GameObject;
 
 // <シーン管理>
 class SceneManager final : public Singleton<SceneManager>

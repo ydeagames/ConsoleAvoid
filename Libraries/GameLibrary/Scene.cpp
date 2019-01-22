@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include "GameObject.h"
 
 void Scene::Update()
 {

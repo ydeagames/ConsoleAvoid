@@ -1,6 +1,4 @@
 #include "CXLib.h"
-#include "Screen.h"
-#include "ScreenManager.h"
 
 namespace CXLib
 {

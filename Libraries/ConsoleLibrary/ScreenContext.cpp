@@ -1,4 +1,5 @@
 #include "ScreenContext.h"
+#include "ScreenManager.h"
 
 ScreenOutputContext::ScreenOutputContext(const HANDLE& hOut, CHAR_INFO default_pixel)
 	: handle(hOut)

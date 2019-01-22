@@ -1,5 +1,8 @@
 #include "Rigidbody.h"
 #include "Transform.h"
+#include "GameObject.h"
+#include "Collider.h"
+#include "CollisionEvent.h"
 
 void Rigidbody::AddForce(const Vector2& velocity)
 {

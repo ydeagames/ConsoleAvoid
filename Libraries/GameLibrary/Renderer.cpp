@@ -1,5 +1,8 @@
 #include "Renderer.h"
 #include "Shape.h"
+#include "Transform.h"
+#include "GameObject.h"
+#include "Collider.h"
 
 Material& Material::SetBase(Color color)
 {

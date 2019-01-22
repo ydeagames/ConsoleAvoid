@@ -1,4 +1,7 @@
 #include "Collider.h"
+#include "Rigidbody.h"
+#include "GameObject.h"
+#include "Transform.h"
 
 Vector2 Collider::GetVelocity() const
 {

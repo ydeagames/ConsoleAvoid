@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ライブラリ">
+      <UniqueIdentifier>{c65c6766-b074-4e05-a996-a4dde6e82290}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ライブラリ\CXライブラリ">
+      <UniqueIdentifier>{bf0910a4-5853-461a-a53f-21169bdc04e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ライブラリ\CXライブラリ\CXLib">
+      <UniqueIdentifier>{0d19cfb6-27d1-466d-844e-ebaf54e7c1c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ライブラリ\CXライブラリ\CXLib\Dependencies">
+      <UniqueIdentifier>{c45df43a-4e49-4269-9b54-f912b1500736}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ライブラリ\CXライブラリ\ユーティリティ">
+      <UniqueIdentifier>{7a6b2516-80f2-41f2-a2a2-5076c4b39024}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ライブラリ\CXライブラリ\ConsoleController">
+      <UniqueIdentifier>{0bbf0da7-162b-4565-8837-4b2aabc3337e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Libraries\CXLibrary\CXLibrary.h">
+      <Filter>ライブラリ\CXライブラリ</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\CXLibrary\CXImage.h">
+      <Filter>ライブラリ\CXライブラリ\CXLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\CXLibrary\CXFont.h">
+      <Filter>ライブラリ\CXライブラリ\CXLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\CXLibrary\CXLib.h">
+      <Filter>ライブラリ\CXライブラリ\CXLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\CXLibrary\PPMLib.h">
+      <Filter>ライブラリ\CXライブラリ\CXLib\Dependencies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\CXLibrary\SystemUtils.h">
+      <Filter>ライブラリ\CXライブラリ\ユーティリティ</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\CXLibrary\Time.h">
+      <Filter>ライブラリ\CXライブラリ\ユーティリティ</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\CXLibrary\Input.h">
+      <Filter>ライブラリ\CXライブラリ\ConsoleController</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Libraries\CXLibrary\CXImage.cpp">
+      <Filter>ライブラリ\CXライブラリ\CXLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\CXLibrary\CXFont.cpp">
+      <Filter>ライブラリ\CXライブラリ\CXLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\CXLibrary\CXLib.cpp">
+      <Filter>ライブラリ\CXライブラリ\CXLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\CXLibrary\PPMLib.cpp">
+      <Filter>ライブラリ\CXライブラリ\CXLib\Dependencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\CXLibrary\SystemUtils.cpp">
+      <Filter>ライブラリ\CXライブラリ\ユーティリティ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\CXLibrary\Time.cpp">
+      <Filter>ライブラリ\CXライブラリ\ユーティリティ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\CXLibrary\Input.cpp">
+      <Filter>ライブラリ\CXライブラリ\ConsoleController</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
