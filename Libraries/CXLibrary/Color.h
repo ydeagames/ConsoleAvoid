@@ -2,7 +2,7 @@
 
 // 色
 using Color = int;
-using ColorCode = unsigned int;
+using ColorCode = int;
 
 // 色セット
 namespace Colors

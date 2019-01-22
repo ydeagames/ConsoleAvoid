@@ -7,8 +7,8 @@ namespace CXLib
 	{
 		enum : ColorCode
 		{
-			None,
-			FirstColor,
+			None = -2,
+			FirstColor = -3,
 		};
 	}
 

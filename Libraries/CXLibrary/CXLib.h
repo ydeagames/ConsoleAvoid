@@ -4,7 +4,7 @@
 namespace CXLib
 {
 	// ècâ°î‰ (â°);
-	constexpr auto SCREEN_RESOLUTION_X = (7.f / 4.f);
+	constexpr auto SCREEN_RESOLUTION_X = (2.f / 1.f);
 	// ècâ°î‰ (èc);
 	constexpr auto SCREEN_RESOLUTION_Y = (1.f);
 	// ïœä∑
