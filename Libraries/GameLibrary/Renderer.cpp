@@ -64,6 +64,7 @@ TextureRenderer::TextureRenderer(const Texture & texture)
 void TextureRenderer::Render()
 {
 	auto& frame = texture.GetFrame();
-	auto world = Matrix3::CreateScale(AspectUtils::Inner(frame.GetSize(), Vector2::one)) * gameObject()->transform()->GetMatrix();
-	frame.DrawGraph(world);
+	auto world = gameObject()->transform()->GetMatrix();
+	auto graphworld = Matrix3::CreateScale(AspectUtils::Inner(frame.GetSize(), Vector2::one)) * world;
+	frame.DrawGraph(graphworld);
 }

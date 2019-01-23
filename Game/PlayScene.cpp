@@ -37,6 +37,14 @@ PlayScene::PlayScene()
 				transform->position = last_pos + sub;
 			}
 		}
+
+		CXFont font_pong = CreateFontToHandle(CXFontType::CXFONT_PONG, 6);
+
+		void Render()
+		{
+			auto& transform = gameObject()->transform();
+			DrawStringToHandle(String::Format(L"(%.2f, %.2f)", transform->position.x, transform->position.y), Colors::White, font_pong, Matrix3::CreateTranslation(Vector2{ 50, 50 }));
+		}
 	};
 
 	class FireController : public Component
@@ -92,9 +100,9 @@ PlayScene::PlayScene()
 	fire->transform()->parent = field->transform();
 	fire->transform()->position = Vector2{ 0, 0 };
 	fire->transform()->scale = Vector2::one * .05f;
-	fire->AddNewComponentAs<Collider, CircleCollider>(Circle{ Vector2::zero, 1.f });
+	fire->AddNewComponentAs<Collider, CircleCollider>(Circle{ Vector2::zero, .5f });
 	fire->eventbus()->Register([fire](CollisionEnterEvent& eventobj) {
-		fire->Destroy();
+		_RPT0(_CRT_WARN, "hit");
 	});
 
 	auto player = GameObject::Create("Player", 3);

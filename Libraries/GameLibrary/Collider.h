@@ -79,6 +79,8 @@ public:
 public:
 	void Apply(const CollisionResult& result) const override;
 
+	void Render();
+
 public:
 	CollisionResult Collide(const Collider& other) const override;
 	CollisionResult Collide(const BoxCollider& other) const override;
@@ -94,6 +96,8 @@ public:
 
 public:
 	void Apply(const CollisionResult& result) const override;
+
+	void Render();
 
 public:
 	CollisionResult Collide(const Collider& other) const override;

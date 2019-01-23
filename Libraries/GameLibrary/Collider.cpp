@@ -155,6 +155,14 @@ void BoxCollider::Apply(const CollisionResult & result) const
 	auto rigidbody = gameObject()->GetComponent<Rigidbody>();
 	if (rigidbody)
 		rigidbody->vel = Vector2::right.Rotate(transform->rotation) * (1.f - result.time);
+	// TODO
+	transform->rotation = 0;
+}
+
+void BoxCollider::Render()
+{
+	const Box _rect1 = GetShape(*gameObject()->transform());
+	DrawBox(_rect1.GetBounds().GetMin(), _rect1.GetBounds().GetMax(), Colors::White, false);
 }
 
 CollisionResult BoxCollider::Collide(const Collider& other) const
@@ -302,6 +310,14 @@ void CircleCollider::Apply(const CollisionResult & result) const
 	auto rigidbody = gameObject()->GetComponent<Rigidbody>();
 	if (rigidbody)
 		rigidbody->vel = Vector2::right.Rotate(transform->rotation) * vel.Length()/* * (1.f - result.time)*/;
+	// TODO
+	transform->rotation = 0;
+}
+
+void CircleCollider::Render()
+{
+	const Circle _rect1 = GetShape(*gameObject()->transform());
+	DrawCircle(_rect1.center, _rect1.size, Colors::White, false);
 }
 
 CollisionResult CircleCollider::Collide(const Collider& other) const
