@@ -29,23 +29,21 @@ void Rigidbody::Update()
 							{
 								if (!collider1->isTrigger && !collider2->isTrigger)
 									collider1->Apply(result);
-								auto event1 = object1->GetComponent<CollisionEvent>();
-								if (event1)
-									if (collider1->isTrigger || collider2->isTrigger)
-										event1->OnTriggerEnter(*object2);
-									else
-										event1->OnCollisionEnter(*object2);
+								auto& eventbus1 = object1->eventbus();
+								if (collider1->isTrigger || collider2->isTrigger)
+									eventbus1->Post(TriggerEnterEvent{ object2, result });
+								else
+									eventbus1->Post(CollisionEnterEvent{ object2, result });
 							}
 							//if (!object2->HasComponent<Rigidbody>())
 							{
 								if (!collider1->isTrigger && !collider2->isTrigger)
 									collider2->Apply(result);
-								auto event2 = object2->GetComponent<CollisionEvent>();
-								if (event2)
-									if (collider1->isTrigger || collider2->isTrigger)
-										event2->OnTriggerEnter(*object1);
-									else
-										event2->OnCollisionEnter(*object1);
+								auto& eventbus2 = object2->eventbus();
+								if (collider1->isTrigger || collider2->isTrigger)
+									eventbus2->Post(TriggerEnterEvent{ object1, result });
+								else
+									eventbus2->Post(CollisionEnterEvent{ object1, result });
 							}
 						}
 					}

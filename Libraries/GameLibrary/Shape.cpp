@@ -237,7 +237,10 @@ Bounds Box::GetBounds() const
 
 Box Box::Transformed(const Transform& t) const
 {
-	return{ center + t.position, size/* * t.scale*/, angle + t.rotation };
+	auto matrix = t.GetMatrix();
+	auto c = center * matrix;
+	auto s = size * matrix - Vector2::zero * matrix;
+	return{ c, s, angle + t.rotation };
 }
 
 Circle::Circle(const Vector2 & center, float size)
@@ -248,7 +251,10 @@ Circle::Circle(const Vector2 & center, float size)
 
 Circle Circle::Transformed(const Transform & t) const
 {
-	return{ center + t.position, size/* * MathUtils::GetMin(t.scale.x, t.scale.y)*/ };
+	auto matrix = t.GetMatrix();
+	auto c = center * matrix;
+	auto s = Vector2::one * size * matrix - Vector2::zero * matrix;
+	return{ c, s.x/* * MathUtils::GetMin(t.scale.x, t.scale.y)*/ };
 }
 
 Line::Line(const Vector2 & p1, const Vector2 & p2)
@@ -259,16 +265,8 @@ Line::Line(const Vector2 & p1, const Vector2 & p2)
 
 Line Line::Transformed(const Transform & t) const
 {
-	Vector2 center = (p1 + p2) / 2;
-	Vector2 q1 = p1 - center;
-	Vector2 q2 = p2 - center;
-	//q1 *= t.scale;
-	//q2 *= t.scale;
-	q1 = q1.Rotate(t.rotation);
-	q2 = q2.Rotate(t.rotation);
-	q1 += t.position;
-	q2 += t.position;
-	return{ q1 + center, q2 + center };
+	auto matrix = t.GetMatrix();
+	return{ p1 * matrix, p2 * matrix };
 }
 
 Quad::Quad(const Bounds& bounds)

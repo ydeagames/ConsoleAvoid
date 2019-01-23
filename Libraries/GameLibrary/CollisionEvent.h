@@ -1,13 +1,28 @@
 #pragma once
-#include "Component.h"
+#include "Event.h"
 
-class CollisionEvent : public Component
+class CollisionEvent : public Event
 {
 public:
-	CollisionEvent() = default;
-	virtual ~CollisionEvent() = default;
+	std::shared_ptr<GameObject> other;
+	CollisionResult result;
 
 public:
-	virtual void OnCollisionEnter(GameObject& other) {}
-	virtual void OnTriggerEnter(GameObject& other) {}
+	CollisionEvent(const std::shared_ptr<GameObject>& other, const CollisionResult& result)
+		: other(other)
+		, result(result) {}
+};
+
+class CollisionEnterEvent : public CollisionEvent
+{
+public:
+	CollisionEnterEvent(const std::shared_ptr<GameObject>& other, const CollisionResult& result)
+		: CollisionEvent(other, result) {}
+};
+
+class TriggerEnterEvent : public CollisionEvent
+{
+public:
+	TriggerEnterEvent(const std::shared_ptr<GameObject>& other, const CollisionResult& result)
+		: CollisionEvent(other, result) {}
 };

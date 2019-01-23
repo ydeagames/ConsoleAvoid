@@ -142,6 +142,7 @@
     <ClInclude Include="..\..\Libraries\GameLibrary\CollisionEvent.h" />
     <ClInclude Include="..\..\Libraries\GameLibrary\Component.h" />
     <ClInclude Include="..\..\Libraries\GameLibrary\ComponentContainer.h" />
+    <ClInclude Include="..\..\Libraries\GameLibrary\Event.h" />
     <ClInclude Include="..\..\Libraries\GameLibrary\FrameTimer.h" />
     <ClInclude Include="..\..\Libraries\GameLibrary\GameLibrary.h" />
     <ClInclude Include="..\..\Libraries\GameLibrary\GameObject.h" />

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <CXLibrary\CXLibrary.h>
+#include "Event.h"
 #include "Collider.h"
 #include "CollisionEvent.h"
 #include "Component.h"

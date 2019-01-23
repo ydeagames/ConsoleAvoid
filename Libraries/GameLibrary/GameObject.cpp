@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "SceneManager.h"
 #include "Transform.h"
+#include "Event.h"
 
 GameObject::GameObject(const std::string& name, int layer, const std::string& tag)
 	: name(name)
@@ -15,12 +16,18 @@ GameObject::GameObject(const std::string& name, int layer, const std::string& ta
 void GameObject::Initialize()
 {
 	components = std::make_unique<ComponentContainer>(shared_from_this());
-	AddComponent<Transform>(std::make_shared<Transform>());
+	AddNewComponent<Transform>();
+	AddNewComponent<EventBus>();
 }
 
 std::shared_ptr<Transform> GameObject::transform()
 {
 	return GetComponent<Transform>();
+}
+
+std::shared_ptr<EventBus> GameObject::eventbus()
+{
+	return GetComponent<EventBus>();
 }
 
 void GameObject::Start()

@@ -2,6 +2,7 @@
 #include "ComponentContainer.h"
 
 class Transform;
+class EventBus;
 
 class GameObject final : public std::enable_shared_from_this<GameObject>
 {
@@ -16,6 +17,7 @@ private:
 
 public:
 	std::shared_ptr<Transform> transform();
+	std::shared_ptr<EventBus> eventbus();
 
 private:
 	GameObject(const std::string& name, int layer, const std::string& tag);

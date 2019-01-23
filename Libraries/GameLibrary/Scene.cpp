@@ -41,6 +41,7 @@ void Scene::Render()
 					if (object && !object->IsDestroyed() && object->transform()->IsStaticObject())
 						object->Render();
 		context.EndStaticBuffer();
+		context.Clear();
 	}
 
 	for (auto& layer : layers)

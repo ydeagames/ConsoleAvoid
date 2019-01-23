@@ -75,6 +75,9 @@
     <ClInclude Include="..\..\Libraries\Dependencies\pch.h">
       <Filter>ライブラリ\依存関係</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Libraries\GameLibrary\Event.h">
+      <Filter>ライブラリ\ゲームライブラリ\コンポーネント</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Libraries\GameLibrary\FrameTimer.cpp">
