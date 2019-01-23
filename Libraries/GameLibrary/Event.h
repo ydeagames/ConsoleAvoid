@@ -8,6 +8,10 @@ public:
 	virtual ~Event() = default;
 };
 
+//class ChildEvent : public Event
+//{
+//};
+
 class EventBus : public Component
 {
 private:
@@ -19,14 +23,13 @@ private:
 		struct function_traits : public function_traits<decltype(&F::operator())>
 		{};
 
-		template <typename T, typename R, typename... Args>
-		struct function_traits<R(T::*)(Args...) const>
+		template <typename T, typename R, typename E>
+		struct function_traits<R(T::*)(E) const>
 		{
-			typedef R(*pointer)(Args...);
+			typedef R(*pointer)(E);
 			typedef R return_type;
-			static constexpr std::size_t arg_count = sizeof...(Args);
-			typedef std::tuple<Args...> args_tuple;
-			typedef const std::function<R(Args...)> function;
+			typedef E args_type;
+			typedef const std::function<R(E)> function;
 		};
 
 	private:
@@ -62,20 +65,20 @@ private:
 		void connect(const std::type_index& name, F f)
 		{
 			static_assert(std::is_same<void, typename function_traits<F>::return_type>::value,
-				"Signals cannot have a return type different from void");
+				"The event handler must be a lambda expression with a return value of type void");
 
 			_list[name].emplace_back(create_wrapper(std::forward<F>(f)));
 		}
 
-		template<typename ... Args>
-		void dispatch(const std::type_index& name, Args... args)
+		template<typename E>
+		void dispatch(const std::type_index& name, E e)
 		{
 			auto& funcs = _list[name];
 
 			for (auto& func : funcs)
 			{
-				auto& f = *reinterpret_cast<const std::function<void(Args...)>*>(func->get_ptr());
-				f(std::forward<Args>(args) ...); // is this undefined behavior?
+				auto& f = *reinterpret_cast<const std::function<void(E)>*>(func->get_ptr());
+				f(std::forward<E>(e)); // is this undefined behavior?
 			}
 		}
 	} dispatcher;
@@ -84,7 +87,18 @@ public:
 	template<class F>
 	void Register(F listener)
 	{
-		dispatcher.connect(typeid(event_dispatcher::function_traits<F>::args_tuple), listener);
+		//static_assert(std::is_base_of<Event, event_dispatcher::function_traits<F>::args_type>::value,
+		//	"The event handler must be a lambda expression with only one argument that inherits from the Event type");
+
+		//auto& a = typeid(Event);
+		//auto& b = typeid(ChildEvent);
+		//auto& c = typeid(event_dispatcher::function_traits<F>::args_type);
+		//auto& d = typeid(F);
+		//_RPT0(_CRT_WARN, typeid(event_dispatcher::function_traits<F>::args_type).name());
+		//_RPT0(_CRT_WARN, std::to_string(std::is_base_of<Event, ChildEvent>::value).c_str());
+		//_RPT0(_CRT_WARN, std::to_string(std::is_base_of<Event, event_dispatcher::function_traits<F>::args_type>::value).c_str());
+
+		dispatcher.connect(typeid(event_dispatcher::function_traits<F>::args_type), listener);
 	}
 
 	template<class T>
