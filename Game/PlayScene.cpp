@@ -100,7 +100,7 @@ PlayScene::PlayScene()
 	fire->transform()->parent = field->transform();
 	fire->transform()->position = Vector2{ 0, 0 };
 	fire->transform()->scale = Vector2::one * .05f;
-	fire->AddNewComponentAs<Collider, CircleCollider>(Circle{ Vector2::zero, .5f });
+	fire->AddNewComponentAs<Collider, CircleCollider>(Circle{ Vector2::zero, .5f })->isTrigger = true;
 	fire->eventbus()->Register([fire](CollisionEnterEvent& eventobj) {
 		_RPT0(_CRT_WARN, "hit");
 	});
