@@ -3,7 +3,7 @@
 namespace CXLib
 {
 	// 矩形描画関数
-	void DrawBox(Vector2 boundsMin, Vector2 boundsMax, Color Color, bool FillFlag, const Matrix3& world)
+	void DrawBox(Vector2 boundsMin, Vector2 boundsMax, Color Color, bool FillFlag, const Matrix3& world, float opacity)
 	{
 		// ワールド座標をコンソール座標に変換
 		Matrix3 matrix = (world * ScreenToConsole);
@@ -14,6 +14,10 @@ namespace CXLib
 		SHORT cx2 = c2.Xs();
 		SHORT cy2 = c2.Ys();
 
+		int opa = std::max(0, std::min(9, static_cast<int>(opacity * 9)));
+		if (opa <= 0)
+			return;
+
 		// Yループ
 		SHORT ix, iy;
 		for (iy = cy1; iy <= cy2; iy++)
@@ -23,7 +27,27 @@ namespace CXLib
 			{
 				// 塗りつぶし時、または縁の場合描画
 				if (FillFlag || (ix == cx1 || ix == cx2) || (iy == cy1 || iy == cy2))
+				{
+					if (opa < 10)
+					{
+						static char pattern[10][11] = {
+							"          ",
+							"0         ",
+							"0     0   ",
+							"0  0   0  ",
+							"0 0 0 0 0 ",
+							"0 00 0 00 ",
+							"00 00 00 0",
+							"0 0000 000",
+							"00000 0000",
+							"0000000000",
+						};
+						if (pattern[opa][(ix + iy) % 10] != '0')
+						//if (pattern[opa][Random::Rand(10)])
+							continue;
+					}
 					Screen::Draw({ ix, iy }, Color);
+				}
 			}
 		}
 	}

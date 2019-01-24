@@ -281,13 +281,23 @@ PlayScene::PlayScene()
 				gameObject()->transform()->scale = Vector2::one * 1.f * (paused ? 1.f : 0.f);
 			}
 		}
+
+		void Render()
+		{
+			if (paused)
+			{
+				auto& transform = gameObject()->transform();
+				auto windowsize = GetWindowSize();
+				DrawBox(Vector2::zero, windowsize, Colors::Black, true, Matrix3::Identity, .5f);
+			}
+		}
 	};
 	auto pause = GameObject::Create("Pause", 8);
-	pause->AddNewComponent<Pause>();
 	pause->transform()->parent = field->transform();
 	pause->transform()->position = Vector2::zero;
 	pause->transform()->scale = Vector2::zero;
 	pause->AddNewComponent<TextureRenderer>(Texture{ LoadGraph("Resources/Textures/pause.ppm", Transparent::FirstColor) });
+	pause->AddNewComponent<Pause>();
 }
 
 PlayScene::~PlayScene()

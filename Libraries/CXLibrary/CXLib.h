@@ -14,7 +14,7 @@ namespace CXLib
 	constexpr auto CX_PI_F = static_cast<float>(M_PI);
 
 	// ãÈå`ï`âÊä÷êî
-	void DrawBox(Vector2 boundsMin, Vector2 boundsMax, Color Color, bool FillFlag, const Matrix3& world = Matrix3::Identity);
+	void DrawBox(Vector2 boundsMin, Vector2 boundsMax, Color Color, bool FillFlag, const Matrix3& world = Matrix3::Identity, float opacity = 1);
 
 	// ë»â~ï`âÊä÷êî
 	void DrawOval(Vector2 center, Vector2 size, Color Color, bool FillFlag, const Matrix3& world = Matrix3::Identity);
