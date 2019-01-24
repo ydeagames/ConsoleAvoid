@@ -5,10 +5,18 @@
 
 Vector2 Collider::GetVelocity() const
 {
+	auto transform = gameObject()->transform();
+	auto world = transform->GetMatrix();
+	auto vel = GetLocalVelocity();
+	return vel * world - Vector2::zero * world;
+}
+
+Vector2 Collider::GetLocalVelocity() const
+{
 	auto rigidbody = gameObject()->GetComponent<Rigidbody>();
 	if (rigidbody)
 		return rigidbody->vel;
-	return Vector2{};
+	return Vector2::zero;
 }
 
 // Utils
@@ -146,7 +154,7 @@ static CollisionResult CollisionCircleSegment(const Circle& _circle, const Vecto
 void BoxCollider::Apply(const CollisionResult & result) const
 {
 	auto transform = gameObject()->transform();
-	transform->position += GetVelocity() * result.time;
+	transform->position += GetLocalVelocity() * result.time;
 	float rotate = MathUtils::PI / 2 - result.normal;
 	float rotate_angle = transform->rotation + rotate;
 	if (sinf(rotate_angle) < 0) {
@@ -199,8 +207,8 @@ CollisionResult BoxCollider::Collide(const CircleCollider& other) const
 {
 	const Box _rect = GetShape(*gameObject()->transform());
 	const Circle _circle = other.GetShape(*other.gameObject()->transform());
-	const auto _rigid1 = gameObject()->GetComponent<Rigidbody>();
-	const auto _rigid2 = other.gameObject()->GetComponent<Rigidbody>();
+	const auto _vel1 = GetVelocity();
+	const auto _vel2 = other.GetVelocity();
 
 	float _time;
 	float _ref_normal;
@@ -212,7 +220,7 @@ CollisionResult BoxCollider::Collide(const CircleCollider& other) const
 	//相対速度の計算
 	auto mat1 = gameObject()->transform()->GetMatrix();
 	auto mat2 = other.gameObject()->transform()->GetMatrix();
-	Vector2 vel = (_rigid2 != nullptr ? _rigid2->vel * mat2 - Vector2::zero * mat2 : Vector2{}) - (_rigid1 != nullptr ? _rigid1->vel * mat1 - Vector2::zero * mat1 : Vector2{});
+	Vector2 vel = _vel1 - _vel2;
 
 	//各線分との衝突するまでの時間
 	float t_a, t_b;
@@ -300,7 +308,7 @@ CollisionResult BoxCollider::Collide(const LineCollider& other) const
 void CircleCollider::Apply(const CollisionResult & result) const
 {
 	auto transform = gameObject()->transform();
-	Vector2 vel = GetVelocity();
+	Vector2 vel = GetLocalVelocity();
 	transform->position += vel * result.time;
 	if (!vel.IsZero())
 		transform->rotation = vel.Angle();
@@ -341,13 +349,13 @@ CollisionResult CircleCollider::Collide(const LineCollider& other) const
 {
 	const Line _line = other.GetShape(*other.gameObject()->transform());
 	const Circle _circle = GetShape(*gameObject()->transform());
-	const auto _rigid1 = gameObject()->GetComponent<Rigidbody>();
-	const auto _rigid2 = other.gameObject()->GetComponent<Rigidbody>();
+	const auto _vel1 = GetVelocity();
+	const auto _vel2 = other.GetVelocity();
 
 	//相対速度の計算
 	auto mat1 = gameObject()->transform()->GetMatrix();
 	auto mat2 = other.gameObject()->transform()->GetMatrix();
-	Vector2 vel = (_rigid2 != nullptr ? _rigid2->vel * mat2 - Vector2::zero * mat2 : Vector2{}) - (_rigid1 != nullptr ? _rigid1->vel * mat1 - Vector2::zero * mat1 : Vector2{});
+	Vector2 vel = _vel2 - _vel1;
 
 	CollisionResult result = CollisionCircleSegment(_circle, vel, _line.p1, _line.p2);
 	if (result.hit) {

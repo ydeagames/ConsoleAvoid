@@ -9,45 +9,91 @@ PlayScene::PlayScene()
 	static auto fieldSize = Vector2{ gameAspectRatio, 1.f };
 	static auto fieldMargin = Vector2::one * .1f;
 
+	score = 0;
+
 	class Player : public Component
 	{
 		const float speed = .1f;
 		Vector2 last_pos;
 		Vector2 last_click;
+		bool dragged;
+
+		bool lastBombed;
+		bool bombed;
+		Timer bombedTimer;
+
+		void Start()
+		{
+			dragged = false;
+			bombed = lastBombed = false;
+
+			bool& bombedref = bombed;
+			gameObject()->eventbus()->Register([&bombedref](TriggerEnterEvent& eventobj) {
+				//_RPT0(_CRT_WARN, "hit");
+				bombedref = true;
+			});
+		}
 
 		void Update()
 		{
-			auto& rigidbody = gameObject()->GetComponent<Rigidbody>();
-
-			rigidbody->vel = Vector2::zero;
-			if (InputManager::GetInstance().key->GetButton('W') || InputManager::GetInstance().key->GetButton(VK_UP))
-				rigidbody->vel += Vector2::up * speed;
-			if (InputManager::GetInstance().key->GetButton('S') || InputManager::GetInstance().key->GetButton(VK_DOWN))
-				rigidbody->vel += Vector2::down * speed;
-			if (InputManager::GetInstance().key->GetButton('A') || InputManager::GetInstance().key->GetButton(VK_LEFT))
-				rigidbody->vel += Vector2::left * speed;
-			if (InputManager::GetInstance().key->GetButton('D') || InputManager::GetInstance().key->GetButton(VK_RIGHT))
-				rigidbody->vel += Vector2::right * speed;
-
-			auto& transform = gameObject()->transform();
-			auto& parentInverse = transform->GetParentMatrix().Inverse();
-			auto point = InputManager::GetInstance().mouse->GetPosition() * parentInverse;
-			//transform->position = point;
-			if (InputManager::GetInstance().mouse->GetButtonDown(MouseInput::MOUSE_INPUT_LEFT))
+			if (bombed)
 			{
-				last_pos = transform->position;
-				last_click = point;
+				if (!lastBombed)
+				{
+					bombedTimer = Timer{}.Start(2.f);
+					gameObject()->GetComponent<TextureRenderer>()->texture = Texture{ std::vector<CXImage>{
+							LoadGraph("Resources/Textures/bomb_explosion1.ppm", Transparent::FirstColor),
+							LoadGraph("Resources/Textures/bomb_explosion2.ppm", Transparent::FirstColor),
+							LoadGraph("Resources/Textures/bomb_explosion3.ppm", Transparent::FirstColor),
+					},
+					2.f / 3,
+					false
+					};
+					gameObject()->GetComponent<Rigidbody>()->vel = Vector2::zero;
+					lastBombed = true;
+				}
+				if (bombedTimer.IsFinished())
+					SceneManager::GetInstance().RequestScene(SceneID::RESULT);
 			}
-			if (InputManager::GetInstance().mouse->GetButton(MouseInput::MOUSE_INPUT_LEFT))
+			else
 			{
-				auto sub = point - last_click;
-				auto newpos = last_pos + sub;
-				rigidbody->vel = (newpos - transform->position) * MathUtils::Lerp(Time::deltaTime, 16, 1);
-			}
+				auto& rigidbody = gameObject()->GetComponent<Rigidbody>();
 
-			auto& collider = gameObject()->GetComponent<BoxCollider>();
-			Bounds bounds = Bounds::CreateFromCenter(Vector2::zero, fieldSize).Expand(-transform->scale * collider->shape.size / 2);
-			transform->position = bounds.ClosestPoint(transform->position);
+				rigidbody->vel = Vector2::zero;
+				if (InputManager::GetInstance().key->GetButton('W') || InputManager::GetInstance().key->GetButton(VK_UP))
+					rigidbody->vel += Vector2::up * speed;
+				if (InputManager::GetInstance().key->GetButton('S') || InputManager::GetInstance().key->GetButton(VK_DOWN))
+					rigidbody->vel += Vector2::down * speed;
+				if (InputManager::GetInstance().key->GetButton('A') || InputManager::GetInstance().key->GetButton(VK_LEFT))
+					rigidbody->vel += Vector2::left * speed;
+				if (InputManager::GetInstance().key->GetButton('D') || InputManager::GetInstance().key->GetButton(VK_RIGHT))
+					rigidbody->vel += Vector2::right * speed;
+
+				auto& transform = gameObject()->transform();
+				auto& parentInverse = transform->GetParentMatrix().Inverse();
+				auto point = InputManager::GetInstance().mouse->GetPosition() * parentInverse;
+				if (InputManager::GetInstance().mouse->GetButtonDown(MouseInput::MOUSE_INPUT_LEFT))
+				{
+					last_pos = transform->position;
+					last_click = point;
+					dragged = true;
+				}
+				if (dragged)
+				{
+					auto sub = point - last_click;
+					auto newpos = last_pos + sub;
+					rigidbody->vel = -sub;
+					transform->position = newpos;
+				}
+				if (InputManager::GetInstance().mouse->GetButtonUp(MouseInput::MOUSE_INPUT_LEFT))
+				{
+					dragged = false;
+				}
+
+				auto& collider = gameObject()->GetComponent<BoxCollider>();
+				Bounds bounds = Bounds::CreateFromCenter(Vector2::zero, fieldSize).Expand(-transform->scale * collider->shape.size / 2);
+				transform->position = bounds.ClosestPoint(transform->position);
+			}
 		}
 	};
 
@@ -81,11 +127,11 @@ PlayScene::PlayScene()
 	back->AddNewComponent<TextureRenderer>(Texture{ LoadGraph("Resources/Textures/back.ppm") });
 	back->transform()->static_object = true;
 
-	auto border = GameObject::Create("Border");
-	border->transform()->parent = field->transform();
-	border->transform()->scale = Vector2{ gameAspectRatio, 1.f };
-	border->transform()->static_object = true;
-	border->AddNewComponent<BoxRenderer>()->material = Material{}.SetBorder(Colors::Red);
+	//auto border = GameObject::Create("Border");
+	//border->transform()->parent = field->transform();
+	//border->transform()->scale = Vector2{ gameAspectRatio, 1.f };
+	//border->transform()->static_object = true;
+	//border->AddNewComponent<BoxRenderer>()->material = Material{}.SetBorder(Colors::Red);
 
 	class FireController : public Component
 	{
@@ -101,6 +147,10 @@ PlayScene::PlayScene()
 
 	class FireGenerator : public Component
 	{
+	public:
+		bool started;
+
+	private:
 		float SpeedMultiply = 1.001f;
 		float speed = .1f;
 		float IntervalMultiply = .97f;
@@ -111,13 +161,14 @@ PlayScene::PlayScene()
 
 		void Start()
 		{
+			started = false;
 			timer = Timer{}.Start(interval);
 			texture = Texture{ LoadGraph("Resources/Textures/fire.ppm", Transparent::FirstColor) };
 		}
 
 		void Update()
 		{
-			if (timer.IsFinished())
+			if (started && timer.IsFinished())
 			{
 				float direction = Random::Range(0.f, MathUtils::ToRadians(360));
 				auto size = fieldSize / 2 + fieldMargin;
@@ -135,10 +186,7 @@ PlayScene::PlayScene()
 				fire->AddNewComponentAs<Collider, CircleCollider>(Circle{ Vector2::zero, .5f })->isTrigger = true;
 				fire->AddNewComponent<Rigidbody>()->vel = vel;
 				fire->AddNewComponent<FireController>();
-				fire->eventbus()->Register([fire](TriggerEnterEvent& eventobj) {
-					//_RPT0(_CRT_WARN, "hit");
-					SceneManager::GetInstance().RequestScene(SceneID::RESULT);
-					});
+
 				interval = std::max(minInterval, interval * IntervalMultiply);
 				speed *= SpeedMultiply;
 				timer.Start(interval);
@@ -153,9 +201,10 @@ PlayScene::PlayScene()
 	auto player = GameObject::Create("Player", 3);
 	player->transform()->parent = field->transform();
 	player->transform()->scale = Vector2::one * .3f;
+	player->transform()->position = Vector2{ 0.f, .3f };
 	player->AddNewComponent<Player>();
 	player->AddNewComponent<Rigidbody>(Vector2{}, std::vector<int>{ 2 });
-	player->AddNewComponentAs<Collider, BoxCollider>(Box{ Vector2{ 0.f, .1f }, Vector2{ .6f, .7f } });
+	player->AddNewComponentAs<Collider, BoxCollider>(Box{ Vector2{ 0.f, .1f }, Vector2{ .4f, .5f } });
 	auto texture = Texture{
 		std::vector<CXImage>{
 			LoadGraph("Resources/Textures/bomb1.ppm"),
@@ -168,32 +217,51 @@ PlayScene::PlayScene()
 
 	class ScorePanel : public Component
 	{
-		CXFont font_pong;
-
-		void Start()
+		void Update()
 		{
-			font_pong = CreateFontToHandle(CXFontType::CXFONT_PONG, 4);
-		}
-
-		void Render()
-		{
-			auto& transform = gameObject()->transform();
-			DrawStringToHandle(String::Format(L"SCORE: %d", score), Colors::White, font_pong, Matrix3::CreateTranslation(Vector2{ 30, 30 }));
+			std::wstring str = String::Format(L"SCORE: %d", score);
+			gameObject()->GetComponent<FontTextRenderer>()->text = str;
 		}
 	};
 	auto scorepanel = GameObject::Create("ScorePanel", 5);
 	scorepanel->AddNewComponent<ScorePanel>();
+	scorepanel->transform()->parent = field->transform();
+	scorepanel->transform()->position = Vector2{ -gameAspectRatio / 2 + .1f, -.5f + .2f };
+	scorepanel->transform()->scale = Vector2{ .0125f, .0125f };
+	scorepanel->AddNewComponent<FontTextRenderer>(CreateFontToHandle(CXFontType::CXFONT_PONG, 4), L"SCORE");
 
-	class SceneHook : public Component
+	class Countdown : public Component
 	{
+		Timer timer;
+
+		void Start()
+		{
+			timer = Timer{}.Start(3);
+		}
+
 		void Update()
 		{
-			if (InputManager::GetInstance().key->GetButtonDown(VK_SPACE))
-				SceneManager::GetInstance().RequestScene(SceneID::PLAY);
+			if (timer.IsFinished())
+			{
+				GameObject::Find("FireGenerator")->GetComponent<FireGenerator>()->started = true;
+				gameObject()->Destroy();
+			}
 		}
 	};
+	auto countdown = GameObject::Create("ScorePanel", 5);
+	countdown->AddNewComponent<Countdown>();
+	countdown->transform()->parent = field->transform();
+	countdown->transform()->position = Vector2::zero;
+	countdown->transform()->scale = Vector2{ .2f, .2f };
+	countdown->AddNewComponent<TextureRenderer>(Texture{ std::vector<CXImage>{
+			LoadGraph("Resources/Textures/countdown3.ppm", Transparent::FirstColor),
+			LoadGraph("Resources/Textures/countdown2.ppm", Transparent::FirstColor),
+			LoadGraph("Resources/Textures/countdown1.ppm", Transparent::FirstColor),
+	},
+	1,
+	false
+	});
 
-	GameObject::Create("SceneHook")->AddNewComponent<SceneHook>();
 }
 
 PlayScene::~PlayScene()

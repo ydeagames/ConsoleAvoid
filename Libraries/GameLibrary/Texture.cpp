@@ -21,6 +21,8 @@ Texture::Texture(const std::vector<CXImage>& images, float interval, bool loop_e
 const CXImage& Texture::GetFrame()
 {
 	float time = Time::time - firstTime;
-	int frame = MathUtils::Loop(static_cast<int>(time / interval), images.size());
+	int totalframe = static_cast<int>(time / interval);
+	int size = static_cast<int>(images.size());
+	int frame = loop_enable ? MathUtils::Loop(totalframe, size) : std::min(totalframe, size - 1);
 	return images[frame];
 }

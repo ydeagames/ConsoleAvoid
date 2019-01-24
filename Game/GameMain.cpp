@@ -49,7 +49,7 @@ void Game::Render(void)
 		auto& time = Time::GetInstance();
 		auto sleeptime = std::max(std::chrono::nanoseconds::zero(), time.interval - time.delta_processing);
 		ScreenManager::GetInstance().SetTitle(
-			String::Format(L"FPS: %5.2f ( %2lld )",
+			String::Format(L"Ç†Ç‚Ç§ÇµÅIÉ{ÉÄÇ÷Ç¢ - FPS: %5.2f ( Sleep: %2lldms )",
 				m_frame_timer.GetFrameRate(),
 				std::chrono::duration_cast<std::chrono::milliseconds>(sleeptime).count()
 			)

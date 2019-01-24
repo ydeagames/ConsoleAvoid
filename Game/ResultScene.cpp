@@ -5,6 +5,9 @@
 
 ResultScene::ResultScene()
 {
+	static constexpr auto gameAspect = Vector2{ 16, 9 };
+	static constexpr float gameAspectRatio = gameAspect.x / gameAspect.y;
+
 	class Back : public Component
 	{
 		void Update()
@@ -33,29 +36,16 @@ ResultScene::ResultScene()
 			transform->position = windowsize / 2;
 		}
 	};
+	auto& title = GameObject::Create("Logo");
+	title->AddNewComponent<Title>();
+	title->AddNewComponent<TextureRenderer>(Texture{ LoadGraph("Resources/Textures/result.ppm", Transparent::FirstColor) });
+	title->transform()->static_object = true;
 
-	auto& logo = GameObject::Create("Logo");
-	logo->AddNewComponent<Title>();
-	logo->AddNewComponent<TextureRenderer>(Texture{ LoadGraph("Resources/Textures/result.ppm", Transparent::FirstColor) });
-	logo->transform()->static_object = true;
-
-	class ScorePanel : public Component
-	{
-		CXFont font_pong;
-
-		void Start()
-		{
-			font_pong = CreateFontToHandle(CXFontType::CXFONT_PONG, 10);
-		}
-
-		void Render()
-		{
-			auto windowsize = GetWindowSize();
-			DrawStringToHandle(String::Format(L"SCORE: %d", PlayScene::score), Colors::White, font_pong, Matrix3::CreateTranslation(windowsize / 2 + Vector2::left * 50));
-		}
-	};
 	auto scorepanel = GameObject::Create("ScorePanel", 5);
-	scorepanel->AddNewComponent<ScorePanel>();
+	scorepanel->transform()->parent = back->transform();
+	scorepanel->transform()->position = Vector2{ -.2f, .1f };
+	scorepanel->transform()->scale = Vector2{ .005f, .005f };
+	scorepanel->AddNewComponent<FontTextRenderer>(CreateFontToHandle(CXFontType::CXFONT_PONG, 4), String::Format(L"SCORE: %d", PlayScene::score));
 
 	class Click : public Component
 	{
