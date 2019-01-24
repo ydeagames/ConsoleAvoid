@@ -6,7 +6,7 @@ namespace Random
 	std::mt19937 mt(rd());
 
 	// 0.0…x…1.0 ‚Ì¬”ƒ‰ƒ“ƒ_ƒ€¶¬
-	float Random()
+	float Value()
 	{
 		return static_cast<float>(Rand(RAND_MAX)) / RAND_MAX;
 	}
@@ -20,7 +20,7 @@ namespace Random
 	// 0.0…x…max ‚Ì¬”ƒ‰ƒ“ƒ_ƒ€¶¬
 	float Rand(float max)
 	{
-		return Random() * max;
+		return Value() * max;
 	}
 
 	// min…x…max ‚Ì®”ƒ‰ƒ“ƒ_ƒ€¶¬

@@ -159,11 +159,11 @@ void BoxCollider::Apply(const CollisionResult & result) const
 	transform->rotation = 0;
 }
 
-void BoxCollider::Render()
-{
-	const Box _rect1 = GetShape(*gameObject()->transform());
-	DrawBox(_rect1.GetBounds().GetMin(), _rect1.GetBounds().GetMax(), Colors::White, false);
-}
+//void BoxCollider::Render()
+//{
+//	const Box _rect1 = GetShape(*gameObject()->transform());
+//	DrawBox(_rect1.GetBounds().GetMin(), _rect1.GetBounds().GetMax(), Colors::White, false);
+//}
 
 CollisionResult BoxCollider::Collide(const Collider& other) const
 {
@@ -210,7 +210,9 @@ CollisionResult BoxCollider::Collide(const CircleCollider& other) const
 	const Vector2& circle_pos = _circle.center;
 
 	//相対速度の計算
-	Vector2 vel = (_rigid2 != nullptr ? _rigid2->vel : Vector2{}) - (_rigid1 != nullptr ? _rigid1->vel : Vector2{});
+	auto mat1 = gameObject()->transform()->GetMatrix();
+	auto mat2 = other.gameObject()->transform()->GetMatrix();
+	Vector2 vel = (_rigid2 != nullptr ? _rigid2->vel * mat2 - Vector2::zero * mat2 : Vector2{}) - (_rigid1 != nullptr ? _rigid1->vel * mat1 - Vector2::zero * mat1 : Vector2{});
 
 	//各線分との衝突するまでの時間
 	float t_a, t_b;
@@ -314,11 +316,11 @@ void CircleCollider::Apply(const CollisionResult & result) const
 	transform->rotation = 0;
 }
 
-void CircleCollider::Render()
-{
-	const Circle _rect1 = GetShape(*gameObject()->transform());
-	DrawCircle(_rect1.center, _rect1.size, Colors::White, false);
-}
+//void CircleCollider::Render()
+//{
+//	const Circle _rect1 = GetShape(*gameObject()->transform());
+//	DrawCircle(_rect1.center, _rect1.size, Colors::White, false);
+//}
 
 CollisionResult CircleCollider::Collide(const Collider& other) const
 {
@@ -343,7 +345,9 @@ CollisionResult CircleCollider::Collide(const LineCollider& other) const
 	const auto _rigid2 = other.gameObject()->GetComponent<Rigidbody>();
 
 	//相対速度の計算
-	Vector2 vel = (_rigid2 != nullptr ? _rigid2->vel : Vector2{}) - (_rigid1 != nullptr ? _rigid1->vel : Vector2{});
+	auto mat1 = gameObject()->transform()->GetMatrix();
+	auto mat2 = other.gameObject()->transform()->GetMatrix();
+	Vector2 vel = (_rigid2 != nullptr ? _rigid2->vel * mat2 - Vector2::zero * mat2 : Vector2{}) - (_rigid1 != nullptr ? _rigid1->vel * mat1 - Vector2::zero * mat1 : Vector2{});
 
 	CollisionResult result = CollisionCircleSegment(_circle, vel, _line.p1, _line.p2);
 	if (result.hit) {

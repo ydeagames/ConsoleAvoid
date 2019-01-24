@@ -79,7 +79,7 @@ public:
 public:
 	void Apply(const CollisionResult& result) const override;
 
-	void Render();
+	//void Render();
 
 public:
 	CollisionResult Collide(const Collider& other) const override;
@@ -97,7 +97,7 @@ public:
 public:
 	void Apply(const CollisionResult& result) const override;
 
-	void Render();
+	//void Render();
 
 public:
 	CollisionResult Collide(const Collider& other) const override;
