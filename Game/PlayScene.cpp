@@ -1,5 +1,7 @@
 #include "PlayScene.h"
 
+int PlayScene::score = 0;
+
 PlayScene::PlayScene()
 {
 	static constexpr auto gameAspect = Vector2{ 16, 9 };
@@ -40,20 +42,12 @@ PlayScene::PlayScene()
 			{
 				auto sub = point - last_click;
 				auto newpos = last_pos + sub;
-				rigidbody->vel = (newpos - transform->position) * 16;
+				rigidbody->vel = (newpos - transform->position) * MathUtils::Lerp(Time::deltaTime, 16, 1);
 			}
 
-			auto& transform = gameObject()->transform();
-			Bounds bounds = Bounds::CreateFromCenter(Vector2::zero, fieldSize * 2);
+			auto& collider = gameObject()->GetComponent<BoxCollider>();
+			Bounds bounds = Bounds::CreateFromCenter(Vector2::zero, fieldSize).Expand(-transform->scale * collider->shape.size / 2);
 			transform->position = bounds.ClosestPoint(transform->position);
-		}
-
-		CXFont font_pong = CreateFontToHandle(CXFontType::CXFONT_PONG, 6);
-
-		void Render()
-		{
-			auto& transform = gameObject()->transform();
-			DrawStringToHandle(String::Format(L"(%.2f, %.2f)", transform->position.x, transform->position.y), Colors::White, font_pong, Matrix3::CreateTranslation(Vector2{ 50, 50 }));
 		}
 	};
 
@@ -69,12 +63,29 @@ PlayScene::PlayScene()
 	};
 	auto field = GameObject::Create("Field");
 	field->AddNewComponent<Canvas>();
+	field->transform()->static_object = true;
 
-	auto back = GameObject::Create("Back");
-	back->transform()->parent = field->transform();
-	back->transform()->scale = Vector2{ gameAspectRatio, 1.f };
+	class Back : public Component
+	{
+		void Update()
+		{
+			auto& transform = gameObject()->transform();
+			auto windowsize = GetWindowSize();
+			transform->scale = AspectUtils::Outer(Vector2::one, windowsize);
+			transform->position = windowsize / 2;
+		}
+	};
+
+	auto& back = GameObject::Create("Back");
+	back->AddNewComponent<Back>();
+	back->AddNewComponent<TextureRenderer>(Texture{ LoadGraph("Resources/Textures/back.ppm") });
 	back->transform()->static_object = true;
-	back->AddNewComponent<BoxRenderer>()->material = Material{}.SetBase(Colors::Green).SetBorder(Colors::Red);
+
+	auto border = GameObject::Create("Border");
+	border->transform()->parent = field->transform();
+	border->transform()->scale = Vector2{ gameAspectRatio, 1.f };
+	border->transform()->static_object = true;
+	border->AddNewComponent<BoxRenderer>()->material = Material{}.SetBorder(Colors::Red);
 
 	class FireController : public Component
 	{
@@ -84,6 +95,7 @@ PlayScene::PlayScene()
 			Bounds bounds = Bounds::CreateFromCenter(Vector2::zero, fieldSize * 2 + fieldMargin);
 			if (!bounds.Contains(transform->position))
 				gameObject()->Destroy();
+			score += 1;
 		}
 	};
 
@@ -95,10 +107,12 @@ PlayScene::PlayScene()
 		float interval = 1.5f;
 		float minInterval = .25f;
 		Timer timer;
+		Texture texture;
 
 		void Start()
 		{
 			timer = Timer{}.Start(interval);
+			texture = Texture{ LoadGraph("Resources/Textures/fire.ppm", Transparent::FirstColor) };
 		}
 
 		void Update()
@@ -114,7 +128,7 @@ PlayScene::PlayScene()
 				auto vel = (-vecnorm * speed).Rotate(vecdirection);
 
 				auto fire = GameObject::Create("Fire", 2);
-				fire->AddNewComponent<TextureRenderer>(Texture{ LoadGraph("Resources/Textures/fire.ppm", Transparent::FirstColor) });
+				fire->AddNewComponent<TextureRenderer>(texture);
 				fire->transform()->parent = GameObject::Find("Field")->transform();
 				fire->transform()->position = trace;
 				fire->transform()->scale = Vector2::one * .1f;
@@ -122,7 +136,8 @@ PlayScene::PlayScene()
 				fire->AddNewComponent<Rigidbody>()->vel = vel;
 				fire->AddNewComponent<FireController>();
 				fire->eventbus()->Register([fire](TriggerEnterEvent& eventobj) {
-					_RPT0(_CRT_WARN, "hit");
+					//_RPT0(_CRT_WARN, "hit");
+					SceneManager::GetInstance().RequestScene(SceneID::RESULT);
 					});
 				interval = std::max(minInterval, interval * IntervalMultiply);
 				speed *= SpeedMultiply;
@@ -131,7 +146,7 @@ PlayScene::PlayScene()
 		}
 	};
 
-	auto firegen = GameObject::Create("FireGenerator", 3);
+	auto firegen = GameObject::Create("FireGenerator");
 	firegen->transform()->parent = field->transform();
 	firegen->AddNewComponent<FireGenerator>();
 
@@ -150,6 +165,24 @@ PlayScene::PlayScene()
 	};
 	//player->AddNewComponent<BoxRenderer>()->material = Material{}.SetBorder(Colors::Blue);
 	player->AddNewComponent<TextureRenderer>(texture);
+
+	class ScorePanel : public Component
+	{
+		CXFont font_pong;
+
+		void Start()
+		{
+			font_pong = CreateFontToHandle(CXFontType::CXFONT_PONG, 4);
+		}
+
+		void Render()
+		{
+			auto& transform = gameObject()->transform();
+			DrawStringToHandle(String::Format(L"SCORE: %d", score), Colors::White, font_pong, Matrix3::CreateTranslation(Vector2{ 30, 30 }));
+		}
+	};
+	auto scorepanel = GameObject::Create("ScorePanel", 5);
+	scorepanel->AddNewComponent<ScorePanel>();
 
 	class SceneHook : public Component
 	{

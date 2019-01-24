@@ -8,7 +8,8 @@ void Scene::Update()
 		object.second->Start();
 
 	for (auto& object : objects)
-		object.second->Update();
+		if (!object.second->IsDestroyed() && !object.second->transform()->IsStaticObject())
+			object.second->Update();
 
 	//objects.erase(std::remove_if(objects.begin(), objects.end(), [](std::pair<const std::string, std::shared_ptr<GameObject>>& obj)->bool { return obj.second->IsDestroyed(); }), objects.end());
 	for (auto itr = objects.begin(); itr != objects.end();)
@@ -36,6 +37,9 @@ void Scene::Render()
 
 	if (!context.HasStaticBuffer())
 	{
+		for (auto& object : objects)
+			if (!object.second->IsDestroyed() && object.second->transform()->IsStaticObject())
+				object.second->Update();
 		context.ClearStaticBuffer();
 		context.BeginStaticBuffer();
 		for (auto& layer : layers)
