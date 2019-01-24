@@ -1,0 +1,26 @@
+# ConsoleAvoid
+タイトル あやうし！ボムへい
+作成日: 2019/01/24  
+作者名: YdeaGames  
+
+## アピールポイント
+コンソールゲームで某ゲームのミニゲームを再現した。  
+360°全方位からとんでくる火の玉を避けろ！  
+
+## 操作方法
+クリックかスペースキーでスタート  
+マウスドラッグや十字キーでボムへい移動  
+スペースキーでPAUSE  
+Escキーで終了  
+
+## 頑張った点
+ゲームの動きをComponentで指定、GameObjectでのオブジェクト管理。  
+GameObjectやComponentなどコンポーネント指向。  
+コンソール上での図形描画フレームワークCXLibraryの作成。  
+
+## 構成
+- BaseLibrary Vector2やMathUtilsなどの基本ユーティリティ
+- ConsoleLibrary コンソールを扱うためのライブラリ
+- CXLibrary コンソール上で図形を描画するためのライブラリ
+- GameLibrary ゲーム制作演習でも使用されているコンポーネント指向Unityよりのゲームライブラリ
+- ConsoleAvoid ゲーム本体

@@ -1,0 +1,63 @@
+@startuml
+set namespaceSeparator ::
+
+Scene <|-- LogoScene::LogoScene
+Scene <|-- TitleScene::TitleScene
+Scene <|-- PlayScene::PlayScene
+Scene <|-- ResultScene::ResultScene
+
+Component <|-- LogoScene::Back
+Component <|-- LogoScene::Logo
+Component <|-- LogoScene::SceneHook
+
+Component <|-- TitleScene::Back
+Component <|-- TitleScene::Logo
+Component <|-- TitleScene::Click
+Component <|-- TitleScene::SceneHook
+
+Component <|-- PlayScene::Canvas
+Component <|-- PlayScene::Back
+Component <|-- PlayScene::FireController
+Component <|-- PlayScene::FireGenerator
+Component <|-- PlayScene::ScorePanel
+Component <|-- PlayScene::Countdown
+Component <|-- PlayScene::Pause
+
+Component <|-- ResultScene::Back
+Component <|-- ResultScene::Logo
+Component <|-- ResultScene::Click
+Component <|-- ResultScene::SceneHook
+
+namespace LogoScene {
+LogoScene o-- Back
+LogoScene o-- Logo
+LogoScene o-- SceneHook
+}
+@enduml
+
+namespace TitleScene {
+TitleScene o-- Back
+TitleScene o-- Title
+TitleScene o-- Click
+TitleScene o-- SceneHook
+}
+@enduml
+
+namespace PlayScene {
+PlayScene o-- Canvas
+PlayScene o-- Back
+PlayScene o-- FireController
+PlayScene o-- FireGenerator
+PlayScene o-- ScorePanel
+PlayScene o-- Countdown
+PlayScene o-- Pause
+}
+@enduml
+
+namespace ResultScene {
+ResultScene o-- Back
+ResultScene o-- Title
+ResultScene o-- Click
+ResultScene o-- SceneHook
+}
+@enduml

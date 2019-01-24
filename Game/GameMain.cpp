@@ -27,7 +27,7 @@ Game::~Game()
 }
 
 // ƒQ[ƒ€‚ÌXVˆ—
-void Game::Update(void)
+void Game::Update()
 {
 	m_frame_timer.Update();
 	Timer::Tick();
@@ -41,7 +41,7 @@ void Game::Update(void)
 }
 
 // ƒQ[ƒ€‚Ì•`‰æˆ—
-void Game::Render(void)
+void Game::Render()
 {
 	SceneManager::GetInstance().RenderActiveScene();
 

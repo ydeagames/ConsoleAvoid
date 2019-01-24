@@ -121,7 +121,6 @@ PlayScene::PlayScene()
 			transform->position = windowsize / 2;
 		}
 	};
-
 	auto& back = GameObject::Create("Back");
 	back->AddNewComponent<Back>();
 	back->AddNewComponent<TextureRenderer>(Texture{ LoadGraph("Resources/Textures/back.ppm") });
@@ -135,7 +134,6 @@ PlayScene::PlayScene()
 
 	class FireController : public Component
 	{
-
 		void Update()
 		{
 			auto& transform = gameObject()->transform();

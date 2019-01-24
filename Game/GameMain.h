@@ -18,6 +18,6 @@ public:
 	Game();
 	~Game();
 
-	void Update(void);
-	void Render(void);
+	void Update();
+	void Render();
 };

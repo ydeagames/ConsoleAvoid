@@ -1,0 +1,135 @@
+namespace ロゴシーン {
+class LogoScene
+{
++LogoScene();
+}
+class Back
+{
++void Update();
+}
+class Logo
+{
++void Update();
+}
+class SceneHook
+{
++void Update();
+}
+}
+
+namespace タイトルシーン {
+class TitleScene
+{
++TitleScene()
+}
+class Back
+{
++void Update();
+}
+class Title
+{
++void Update();
+}
+class Click
+{
++void Update();
+}
+class SceneHook
+{
++void Update();
+}
+}
+
+namespace プレイシーン {
+class PlayScene
+{
++float score;
++PlayScene();
+}
+class Player
+{
+-const float speed;
+-Vector2 last_pos;
+-Vector2 last_click;
+-bool dragged;
+-bool lastBombed;
+-bool bombed;
+-Timer bombedTimer;
++void Start();
++void Update();
+}
+class Canvas
+{
++void Update();
+}
+class Back
+{
++void Update();
+}
+class FireController
+{
++void Update();
+}
+class FireGenerator
+{
++bool started;
+-float SpeedMultiply = 1.001f;
+-float speed = .1f;
+-float IntervalMultiply = .97f;
+-float interval = 1.5f;
+-float minInterval = .25f;
+-Timer timer;
+-Texture texture;
++void Start();
++void Update();
+}
+class ScorePanel
+{
++void Update();
+}
+class Countdown
+{
+-Timer timer;
++void Start();
++void Update();
+}
+class Pause
+{
+-bool paused;
++void Start();
++void Update();
++void Render();
+}
+}
+
+namespace リザルトシーン {
+class ResultScene
+{
++ResultScene()
+}
+class Back
+{
++void Update();
+}
+class Title
+{
++void Update();
+}
+class Click
+{
++void Update();
+}
+class SceneHook
+{
++void Update();
+}
+}
+
+class Game
+{
+-FrameTimer m_frame_timer;
++Game();
++~Game();
++void Update();
++void Render();
+}
