@@ -1,7 +1,8 @@
 #include "Time.h"
 
-float Time::time;
-float Time::deltaTime;
+float Time::time = 0;
+float Time::deltaTime = 0;
+float Time::speed = 1;
 
 Time::Time(int FPS)
 	: FPS(FPS)
@@ -16,6 +17,7 @@ Time::Time(int FPS)
 	// ¬”‰Šú‰»
 	time = 0;
 	deltaTime = 0;
+	speed = 1;
 }
 
 void Time::Update()
@@ -31,8 +33,8 @@ void Time::Update()
 	timepoint_frame = now;
 
 	// ¬”‚É•ÏŠ·
-	time = delta_first.count() * 1e-9f;
-	deltaTime = delta_frame.count() * 1e-9f;
+	deltaTime = delta_frame.count() * 1e-9f * speed;
+	time += deltaTime;
 }
 
 void Time::WaitFrame()

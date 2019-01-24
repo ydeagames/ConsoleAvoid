@@ -32,11 +32,10 @@ TitleScene::TitleScene()
 			transform->position = windowsize / 2;
 		}
 	};
-
-	auto& logo = GameObject::Create("Logo");
-	logo->AddNewComponent<Title>();
-	logo->AddNewComponent<TextureRenderer>(Texture{ LoadGraph("Resources/Textures/title.ppm", Transparent::FirstColor) });
-	logo->transform()->static_object = true;
+	auto& title = GameObject::Create("Title");
+	title->AddNewComponent<Title>();
+	title->AddNewComponent<TextureRenderer>(Texture{ LoadGraph("Resources/Textures/title.ppm", Transparent::FirstColor) });
+	title->transform()->static_object = true;
 
 	class Click : public Component
 	{

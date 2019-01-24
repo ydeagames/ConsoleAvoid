@@ -4,7 +4,7 @@
 class PlayScene : public Scene
 {
 public:
-	static int score;
+	static float score;
 
 public:
 	PlayScene();

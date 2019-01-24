@@ -7,6 +7,8 @@ public:
 	static float time;
 	// 前のフレームからの経過時間(秒)
 	static float deltaTime;
+	//スピード
+	static float speed;
 
 public:
 	// FPS

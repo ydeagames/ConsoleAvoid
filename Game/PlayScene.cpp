@@ -1,6 +1,6 @@
 #include "PlayScene.h"
 
-int PlayScene::score = 0;
+float PlayScene::score = 0;
 
 PlayScene::PlayScene()
 {
@@ -13,7 +13,7 @@ PlayScene::PlayScene()
 
 	class Player : public Component
 	{
-		const float speed = .1f;
+		const float speed = .4f;
 		Vector2 last_pos;
 		Vector2 last_click;
 		bool dragged;
@@ -55,7 +55,7 @@ PlayScene::PlayScene()
 				if (bombedTimer.IsFinished())
 					SceneManager::GetInstance().RequestScene(SceneID::RESULT);
 			}
-			else
+			else if (Time::speed > 0)
 			{
 				auto& rigidbody = gameObject()->GetComponent<Rigidbody>();
 
@@ -135,13 +135,14 @@ PlayScene::PlayScene()
 
 	class FireController : public Component
 	{
+
 		void Update()
 		{
 			auto& transform = gameObject()->transform();
 			Bounds bounds = Bounds::CreateFromCenter(Vector2::zero, fieldSize * 2 + fieldMargin);
 			if (!bounds.Contains(transform->position))
 				gameObject()->Destroy();
-			score += 1;
+			score += Time::deltaTime * 20;
 		}
 	};
 
@@ -219,7 +220,7 @@ PlayScene::PlayScene()
 	{
 		void Update()
 		{
-			std::wstring str = String::Format(L"SCORE: %d", score);
+			std::wstring str = String::Format(L"SCORE: %.0f", score);
 			gameObject()->GetComponent<FontTextRenderer>()->text = str;
 		}
 	};
@@ -248,7 +249,7 @@ PlayScene::PlayScene()
 			}
 		}
 	};
-	auto countdown = GameObject::Create("ScorePanel", 5);
+	auto countdown = GameObject::Create("Countdown", 5);
 	countdown->AddNewComponent<Countdown>();
 	countdown->transform()->parent = field->transform();
 	countdown->transform()->position = Vector2::zero;
@@ -262,6 +263,31 @@ PlayScene::PlayScene()
 	false
 	});
 
+	class Pause : public Component
+	{
+		bool paused;
+
+		void Start()
+		{
+			paused = false;
+		}
+
+		void Update()
+		{
+			if (InputManager::GetInstance().key->GetButtonDown(VK_SPACE) && GameObject::Find("FireGenerator")->GetComponent<FireGenerator>()->started)
+			{
+				paused = !paused;
+				Time::speed = paused ? 0.f : 1.f;
+				gameObject()->transform()->scale = Vector2::one * 1.f * (paused ? 1.f : 0.f);
+			}
+		}
+	};
+	auto pause = GameObject::Create("Pause", 8);
+	pause->AddNewComponent<Pause>();
+	pause->transform()->parent = field->transform();
+	pause->transform()->position = Vector2::zero;
+	pause->transform()->scale = Vector2::zero;
+	pause->AddNewComponent<TextureRenderer>(Texture{ LoadGraph("Resources/Textures/pause.ppm", Transparent::FirstColor) });
 }
 
 PlayScene::~PlayScene()

@@ -36,16 +36,16 @@ ResultScene::ResultScene()
 			transform->position = windowsize / 2;
 		}
 	};
-	auto& title = GameObject::Create("Logo");
-	title->AddNewComponent<Title>();
-	title->AddNewComponent<TextureRenderer>(Texture{ LoadGraph("Resources/Textures/result.ppm", Transparent::FirstColor) });
-	title->transform()->static_object = true;
+	auto& result = GameObject::Create("Result");
+	result->AddNewComponent<Title>();
+	result->AddNewComponent<TextureRenderer>(Texture{ LoadGraph("Resources/Textures/result.ppm", Transparent::FirstColor) });
+	result->transform()->static_object = true;
 
 	auto scorepanel = GameObject::Create("ScorePanel", 5);
 	scorepanel->transform()->parent = back->transform();
 	scorepanel->transform()->position = Vector2{ -.2f, .1f };
 	scorepanel->transform()->scale = Vector2{ .005f, .005f };
-	scorepanel->AddNewComponent<FontTextRenderer>(CreateFontToHandle(CXFontType::CXFONT_PONG, 4), String::Format(L"SCORE: %d", PlayScene::score));
+	scorepanel->AddNewComponent<FontTextRenderer>(CreateFontToHandle(CXFontType::CXFONT_PONG, 4), String::Format(L"SCORE: %.0f", PlayScene::score));
 
 	class Click : public Component
 	{
